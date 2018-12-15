@@ -1,0 +1,46 @@
+Arguments: 
+  /Users/loic/.nvm/versions/node/v8.11.2/bin/node /Users/loic/.nvm/versions/node/v8.11.2/bin/yarn add --dev spawn
+
+PATH: 
+  /Users/loic/.rvm/gems/ruby-2.2.0/bin:/Users/loic/.rvm/gems/ruby-2.2.0@global/bin:/Users/loic/.rvm/rubies/ruby-2.2.0/bin:/Users/loic/.nvm/versions/node/v8.11.2/bin:/Volumes/DATA/google-cloud-sdk/bin:/Users/loic/.zsh//plugins/git-open:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/MacGPG2/bin:/Users/loic/.rvm/gems/ruby-2.2.0/bin:/Users/loic/.rvm/gems/ruby-2.2.0@global/bin:/Users/loic/.rvm/rubies/ruby-2.2.0/bin:/Volumes/DATA/google-cloud-sdk/bin:/Users/loic/.zsh//plugins/git-open:/usr/local/opt/fzf/bin:/Users/loic/.rvm/bin:/usr/local/go/bin:/Volumes/DATA/android-sdk/tools:/Volumes/DATA/android-sdk/platform-tools/:/Users/loic/Library/Python/2.7/bin/:/sbin/:/Users/loic/.scripts/_alias/:/Users/loic/.scripts/iterm/:/Users/loic/.scripts/git-pastiche/bin:perl5/perlbrew/bin:/Users/loic/.rvm/bin:/usr/local/go/bin:/Volumes/DATA/android-sdk/tools:/usr/local/bin:/Volumes/DATA/android-sdk/platform-tools/:/Users/loic/Library/Python/2.7/bin/:/sbin/:/Users/loic/.scripts/_alias/:/Users/loic/.scripts/iterm/:/Users/loic/.scripts/git-pastiche/bin:perl5/perlbrew/bin:
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  8.11.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://github.com/mirkok/node-webworker/tarball/master: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (/Users/loic/.nvm/versions/node/v8.11.2/lib/node_modules/yarn/lib/cli.js:218:66)
+      at new ResponseError (/Users/loic/.nvm/versions/node/v8.11.2/lib/node_modules/yarn/lib/cli.js:324:124)
+      at Request.<anonymous> (/Users/loic/.nvm/versions/node/v8.11.2/lib/node_modules/yarn/lib/cli.js:62463:26)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at Request.module.exports.Request.onRequestResponse (/Users/loic/.nvm/versions/node/v8.11.2/lib/node_modules/yarn/lib/cli.js:135561:10)
+      at emitOne (events.js:116:13)
+      at ClientRequest.emit (events.js:211:7)
+      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:543:21)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:112:17)
+
+npm manifest: 
+  {
+    "name": "create-reacticoon-plugin",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
