@@ -1,5 +1,4 @@
 import { createPlugin } from 'reacticoon/plugin'
-import { ReacticoonEvents } from 'reacticoon/event'
 
 import testModule from './modules/testModule'
 
@@ -16,22 +15,15 @@ const ReacticoonPluginExample = createPlugin({
   name: 'ReacticoonPluginExample',
   // list of the modules that the plugin register.
   // optionnal.
-  modules: [
-    testModule,
-  ],
+  modules: [testModule],
   // Describe listeners for a particular event.
   // optionnal.
-  eventsHandler: [
-    onAppInit,
-    onCustomEvent,
-  ],
+  eventsHandler: [onAppInit, onCustomEvent],
   // Describe custom events created by the plugin
-  // Note: Any event name should be prefixed with the Plugin name. 
+  // Note: Any event name should be prefixed with the Plugin name.
   // e.g: 'ReacticoonPluginExample::Event::onCustomEvent'
   // optionnal.
-  events: [
-    onCustomEvent,
-  ]
+  events: [onCustomEvent],
 })
 
 export default ReacticoonPluginExample

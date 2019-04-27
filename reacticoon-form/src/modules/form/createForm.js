@@ -4,10 +4,11 @@ import isNil from 'lodash/isNil'
 import isFunction from 'lodash/isFunction'
 import isObject from 'lodash/isObject'
 import isEmpty from 'lodash/isEmpty'
-// import merge from 'lodash/merge'
+import merge from 'lodash/merge'
 
 import { getValidatorEngine } from './config'
 
+import { __DEV__ } from 'reacticoon/environment'
 import { getQueryParam } from 'reacticoon/routing'
 
 export const DISABLE_FORM_DEV_DATA_QUERY_PARAM = 'disableFormDevData'
@@ -69,9 +70,9 @@ const createForm = (type, validationRules, defaultData, devData = null, options 
     const disableDevData =
       getQueryParam(DISABLE_FORM_DEV_DATA_QUERY_PARAM, window.location.url) === 'true' // as string since we take it from the url as a string
 
-    // if (isDev() && !isNil(finalDevData) && !disableDevData) {
-    // return merge(finalDefaultData, devData)
-    // }
+    if (__DEV__ && !isNil(finalDevData) && !disableDevData) {
+      return merge(finalDefaultData, finalDevData)
+    }
 
     return finalDefaultData
   }

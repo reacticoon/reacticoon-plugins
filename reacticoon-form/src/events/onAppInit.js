@@ -1,5 +1,5 @@
 import { getPluginConfig } from 'reacticoon/plugin'
-import { EventManager, ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { ReacticoonEvents, createEventHandler } from 'reacticoon/event'
 import invariant from 'invariant'
 import isNil from 'lodash/isNil'
 import isFunction from 'lodash/isFunction'

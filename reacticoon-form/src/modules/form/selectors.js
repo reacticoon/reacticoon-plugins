@@ -1,5 +1,4 @@
 import isNil from 'lodash/isNil'
-import isNull from 'lodash/isNull'
 import each from 'lodash/each'
 
 import { createSelector, getStateForModule } from 'reacticoon/selector'
