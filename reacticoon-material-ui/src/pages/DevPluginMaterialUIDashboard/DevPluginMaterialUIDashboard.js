@@ -1,5 +1,6 @@
 import React from 'react'
 
+import JsonView from 'reacticoon/reacticoon-dev-plugin/components/JsonView'
 import { getPluginConfig } from 'reacticoon/plugin'
 import getTheme from '../../utils/getTheme'
 import Page from 'reacticoon/reacticoon-dev-plugin/components/Page'
@@ -28,11 +29,10 @@ class DevPluginMaterialUIDashboard extends React.Component {
             </div>
           </Section>
           <Section title="App theme" grid={{ sm: 6 }}>
-            <pre>{JSON.stringify(appTheme, null, 2)}</pre>
+            <JsonView json={appTheme} />
           </Section>
           <Section title="Theme" grid={{ sm: 6 }}>
-            {/* TODO: use json view */}
-            <pre>{JSON.stringify(getTheme(), null, 2)}</pre>
+            <JsonView json={getTheme()} />
           </Section>
         </Section.Container>
       </Page>
