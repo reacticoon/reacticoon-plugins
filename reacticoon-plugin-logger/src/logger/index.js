@@ -11,6 +11,10 @@ export default class Logger {
     console.error(type, detail)
   }
 
+  static deprecated({ type, detail }) {
+    console.warn('[DEPRECATED]', type, detail)
+  }
+
   /**
    * Called when an exception is thrown during an action.
    *

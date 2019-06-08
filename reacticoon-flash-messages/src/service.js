@@ -4,8 +4,6 @@ import { MessageType } from './modules/flashMessages/constants'
 import { EventManager } from 'reacticoon/event'
 import { getConfiguredTypes } from './config'
 
-import noop from 'lodash/noop'
-
 export { MessageType as FlashMessageType } from './modules/flashMessages/constants'
 
 let nextFlashMessageId = 1

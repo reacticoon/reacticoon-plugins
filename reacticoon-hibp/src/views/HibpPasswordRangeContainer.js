@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty'
 import debounce from 'lodash/debounce'
 import find from 'lodash/find'
-import pwnedPasswordRange from 'hibp/lib/pwnedPasswordRange'
+import { pwnedPasswordRange } from 'hibp'
 import sha1 from '../utils/sha1'
 
 /**

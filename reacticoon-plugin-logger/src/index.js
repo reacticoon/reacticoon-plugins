@@ -12,6 +12,7 @@ const ReacticoonPluginExample = createPlugin({
   modules: [],
   eventsHandler: [
     createLogEventHandler(ReacticoonEvents.LOG_WARN, Logger.warn),
+    createLogEventHandler(ReacticoonEvents.LOG_DEPRECATION, Logger.deprecated),
     createLogEventHandler(ReacticoonEvents.LOG_NOT_IMPLEMENTED, Logger.notImplemented),
     createLogEventHandler(ReacticoonEvents.LOG_ERROR, Logger.error),
     createLogEventHandler(ReacticoonEvents.LOG_EXCEPTION, Logger.logException),
