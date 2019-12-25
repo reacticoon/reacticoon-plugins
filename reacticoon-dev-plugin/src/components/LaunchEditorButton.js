@@ -12,7 +12,9 @@ const LaunchEditorButton = ({ src, label }) => (
       fileName: `${getProjectSrcPath()}/${src}`
     }}
   >
-    {({ runCommand }) => <Button onClick={runCommand}>{label}</Button>}
+    {({ runCommand }) => (
+      <Button onClick={runCommand}>{label || "Open"}</Button>
+    )}
   </CommandContainer>
 );
 

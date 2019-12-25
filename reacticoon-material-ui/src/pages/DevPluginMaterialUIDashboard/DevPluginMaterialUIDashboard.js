@@ -18,6 +18,15 @@ class DevPluginMaterialUIDashboard extends React.Component {
               <div>MaterialUI version TODO</div>
               <div>
                 <a
+                  href="https://material-ui.com/components/material-icons/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://material-ui.com/components/material-icons/
+                </a>
+              </div>
+              <div>
+                <a
                   href="https://material-ui.com/"
                   target="_blank"
                   rel="noopener noreferrer"
