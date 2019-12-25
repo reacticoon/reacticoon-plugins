@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import JsonView from 'reacticoon/reacticoon-dev-plugin/components/JsonView'
-import { getPluginConfig } from 'reacticoon/plugin'
-import getTheme from '../../utils/getTheme'
-import Page from 'reacticoon/reacticoon-dev-plugin/components/Page'
-import Section from 'reacticoon/reacticoon-dev-plugin/components/Section'
+import JsonView from "reacticoon-plugins/reacticoon-dev-plugin/src/components/JsonView";
+import { getPluginConfig } from "reacticoon/plugin";
+import getTheme from "../../utils/getTheme";
+import Page from "reacticoon-plugins/reacticoon-dev-plugin/src/components/Page";
+import Section from "reacticoon-plugins/reacticoon-dev-plugin/src/components/Section";
 
 class DevPluginMaterialUIDashboard extends React.Component {
   render() {
-    const appTheme = getPluginConfig('ReacticoonMaterialUI').theme
+    const appTheme = getPluginConfig("ReacticoonMaterialUI").theme;
 
     return (
       <Page title="Material UI">
@@ -17,7 +17,11 @@ class DevPluginMaterialUIDashboard extends React.Component {
             <div>
               <div>MaterialUI version TODO</div>
               <div>
-                <a href="https://material-ui.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://material-ui.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   https://material-ui.com/
                 </a>
               </div>
@@ -40,8 +44,8 @@ class DevPluginMaterialUIDashboard extends React.Component {
           </Section>
         </Section.Container>
       </Page>
-    )
+    );
   }
 }
 
-export default DevPluginMaterialUIDashboard
+export default DevPluginMaterialUIDashboard;
