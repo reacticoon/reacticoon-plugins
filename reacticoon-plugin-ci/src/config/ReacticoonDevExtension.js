@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "@material-ui/icons/Extension";
+import Icon from "@material-ui/icons/Build";
 
 export default {
   plugin: "ReacticoonDev",

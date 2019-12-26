@@ -9,6 +9,10 @@ const CiRepositoryView = ({ data }) => (
     <InfoTable
       data={[
         {
+          label: "status",
+          value: <img src={data.buildSvg} />
+        },
+        {
           label: "last build number",
           value: data.repo.lastBuildNumber
         },
