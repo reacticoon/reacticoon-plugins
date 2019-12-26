@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-import Typography from '@material-ui/core/Typography'
-import Section from '../../../components/Section'
-import Pre from '../../../components/Pre'
-import ModulesView from './ModulesView'
-import RoutingView from './RoutingView'
-import EventsView from './EventsView'
-import EventsHandlerView from './EventsHandlerView'
+import Typography from "@material-ui/core/Typography";
+import Section from "../../../components/Section";
+import Pre from "../../../components/Pre";
+import ModulesView from "./ModulesView";
+import RoutingView from "./RoutingView";
+import EventsView from "./EventsView";
+import EventsHandlerView from "./EventsHandlerView";
 
 const PluginView = ({ plugin, config }) => (
   <Section.Container>
@@ -36,6 +36,6 @@ const PluginView = ({ plugin, config }) => (
       <EventsHandlerView eventsHandler={plugin.eventsHandler} />
     </Section>
   </Section.Container>
-)
+);
 
-export default PluginView
+export default PluginView;

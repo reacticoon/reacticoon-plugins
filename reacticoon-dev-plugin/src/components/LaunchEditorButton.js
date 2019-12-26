@@ -9,7 +9,7 @@ const LaunchEditorButton = ({ src, label }) => (
     manualRun
     command="DEV_TOOLS::LAUNCH_EDITOR"
     payload={{
-      fileName: `${getProjectSrcPath()}/${src}`
+      fileName: src[0] === "/" ? src : `${getProjectSrcPath()}/${src}`
     }}
   >
     {({ runCommand }) => (
