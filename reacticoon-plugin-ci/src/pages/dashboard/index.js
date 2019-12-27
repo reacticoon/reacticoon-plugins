@@ -5,11 +5,22 @@ import Section from "reacticoon-plugins/reacticoon-dev-plugin/src/components/Sec
 import CommandContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/command/view/CommandContainer";
 import CiRepositoryView from "./views/CiRepositoryView";
 import BuildView from "./views/BuildView";
+import ProjectState from "./views/ProjectState";
 
 class ReacticoonPluginCi__DashboardPage extends React.Component {
   render() {
     return (
       <Page title="Continuous integration">
+        <CommandContainer command="CI::PROJECT::STATE">
+          {({ data }) => (
+            <Section.Container>
+              <Section title="Project Ci">
+                <ProjectState projectState={data} />
+              </Section>
+            </Section.Container>
+          )}
+        </CommandContainer>
+
         <CommandContainer
           id="reacticoon"
           command="CI::REPOSITORY::INFOS"
