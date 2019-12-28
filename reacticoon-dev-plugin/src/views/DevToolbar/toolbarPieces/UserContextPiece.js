@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import UserContextContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/userContext/container";
 import UserIcon from "@material-ui/icons/AccountCircle";
-import Piece from "./Piece";
+import Piece from '../../../components/Piece'
 
 const styles = theme => ({
   userAvatar: {

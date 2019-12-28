@@ -1,5 +1,5 @@
-import React from "react";
-import Icon from "../../../reacticoon-dev-plugin/src/components/svg/Git";
+import Icon from "../components/GitIcon";
+import GitPiece from "../components/GitPiece"
 
 export default {
   plugin: "ReacticoonDev",
@@ -11,6 +11,11 @@ export default {
           label: "Git",
           icon: Icon,
           route: "REACTICOON_PLUGIN_GIT__DASHBOARD"
+        }
+      ],
+      pieces: [
+        {
+          component: GitPiece,
         }
       ]
     }

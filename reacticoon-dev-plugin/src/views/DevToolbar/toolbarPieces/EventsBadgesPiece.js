@@ -6,7 +6,7 @@ import DevToolbarContainer from '../../../modules/devToolBar/container'
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
 import WarningIcon from '@material-ui/icons/Warning'
-import Piece from './Piece'
+import Piece from '../../../components/Piece'
 
 const styles = theme => ({
   badge: {

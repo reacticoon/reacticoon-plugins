@@ -22,3 +22,14 @@ export const getExtendedDashboardSections = () => {
   )
   return sections
 }
+
+export const getExtendedPieces = () => {
+  // retrieve sections
+  // External plugins can extend our Dev dashboard using the 'extendPlugins' confing.
+  const extensions = getPluginExtensions('ReacticoonDev')
+  const pieces = extensions.reduce(
+    (pieces, extension) => [...pieces, ...get(extension, 'config.devDashboard.pieces', [])],
+    []
+  )
+  return pieces
+}

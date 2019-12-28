@@ -1,7 +1,7 @@
 import React from 'react'
 
 import RoutingContainer from 'reacticoon/routing/RoutingContainer'
-import Piece from './Piece'
+import Piece from '../../../components/Piece'
 
 const RoutePiece = ({ route, routeName }) => (
   <RoutingContainer>

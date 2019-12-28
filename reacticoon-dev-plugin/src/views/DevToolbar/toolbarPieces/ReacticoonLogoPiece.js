@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ReacticoonLogo from '../../../components/svg/ReacticoonLogo'
-import Piece from './Piece'
+import Piece from '../../../components/Piece'
 
 const ReacticoonLogoPiece = ({ onClick }) => (
   <Piece

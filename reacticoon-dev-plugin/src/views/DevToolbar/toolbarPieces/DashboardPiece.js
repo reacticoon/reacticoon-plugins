@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from 'reacticoon/routing'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-import Piece from './Piece'
+import Piece from '../../../components/Piece'
 
 const DashboardPiece = () => (
   <Piece name="Dashboard">
