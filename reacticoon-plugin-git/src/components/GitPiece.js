@@ -16,7 +16,7 @@ const styles = theme => ({
 // TODO: handle if git not initiated.
 // TODO: move to git plugin
 const GitPiece = ({ classes }) => (
-  <CommandContainer command="DEV_TOOLS::GIT_INFO">
+  <CommandContainer command="GIT::GIT_INFO">
     {({ data }) =>
       data.isGitInit && (
         <Piece name="git">

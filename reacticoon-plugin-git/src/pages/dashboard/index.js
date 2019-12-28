@@ -11,7 +11,7 @@ class ReacticoonPluginGit__DashboardPage extends React.Component {
   render() {
     return (
       <Page title="Continuous integration">
-        <CommandContainer command="DEV_TOOLS::GIT_INFO">
+        <CommandContainer command="GIT::GIT_INFO">
           {({ data }) => !data.isGitInit ? <GitNotInitView />: (
             <Section.Container>
               <Section title="Git info">

@@ -7,6 +7,7 @@ import { getModules } from 'reacticoon/module'
 import { getRoutes } from 'reacticoon/routing'
 import { initConsoleCatcher } from '../modules/proxyConsole'
 import EventsDebugger from '../EventsDebugger'
+import intiSse from '../modules/sse/initSse'
 
 // add our EventsListener, that listen for all the events
 // we must define it here, to handle the ON_APP_INIT event
@@ -84,6 +85,11 @@ const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
     // - middlewares on appMiddleware ?
     // - entities ?
     //
+
+    //
+    // SSE
+    //
+    intiSse()
   }
 })
 

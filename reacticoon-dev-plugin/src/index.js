@@ -35,6 +35,7 @@ const ReacticoonDevPlugin = createPlugin({
     commandModule,
     __DEV__ && require('./modules/events').default,
     __DEV__ && require('./modules/devToolBar').default, // ReacticoonDevToolbarModule
+    __DEV__ && require('./modules/sse').default,
     userContextModule,
   ],
   // Describe listeners for a particular event.
