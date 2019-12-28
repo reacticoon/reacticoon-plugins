@@ -13,28 +13,32 @@ const styles = theme => ({
   }
 });
 
+// TODO: handle if git not initiated.
+// TODO: move to git plugin
 const GitPiece = ({ classes }) => (
   <CommandContainer command="DEV_TOOLS::GIT_INFO">
-    {({ data }) => (
-      <Piece name="git">
-        <Piece.Header>
-          <GitIcon />
-          &nbsp;{data.currentBranch}
-        </Piece.Header>
+    {({ data }) =>
+      data.isGitInit && (
+        <Piece name="git">
+          <Piece.Header>
+            <GitIcon />
+            &nbsp;{data.currentBranch}
+          </Piece.Header>
 
-        <Piece.Content>
-          {() => [
-            {
-              label: "date",
-              value: data.date
-            },
-            { label: "Author", value: data.author },
-            { label: "commit", value: data.message },
-            { label: "#", value: data.commitId }
-          ]}
-        </Piece.Content>
-      </Piece>
-    )}
+          <Piece.Content>
+            {() => [
+              {
+                label: "date",
+                value: data.lastCommit.date
+              },
+              { label: "Author", value: data.lastCommit.author },
+              { label: "commit", value: data.lastCommit.message },
+              { label: "#", value: data.lastCommit.commitId }
+            ]}
+          </Piece.Content>
+        </Piece>
+      )
+    }
   </CommandContainer>
 );
 

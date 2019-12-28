@@ -1,12 +1,12 @@
-import Immutable from 'immutable'
+import Immutable from "immutable";
 
-import { createReducer } from 'reacticoon/reducer'
+import { createReducer } from "reacticoon/reducer";
 
-import { runCommand } from './actions'
+import { runCommand } from "./actions";
 
-const INITIAL_STATE = Immutable.fromJS({})
+const INITIAL_STATE = Immutable.fromJS({});
 
-const handleCommandRequest = (state, action) => {
+export const handleCommandRequest = (state, action) => {
   // uncomment to test circular reference error handling
   // action.request.request = action.request
   // action.next = action
@@ -17,32 +17,32 @@ const handleCommandRequest = (state, action) => {
   return state.mergeIn(
     [action.data.command, action.data.id],
     Immutable.fromJS({ isLoading: true, data: null })
-  )
-}
+  );
+};
 
-const handleCommandSuccess = (state, action) =>
+export const handleCommandSuccess = (state, action) =>
   state.mergeIn(
     [action.data.command, action.data.id],
     Immutable.fromJS({
       isLoading: false,
-      data: action.response,
+      data: action.response
     })
-  )
+  );
 
-const handleCommandFailure = (state, action) =>
+export const handleCommandFailure = (state, action) =>
   state.mergeIn(
     [action.data.command, action.data.id],
     Immutable.fromJS({
       isLoading: false,
       data: null,
-      error: action.apiError,
+      error: action.apiError
     })
-  )
+  );
 
 const CommandModuleReducer = createReducer(INITIAL_STATE, {
   [runCommand.REQUEST]: handleCommandRequest,
   [runCommand.SUCCESS]: handleCommandSuccess,
-  [runCommand.FAILURE]: handleCommandFailure,
-})
+  [runCommand.FAILURE]: handleCommandFailure
+});
 
-export default CommandModuleReducer
+export default CommandModuleReducer;

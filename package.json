@@ -1,0 +1,6 @@
+{
+  "name": "reacticoon-plugins",
+  "scripts": {
+    "test": "jest"
+  }
+}
