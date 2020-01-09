@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
@@ -144,14 +144,14 @@ class ReacticoonDevPage extends React.Component {
           <DarkTheme>
             <AppBar
               position="absolute"
-              className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+              className={clsx(classes.appBar, this.state.open && classes.appBarShift)}
             >
               <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
                 <IconButton
                   color="inherit"
                   aria-label="Open drawer"
                   onClick={this.handleDrawerOpen}
-                  className={classNames(
+                  className={clsx(
                     classes.menuButton,
                     this.state.open && classes.menuButtonHidden
                   )}
@@ -172,7 +172,7 @@ class ReacticoonDevPage extends React.Component {
             <Drawer
               variant="permanent"
               classes={{
-                paper: classNames(
+                paper: clsx(
                   classes.drawerPaper,
                   !this.state.open && classes.drawerPaperClose
                 ),

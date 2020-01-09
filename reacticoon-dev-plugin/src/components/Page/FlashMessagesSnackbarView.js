@@ -5,7 +5,7 @@ import { FlashMessageType } from 'reacticoon-plugins/reacticoon-flash-messages/s
 // https://github.com/iamhosseindhv/notistack
 import { SnackbarProvider, useSnackbar } from 'notistack'
 import FlashMessagesContainer from 'reacticoon-plugins/reacticoon-flash-messages/src/container'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import Collapse from '@material-ui/core/Collapse'
 import Paper from '@material-ui/core/Paper'
@@ -104,7 +104,7 @@ const SnackMessage = React.forwardRef((props, ref) => {
     <Card className={classes.card} ref={ref}>
       <CardActions
         classes={{
-          root: classNames(classes.actionRoot, {
+          root: clsx(classes.actionRoot, {
             [classes.typeError]: flashMessage.type === FlashMessageType.ERROR,
           }),
         }}
@@ -115,7 +115,7 @@ const SnackMessage = React.forwardRef((props, ref) => {
         <div className={classes.icons}>
           <IconButton
             aria-label="Show more"
-            className={classNames(classes.expand, { [classes.expandOpen]: expanded })}
+            className={clsx(classes.expand, { [classes.expandOpen]: expanded })}
             onClick={handleExpandClick}
           >
             <ExpandMoreIcon />

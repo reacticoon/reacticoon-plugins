@@ -1,6 +1,6 @@
 import React from 'react'
 
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import CheckIcon from '@material-ui/icons/Check'
 import CloseIcon from '@material-ui/icons/Close'
@@ -54,13 +54,13 @@ const styles = theme => ({
 const Icon = ({ result, classes }) => {
   switch (result.type) {
     case 'GOOD':
-      return <CheckIcon className={classNames(classes.icon, classes.iconGood)} />
+      return <CheckIcon className={clsx(classes.icon, classes.iconGood)} />
 
     case 'ERROR':
-      return <CloseIcon className={classNames(classes.icon, classes.iconError)} />
+      return <CloseIcon className={clsx(classes.icon, classes.iconError)} />
 
     case 'WARN':
-      return <WarnIcon className={classNames(classes.icon, classes.iconWarn)} />
+      return <WarnIcon className={clsx(classes.icon, classes.iconWarn)} />
 
     default: 
       return null

@@ -2,6 +2,7 @@ import React from "react";
 
 import JsonView from "reacticoon-plugins/reacticoon-dev-plugin/src/components/JsonView";
 import { getStore } from "reacticoon/store";
+import { isMakeSelector } from 'reacticoon/selector/utils'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -13,15 +14,15 @@ class SelectorRunner extends React.Component {
 
     let selectorMethod = selector;
     // handle make* selector. TODO: enforce this on documentation
-    let isMakeSelector = selectorName.startsWith("make");
-    if (isMakeSelector) {
+    const selectorIsMake = isMakeSelector(selectorName, selector)
+    if (selectorIsMake) {
       selectorMethod = selector();
       // TODO: verify selectorMethod is a function
     }
 
     this.state = {
       selectorMethod,
-      isMakeSelector,
+      isMakeSelector: selectorIsMake,
       // TODO: remove after tests
       propsJson: '{ "circleId": "1" }', //null,
 

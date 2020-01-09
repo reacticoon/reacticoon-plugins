@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import clsx from "classnames";
 
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -23,7 +23,7 @@ const styles = theme => ({
  */
 const InfoTable = ({ data, classes, className }) => {
   return (
-    <table className={classNames(className, classes.root)}>
+    <table className={clsx(className, classes.root)}>
       <tbody>
         {data.map(
           (rowData, index) =>
@@ -32,7 +32,7 @@ const InfoTable = ({ data, classes, className }) => {
                 <td className={classes.cell}>
                   <Typography
                     component="span"
-                    className={classNames(classes.label)}
+                    className={clsx(classes.label)}
                   >
                     {rowData.label}
                   </Typography>
@@ -40,7 +40,7 @@ const InfoTable = ({ data, classes, className }) => {
                 <td>
                   <Typography
                     component="span"
-                    className={classNames(classes.value)}
+                    className={clsx(classes.value)}
                   >
                     {rowData.value}
                   </Typography>

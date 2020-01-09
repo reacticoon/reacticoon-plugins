@@ -4,7 +4,7 @@ import { findIndexOnArray } from 'reacticoon/utils/array'
 
 import { DevToolbarRoute } from '../../modules/devToolBar'
 import { getReactVersion, getReactVersionDocLink } from 'reacticoon/environment'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import ReacticoonLogo from '../../components/svg/ReacticoonLogo'
@@ -120,7 +120,7 @@ const DevToolbarDetail = ({
 
   return (
     <div
-      className={classNames(classes.root, {
+      className={clsx(classes.root, {
         [classes.rootHide]: !show,
       })}
     >

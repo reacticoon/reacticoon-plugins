@@ -64,14 +64,14 @@ const styles = theme => ({
 const Header = ({ pageTitle, classes }) => (
   <AppBar
     position="absolute"
-    className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+    className={clsx(classes.appBar, this.state.open && classes.appBarShift)}
   >
     <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
       <IconButton
         color="inherit"
         aria-label="Open drawer"
         onClick={this.handleDrawerOpen}
-        className={classNames(
+        className={clsx(
           classes.menuButton,
           this.state.open && classes.menuButtonHidden,
         )}

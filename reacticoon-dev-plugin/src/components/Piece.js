@@ -1,7 +1,7 @@
 import React from 'react'
 
 import isArray from 'lodash/isArray'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import { StateContainer } from 'reacticoon/view'
 import Menu from '@material-ui/core/Menu'
@@ -117,7 +117,7 @@ const Piece = ({ onClick, name, classes, children, headerStyle = {} }) => {
               ref={anchorEl}
               onMouseEnter={enterButton}
               onMouseLeave={leaveButton}
-              className={classNames(classes.header, {
+              className={clsx(classes.header, {
                 [classes.headerSelected]: open,
               })}
               style={headerStyle}

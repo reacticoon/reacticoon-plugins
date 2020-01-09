@@ -3,7 +3,7 @@ import React from 'react'
 import { ReacticoonEvents, isSameEvent } from 'reacticoon/event'
 import EventsContainer from '../../../modules/events/container'
 import DevToolbarContainer from '../../../modules/devToolBar/container'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import WarningIcon from '@material-ui/icons/Warning'
 import Piece from '../../../components/Piece'
@@ -70,7 +70,7 @@ const EventsBadgesPiece = ({ classes }) => (
               name="EventsBadges"
               headerStyle={{ textAlign: 'center' }}
               classes={{
-                header: classNames({
+                header: clsx({
                   [classes.warning]: hasWarning && !hasError,
                   [classes.error]: hasError,
                 }),
@@ -91,7 +91,7 @@ const EventsBadgesPiece = ({ classes }) => (
                     onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
                     value: (
                       <span
-                        className={classNames(classes.contentValue, {
+                        className={clsx(classes.contentValue, {
                           [classes.error]: nbErrors > 1,
                         })}
                       >
@@ -104,7 +104,7 @@ const EventsBadgesPiece = ({ classes }) => (
                     onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
                     value: (
                       <span
-                        className={classNames(classes.contentValue, {
+                        className={clsx(classes.contentValue, {
                           [classes.warning]: nbWarnings > 1,
                         })}
                       >
@@ -117,7 +117,7 @@ const EventsBadgesPiece = ({ classes }) => (
                     onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
                     value: (
                       <span
-                        className={classNames(classes.contentValue, {
+                        className={clsx(classes.contentValue, {
                           [classes.warning]: nbDeprecations > 1,
                         })}
                       >
