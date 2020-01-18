@@ -1,1 +1,1 @@
-export default from './DevPluginMaterialUIDashboard'
+export { default } from "./DevPluginMaterialUIDashboard";

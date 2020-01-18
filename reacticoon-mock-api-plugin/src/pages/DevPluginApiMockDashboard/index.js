@@ -1,1 +1,1 @@
-export default from './DevPluginApiMockDashboard'
+export { default } from "./DevPluginApiMockDashboard";
