@@ -12,8 +12,8 @@ import LaunchEditorButton from "../../../components/LaunchEditorButton";
 
 const RoutesTable = ({ withPlugins = true }) => (
   <React.Fragment>
-    <LaunchEditorButton src="/config/routes.js" label="Open routes" />
-    <LaunchEditorButton src="/config/RoutingEnum.js" label="Open RoutingEnum" />
+    <LaunchEditorButton src="config/routes.js" label="Open routes" />
+    <LaunchEditorButton src="config/RoutingEnum.js" label="Open RoutingEnum" />
 
     <TableRow>
       <TableHead>
@@ -62,7 +62,7 @@ const RoutesTable = ({ withPlugins = true }) => (
                   {route.definition.authRequired ? "yes" : "no"}
                 </TableCell>
                 <TableCell>
-                  {route.definition.disabled ? "active" : "disabled"}
+                  {route.definition.disabled ? "disabled" : "active"}
                 </TableCell>
                 <TableCell>
                   {/* TODO: */}
