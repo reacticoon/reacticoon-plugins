@@ -1,39 +1,22 @@
-import { Route, createRoutingEnum } from "reacticoon/routing";
-import createAsyncPage from "reacticoon-plugins/reacticoon-dev-plugin/src/views/createAsyncPage";
-
 const ROUTE_PREFIX = "/_rc/marketplace";
 
-const routingEnum = createRoutingEnum({
-  REACTICOON_PLUGINS_MARKETPLACE_DASHBOARD: new Route(
-    "REACTICOON_PLUGINS_MARKETPLACE_DASHBOARD",
-    `${ROUTE_PREFIX}`
-  ),
-  REACTICOON_PLUGINS_MARKETPLACE_PLUGIN_HOMEPAGE: new Route(
-    "REACTICOON_PLUGINS_MARKETPLACE_PLUGIN_HOMEPAGE",
-    `${ROUTE_PREFIX}/:pluginId`
-  )
-});
-
-const routes = [
+export default api => [
   {
-    definition: routingEnum.REACTICOON_PLUGINS_MARKETPLACE_DASHBOARD,
-    handler: createAsyncPage(() =>
+    name: "REACTICOON_PLUGINS_MARKETPLACE_DASHBOARD",
+    path: `${ROUTE_PREFIX}`,
+    handler: api.createAsyncPage(() =>
       import(
-        /*  webpackChunkName: "ReacticoonPluginsMarketplacePlugin__DashboardPage" */ "../pages/dashboard"
+        /*  webpackChunkName: "REACTICOON_PLUGINS_MARKETPLACE_DASHBOARD" */ "../pages/dashboard"
       )
     )
   },
   {
-    definition: routingEnum.REACTICOON_PLUGINS_MARKETPLACE_PLUGIN_HOMEPAGE,
-    handler: createAsyncPage(() =>
+    name: "REACTICOON_PLUGINS_MARKETPLACE_PLUGIN_HOMEPAGE",
+    path: `${ROUTE_PREFIX}/:pluginId`,
+    handler: api.createAsyncPage(() =>
       import(
-        /*  webpackChunkName: "ReacticoonPluginsMarketplacePlugin__PluginHomepage" */ "../pages/pluginHomepage"
+        /*  webpackChunkName: "REACTICOON_PLUGINS_MARKETPLACE_PLUGIN_HOMEPAGE" */ "../pages/pluginHomepage"
       )
     )
   }
 ];
-
-export default {
-  routes,
-  routingEnum
-};

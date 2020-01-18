@@ -1,24 +1,13 @@
-import { Route, createRoutingEnum } from "reacticoon/routing";
-import createAsyncPage from "reacticoon-plugins/reacticoon-dev-plugin/src/views/createAsyncPage";
-
 const ROUTE_PREFIX = "/_rc/material-ui";
 
-const routingEnum = createRoutingEnum({
-  MATERIAL_UI_DASHBOARD: new Route("MATERIAL_UI::DASHBOARD", `${ROUTE_PREFIX}`)
-});
-
-const routes = [
+export default api => [
   {
-    definition: routingEnum.MATERIAL_UI_DASHBOARD,
-    handler: createAsyncPage(() =>
+    name: "MATERIAL_UI_DASHBOARD",
+    path: ROUTE_PREFIX,
+    handler: api.createAsyncPage(() =>
       import(
-        /*  webpackChunkName: "MaterialUI__DashboardPage" */ "../pages/DevPluginMaterialUIDashboard"
+        /*  webpackChunkName: "MATERIAL_UI_DASHBOARD" */ "../pages/DevPluginMaterialUIDashboard"
       )
     )
   }
 ];
-
-export default {
-  routes,
-  routingEnum
-};

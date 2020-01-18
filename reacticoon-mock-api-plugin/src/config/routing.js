@@ -1,28 +1,13 @@
-import React from 'react'
+const ROUTE_PREFIX = "/_rc/api-mock";
 
-import { Route, createRoutingEnum } from 'reacticoon/routing'
-import { createLoadable } from 'reacticoon/view'
-
-const ROUTE_PREFIX = '/_rc/api-mock'
-
-// import DevPluginApiMockSection from './views/DevPluginApiMockSection'
-
-const routingEnum = createRoutingEnum({
-  API_MOCK_DASHBOARD: new Route('API_MOCK::DASHBOARD', `${ROUTE_PREFIX}`),
-})
-
-const createAsyncPage = loader => createLoadable(loader, () => <div />)
-
-const routes = [
+export default api => [
   {
-    definition: routingEnum.API_MOCK_DASHBOARD,
-    handler: createAsyncPage(() =>
-      import(/*  webpackChunkName: "ApiMock__DashboardPage" */ '../pages/DevPluginApiMockDashboard')
-    ),
-  },
-]
-
-export default {
-  routes,
-  routingEnum,
-}
+    name: "API_MOCK_DASHBOARD",
+    path: ROUTE_PREFIX,
+    handler: api.createAsyncPage(() =>
+      import(
+        /*  webpackChunkName: "API_MOCK_DASHBOARD" */ "../pages/DevPluginApiMockDashboard"
+      )
+    )
+  }
+];

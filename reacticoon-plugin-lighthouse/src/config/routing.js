@@ -1,27 +1,15 @@
-import { Route, createRoutingEnum } from "reacticoon/routing";
-import createAsyncPage from "reacticoon-plugins/reacticoon-dev-plugin/src/views/createAsyncPage";
-
 const ROUTE_PREFIX = "/_rc/lighthouse";
 
-const routingEnum = createRoutingEnum({
-  REACTICOON_PLUGIN_LIGHTHOUSE__DASHBOARD: new Route(
-    "REACTICOON_PLUGIN_LIGHTHOUSE__DASHBOARD",
-    `${ROUTE_PREFIX}`
-  )
-});
-
-const routes = [
+export default api => [
   {
-    definition: routingEnum.REACTICOON_PLUGIN_LIGHTHOUSE__DASHBOARD,
-    handler: createAsyncPage(() =>
+    name: "REACTICOON_PLUGIN_LIGHTHOUSE__DASHBOARD",
+    path: ROUTE_PREFIX + "/",
+    disabled: false,
+    authRequired: false,
+    handler: api.createAsyncPage(() =>
       import(
-        /*  webpackChunkName: "ReacticoonPluginLighthouse__DashboardPage" */ "../pages/dashboard"
+        /*  webpackChunkName: "REACTICOON_PLUGIN_LIGHTHOUSE__DASHBOARD" */ "../pages/dashboard"
       )
     )
   }
 ];
-
-export default {
-  routes,
-  routingEnum
-};
