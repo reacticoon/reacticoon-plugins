@@ -1,5 +1,6 @@
 import { Route, createRoutingEnum } from "reacticoon/routing";
 import createAsyncPage from "reacticoon-plugins/reacticoon-dev-plugin/src/views/createAsyncPage";
+import ReacticoonRoutingEnum from "reacticoon/routing/ReacticoonRoutingEnum";
 
 const ROUTE_PREFIX = "/_rc";
 
@@ -41,6 +42,11 @@ const routingEnum = createRoutingEnum({
   REACTICOON_REPORT_ANALYZE_BUNDLE_PHOBIA: new Route(
     "REACTICOON::REACTICOON_REPORT_ANALYZE_BUNDLE_PHOBIA",
     `${ROUTE_PREFIX}/reports/analyze-bundle-phobia`
+  ),
+
+  REACTICOON_PAGE_NOT_FOUND: new Route(
+    "REACTICOON::REACTICOON_PAGE_NOT_FOUND",
+    `${ROUTE_PREFIX}/*`
   )
 });
 
@@ -128,6 +134,23 @@ const routes = [
     handler: createAsyncPage(() =>
       import(
         /*  webpackChunkName: "Reacticoon__ReportAnalyzeBundlePhobiaPage" */ "../pages/analyze-bundle-phobia"
+      )
+    )
+  },
+  {
+    definition: routingEnum.REACTICOON_PAGE_NOT_FOUND,
+    handler: createAsyncPage(() =>
+      import(
+        /*  webpackChunkName: "Reacticoon__PageNotFoundPageDefault" */ "../pages/error/PageNotFoundPage"
+      )
+    )
+  },
+  // TODO: allow the app to override this
+  {
+    definition: ReacticoonRoutingEnum.PAGE_NOT_FOUND,
+    handler: createAsyncPage(() =>
+      import(
+        /*  webpackChunkName: "Reacticoon__PageNotFoundPage" */ "../pages/error/PageNotFoundPage"
       )
     )
   }

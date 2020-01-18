@@ -1,21 +1,26 @@
-import React from 'react'
+import React from "react";
 
-import { __ENV__, __VERSION__, __REACTICOON_VERSION__, getEnv } from 'reacticoon/environment'
-import { sortObjectKeys } from 'reacticoon/utils'
+import {
+  __ENV__,
+  __VERSION__,
+  __REACTICOON_VERSION__,
+  getEnv
+} from "reacticoon/environment";
+import { sortObjectKeys } from "reacticoon/utils";
 import {
   getReacticoonWebsiteUrl,
   getReacticoonOrganisationUrl,
   getReacticoonRepositoryUrl,
   getReactVersion,
-  getReactVersionDocLink,
-} from 'reacticoon/environment'
-import List from '@material-ui/core/List'
-import Grid from '@material-ui/core/Grid'
-import ListItem from '@material-ui/core/ListItem'
-import Page from '../../components/Page'
-import Pre from '../../components/Pre'
-import Section from '../../components/Section'
-import ReacticoonLogo from '../../components/svg/ReacticoonLogo'
+  getReactVersionDocLink
+} from "reacticoon/environment";
+import List from "@material-ui/core/List";
+import Grid from "@material-ui/core/Grid";
+import ListItem from "@material-ui/core/ListItem";
+import Page from "../../components/Page";
+import Pre from "../../components/Pre";
+import Section from "../../components/Section";
+import ReacticoonLogo from "../../components/svg/ReacticoonLogo";
 
 class DashboardPage extends React.Component {
   render() {
@@ -27,7 +32,7 @@ class DashboardPage extends React.Component {
               <ListItem>App version: {__VERSION__}</ListItem>
               <ListItem>Reacticoon version: {__REACTICOON_VERSION__}</ListItem>
               <ListItem>
-                React version:{' '}
+                React version:&nbsp;&nbsp;
                 <a href={getReactVersionDocLink()} target="_blank">
                   {getReactVersion()}
                 </a>
@@ -40,11 +45,11 @@ class DashboardPage extends React.Component {
               <Grid
                 sm={4}
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  margin: 'auto',
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                  margin: "auto"
                 }}
               >
                 <ReacticoonLogo height={120} />
@@ -52,7 +57,11 @@ class DashboardPage extends React.Component {
               <Grid sm={8}>
                 <List>
                   <ListItem>
-                    <a href={getReacticoonWebsiteUrl()} target="_blank" rel="noopener noreferer">
+                    <a
+                      href={getReacticoonWebsiteUrl()}
+                      target="_blank"
+                      rel="noopener noreferer"
+                    >
                       Reacticoon website
                     </a>
                   </ListItem>
@@ -87,15 +96,16 @@ class DashboardPage extends React.Component {
 
           <Section title="Process environment">
             <p>
-              You can add process environment variables using the command line or a .env file. You
-              must prefix your environment variables with <code>REACTICOON_APP__</code>.
+              You can add process environment variables using the command line
+              or a .env file. You must prefix your environment variables with{" "}
+              <code>REACTICOON_APP__</code>.
             </p>
             <Pre content={sortObjectKeys(process.env)} />
           </Section>
         </Section.Container>
       </Page>
-    )
+    );
   }
 }
 
-export default DashboardPage
+export default DashboardPage;
