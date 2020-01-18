@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-import CommandContainer from '../../../modules/command/view/CommandContainer'
-import PluginsReport from './PluginsReport'
+import CommandContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/command/view/CommandContainer";
+import PluginsReport from "./PluginsReport";
 
 const ReportView = () => (
   <CommandContainer command="PLUGINS">
     {({ data: report }) => <PluginsReport pluginsReport={report} />}
   </CommandContainer>
-)
+);
 
-export default ReportView
+export default ReportView;

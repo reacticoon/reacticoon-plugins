@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import CommandContainer from '../../../modules/command/view/CommandContainer'
-import BundlePhobiaReport from './BundlePhobiaReport'
+import CommandContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/command/view/CommandContainer";
+import BundlePhobiaReport from "./BundlePhobiaReport";
+import BuildContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/components/BuildContainer";
 
 const ReportView = () => (
-  <CommandContainer command="BUNDLE_PHOBIA">
-    {({ data: report }) => <BundlePhobiaReport report={report} />}
-  </CommandContainer>
-)
+  <BuildContainer>
+    <CommandContainer command="BUNDLE_PHOBIA">
+      {({ data: report }) => <BundlePhobiaReport report={report} />}
+    </CommandContainer>
+  </BuildContainer>
+);
 
-export default ReportView
+export default ReportView;
