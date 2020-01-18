@@ -10,7 +10,7 @@ import ProjectState from "./views/ProjectState";
 class ReacticoonPluginCi__DashboardPage extends React.Component {
   render() {
     return (
-      <Page title="Continuous integration">
+      <Page pageTitle="Continuous integration">
         <CommandContainer command="CI::PROJECT::STATE">
           {({ data }) => (
             <Section.Container>

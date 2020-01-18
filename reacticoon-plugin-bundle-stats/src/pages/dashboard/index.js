@@ -6,18 +6,20 @@ import CommandContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modul
 import BuildContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/components/BuildContainer";
 import Button from "@material-ui/core/Button";
 
-class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
+class ReacticoonPluginBundleStats__DashboardPage extends React.Component {
   render() {
     return (
-      <Page pageTitle="Lighthouse">
+      <Page pageTitle="Bundle stats">
+        {/* TODO: allow to run on builded not dev env */}
         <Section.Container>
           <Section title="Report">
             <BuildContainer>
-              {/* TODO: allow to run on builded not dev env */}
-              <CommandContainer manualRun command="LIGHTHOUSE::REPORT">
+              <CommandContainer manualRun command="BUNDLE_STATS::REPORT">
                 {({ data, runCommand }) =>
                   !data ? (
-                    <Button onClick={runCommand}>Run lighthouse report</Button>
+                    <Button onClick={runCommand}>
+                      Run bundle stats report
+                    </Button>
                   ) : (
                     <React.Fragment>
                       {/* TODO: iframe this */}
@@ -39,4 +41,4 @@ class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
   }
 }
 
-export default ReacticoonPluginLighthouse__DashboardPage;
+export default ReacticoonPluginBundleStats__DashboardPage;

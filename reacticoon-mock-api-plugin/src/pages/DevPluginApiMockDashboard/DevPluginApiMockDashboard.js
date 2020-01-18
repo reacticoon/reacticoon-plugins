@@ -7,7 +7,7 @@ import FileTreeView from "reacticoon-plugins/reacticoon-dev-plugin/src/views/Fil
 class DevPluginApiMockDashboard extends React.Component {
   render() {
     return (
-      <Page title="Api mock dashboard">
+      <Page pageTitle="Api mock dashboard">
         <Section.Container>
           <Section title="Mocked files">
             <FileTreeView command="MOCKAPI::LIST_FILES" />

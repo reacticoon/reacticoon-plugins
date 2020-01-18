@@ -11,7 +11,7 @@ class DevPluginMaterialUIDashboard extends React.Component {
     const appTheme = getPluginConfig("ReacticoonMaterialUI").theme;
 
     return (
-      <Page title="Material UI">
+      <Page pageTitle="Material UI">
         <Section.Container>
           <Section title="Info">
             <div>
