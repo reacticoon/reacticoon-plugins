@@ -3,29 +3,25 @@ import sseAllListener from "./sseAllListener";
 
 const listenReactScriptDevTools = () => {
   // const eventSource = new EventSource("http://localhost:4242/sockjs-node");
-
   // eventSource.onmessage = function(e) {
   //   console.log(e.data);
-
   //   debugger
   // };
-
   // eventSource.onerror = function(err) {
   //   console.error(err)
   //   debugger
   // };
-
-}
+};
 
 const intiSse = () => {
   const eventSource = new EventSource("//localhost:9191/sse-server");
 
   eventSource.onmessage = function(e) {
-    console.log(e.data);
+    const event = JSON.parse(e.data);
+    console.log({ event });
 
-    (getListenersForEvent(e.data.event) || []).forEach(callback => {
+    (getListenersForEvent(event.eventName) || []).forEach(callback => {
       try {
-        const event = JSON.parse(e.data);
         callback(event);
       } catch (_) {}
     });
@@ -37,7 +33,7 @@ const intiSse = () => {
 
   addListener(listenForAll, sseAllListener);
 
-  listenReactScriptDevTools()
+  listenReactScriptDevTools();
 };
 
 export default intiSse;

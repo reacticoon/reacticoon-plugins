@@ -11,6 +11,13 @@ export default api => [
     )
   },
   {
+    name: "REACTICOON_BUILD",
+    path: `${ROUTE_PREFIX}/build`,
+    handler: api.createAsyncPage(() =>
+      import(/*  webpackChunkName: "REACTICOON_BUILD" */ "../pages/build")
+    )
+  },
+  {
     name: "REACTICOON_PLUGIN",
     path: `${ROUTE_PREFIX}/plugins`,
     handler: api.createAsyncPage(() =>
