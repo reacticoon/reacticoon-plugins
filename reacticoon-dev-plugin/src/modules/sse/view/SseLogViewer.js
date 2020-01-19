@@ -7,7 +7,7 @@ import SseMessagesContainer from "./SseMessagesContainer";
 
 const styles = theme => ({
   root: {
-    background: "black",
+    background: "#0e1e24",
     color: "white",
     padding: theme.spacing(1),
     lineHeight: "21px",

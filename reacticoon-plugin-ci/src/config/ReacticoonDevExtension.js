@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "@material-ui/icons/Build";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
 export default {
   plugin: "ReacticoonDev",
@@ -9,7 +9,7 @@ export default {
       sections: [
         {
           label: "CI",
-          icon: Icon,
+          icon: CheckCircleOutlineIcon,
           route: "REACTICOON_PLUGIN_CI_DASHBOARD"
         }
       ]
