@@ -10,6 +10,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 import ExploreIcon from "@material-ui/icons/Explore";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import BuildIcon from "@material-ui/icons/Build";
+import CheckCircleOutline from "@material-ui/icons/CheckCircle";
 
 export const mainListItems = (
   <div>
@@ -28,6 +29,15 @@ export const mainListItems = (
           <BuildIcon />
         </ListItemIcon>
         <ListItemText primary="Build" />
+      </ListItem>
+    </Link>
+
+    <Link to={Link.getRoute("REACTICOON_TESTING")}>
+      <ListItem button>
+        <ListItemIcon>
+          <CheckCircleOutline />
+        </ListItemIcon>
+        <ListItemText primary="Testing" />
       </ListItem>
     </Link>
 

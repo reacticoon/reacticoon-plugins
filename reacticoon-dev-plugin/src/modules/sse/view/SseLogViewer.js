@@ -19,8 +19,8 @@ const styles = theme => ({
   }
 });
 
-const SseLogViewer = ({ eventName, taskId, classes }) => (
-  <SseMessagesContainer eventName={eventName} taskId={taskId}>
+const SseLogViewer = ({ eventName, taskId, onEnded, classes }) => (
+  <SseMessagesContainer eventName={eventName} taskId={taskId} onEnded={onEnded}>
     {({ events }) =>
       !isEmpty(events) && (
         <pre className={classes.root}>

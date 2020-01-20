@@ -18,6 +18,13 @@ export default api => [
     )
   },
   {
+    name: "REACTICOON_TESTING",
+    path: `${ROUTE_PREFIX}/testing`,
+    handler: api.createAsyncPage(() =>
+      import(/*  webpackChunkName: "REACTICOON_TESTING" */ "../pages/testing")
+    )
+  },
+  {
     name: "REACTICOON_PLUGIN",
     path: `${ROUTE_PREFIX}/plugins`,
     handler: api.createAsyncPage(() =>

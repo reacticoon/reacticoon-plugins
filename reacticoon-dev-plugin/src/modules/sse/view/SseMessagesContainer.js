@@ -33,7 +33,10 @@ class SseMessagesContainer extends React.Component {
     }
 
     if (payload.isTypeDone) {
-      // TODO: remove listener, notify prop if needed
+      debugger;
+      if (props.onEnded) {
+        props.onEnded(payload);
+      }
     }
 
     this.setState({
