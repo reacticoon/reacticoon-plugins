@@ -1,4 +1,10 @@
 {
   "name": "reacticoon-plugin-logger",
-  "version": "1.0.0"
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-logger#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-logger.git"
+  }
 }

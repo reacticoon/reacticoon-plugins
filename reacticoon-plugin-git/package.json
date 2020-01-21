@@ -1,3 +1,10 @@
 {
-  "name": "reacticoon-plugin-git"
+  "name": "reacticoon-plugin-git",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-git.git"
+  }
 }

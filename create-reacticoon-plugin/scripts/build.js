@@ -5,7 +5,11 @@
 const spawn = require("cross-spawn");
 
 // ./node_modules/rollup/bin/rollup src/index.js -f cjs -o lib/index.js
-const nodeArgs = ["../../reacticoon-hibp/src/index.js", "-f cjs", "-o ../../reacticoon-hibp/lib/index.js"];
+const nodeArgs = [
+  "../../reacticoon-plugin-hibp/src/index.js",
+  "-f cjs",
+  "-o ../../reacticoon-plugin-hibp/lib/index.js"
+];
 
 const result = spawn.sync("node ./node_modules/rollup/bin/rollup", nodeArgs, {
   stdio: "inherit"
@@ -25,9 +29,7 @@ if (result.signal) {
         "be shutting down."
     );
   } else {
-    console.log(
-      "Build succeeded"
-    );
+    console.log("Build succeeded");
   }
   process.exit(1);
 }

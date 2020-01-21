@@ -1,0 +1,10 @@
+{
+  "name": "reacticoon-plugin-marketplace",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-marketplace#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-marketplace.git"
+  }
+}

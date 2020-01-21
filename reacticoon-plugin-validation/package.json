@@ -1,0 +1,10 @@
+{
+  "name": "reacticoon-plugin-validation",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-validation#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-validation.git"
+  }
+}

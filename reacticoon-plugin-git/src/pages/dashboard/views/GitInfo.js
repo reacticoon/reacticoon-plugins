@@ -1,5 +1,5 @@
 import React from "react";
-import InfoTable from "reacticoon-plugins/reacticoon-dev-plugin/src/components/TableInfo";
+import InfoTable from "reacticoon-plugins/reacticoon-plugin-dev/src/components/TableInfo";
 
 const GitInfo = ({ info }) => (
   <div>

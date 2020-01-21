@@ -1,3 +1,10 @@
 {
-  "name": "reacticoon-plugin-lighthouse"
+  "name": "reacticoon-plugin-lighthouse",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-lighthouse#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-lighthouse.git"
+  }
 }

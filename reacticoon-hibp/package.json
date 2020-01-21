@@ -1,9 +1,0 @@
-{
-  "name": "reacticoon-hibp",
-  "version": "0.0.1",
-  "description": "Reacticoon plugin for hibp API",
-  "main": "src/index.js",
-  "dependencies": {
-    "hibp": "8.0.0"
-  }
-}

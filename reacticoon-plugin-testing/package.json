@@ -1,0 +1,10 @@
+{
+  "name": "reacticoon-plugin-testing",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-testing#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-testing.git"
+  }
+}

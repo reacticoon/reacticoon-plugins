@@ -1,4 +1,12 @@
 {
+  "name": "reacticoon-plugin-sentry",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-sentry#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-sentry.git"
+  },
   "dependencies": {
     "raven-js": "3.27.2"
   }

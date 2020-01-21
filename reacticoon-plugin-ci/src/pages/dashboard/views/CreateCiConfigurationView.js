@@ -1,6 +1,6 @@
 import React from "react";
 
-import CommandContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
