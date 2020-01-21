@@ -4,7 +4,7 @@ import { getProjectSrcPath } from "reacticoon/environment";
 import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
 import Button from "@material-ui/core/Button";
 
-const LaunchEditorButton = ({ src, label }) => (
+const LaunchEditorButton = ({ src, label, ...otherProps }) => (
   <CommandContainer
     manualRun
     command="DEV_TOOLS::LAUNCH_EDITOR"
@@ -13,7 +13,9 @@ const LaunchEditorButton = ({ src, label }) => (
     }}
   >
     {({ runCommand }) => (
-      <Button onClick={runCommand}>{label || "Open"}</Button>
+      <Button onClick={runCommand} {...otherProps}>
+        {label || "Open"}
+      </Button>
     )}
   </CommandContainer>
 );

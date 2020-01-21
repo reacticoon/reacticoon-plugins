@@ -15,7 +15,8 @@ const theme = createMuiTheme({
       warn: orange[300],
       good: green[300],
       dark: "#2F2F2F",
-      lightgrey: "#6A8AAC",
+      lightblue: "#6A8AAC",
+      lightgrey: "#F0F0F0",
       grey: "#444444"
     },
     toolbar: {
