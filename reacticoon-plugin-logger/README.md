@@ -6,4 +6,4 @@ It is configured to catch the `ReacticoonEvents.LOG_*` events, and print it to t
 
 ## Plugin configuration
 
-No configuration required
+> No configuration required

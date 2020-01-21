@@ -1,14 +1,16 @@
 import React from "react";
 
 import clsx from "clsx";
-import { generatePluginRoutes } from "reacticoon/plugin/config";
 import isEmpty from "lodash/isEmpty";
+import { generatePluginRoutes } from "reacticoon/plugin/config";
+import { Link } from "reacticoon/routing";
 import { withStyles } from "@material-ui/core/styles";
 import PluginContainer from "../../../modules/plugins/view/PluginContainer";
 import Typography from "@material-ui/core/Typography";
 import Section from "../../../components/Section";
 import SvgLogo from "../../../components/SvgLogo";
 import Pre from "../../../components/Pre";
+import MarkdownView from "../../../components/MarkdownView";
 import LaunchEditorButton from "../../../components/LaunchEditorButton";
 import ModulesView from "./ModulesView";
 import RoutingView from "./RoutingView";
@@ -16,6 +18,7 @@ import EventsView from "./EventsView";
 import EventsHandlerView from "./EventsHandlerView";
 import StarIcon from "@material-ui/icons/Star";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 const styles = theme => ({
   content: {
@@ -52,6 +55,16 @@ const styles = theme => ({
     }
   },
   installed: {
+    paddingLeft: theme.spacing(1),
+    display: "flex",
+    alignItems: "center",
+    color: theme.app.colors.lightblue,
+    "& svg": {
+      paddingRight: theme.spacing(0.5),
+      color: theme.app.colors.lightblue
+    }
+  },
+  homepage: {
     paddingLeft: theme.spacing(1),
     display: "flex",
     alignItems: "center",
@@ -99,12 +112,25 @@ const PluginView = ({ pluginName, config, classes }) => (
                   >
                     <StarIcon /> Official
                   </div>
+
                   <div
                     className={clsx(classes.installed, {
                       [classes.hidden]: !pluginData.identity.isInstalled
                     })}
                   >
                     <CheckCircleIcon /> Installed
+                  </div>
+
+                  <div
+                    className={clsx(classes.homepage, {
+                      [classes.hidden]: !pluginData.identity.hasHomepage
+                    })}
+                  >
+                    {pluginData.identity.hasHomepage && (
+                      <Link href={pluginData.identity.homepage} newTab>
+                        <OpenInNewIcon /> More info
+                      </Link>
+                    )}
                   </div>
                 </div>
 
@@ -125,6 +151,14 @@ const PluginView = ({ pluginName, config, classes }) => (
                 </div>
               </div>
             </div>
+          </Section>
+
+          <Section title="Readme">
+            {!pluginData.identity.hasReadme ? (
+              <p>No readme</p>
+            ) : (
+              <MarkdownView filepath={pluginData.identity.readmePath} />
+            )}
           </Section>
 
           <Section title="Configuration">

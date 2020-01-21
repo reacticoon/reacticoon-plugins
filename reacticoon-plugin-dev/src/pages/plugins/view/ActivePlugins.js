@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Link } from "reacticoon/routing";
 import StarIcon from "@material-ui/icons/Star";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import ActivePluginsContainer from "../../../modules/plugins/view/ActivePluginsContainer";
 import SvgLogo from "../../../components/SvgLogo";
 
@@ -51,6 +52,16 @@ const styles = theme => ({
     }
   },
   installed: {
+    paddingLeft: theme.spacing(1),
+    display: "flex",
+    alignItems: "center",
+    color: theme.app.colors.lightblue,
+    "& svg": {
+      paddingRight: theme.spacing(0.5),
+      color: theme.app.colors.lightblue
+    }
+  },
+  homepage: {
     paddingLeft: theme.spacing(1),
     display: "flex",
     alignItems: "center",
@@ -109,6 +120,17 @@ const ActivePlugins = ({ classes }) => (
                   })}
                 >
                   <CheckCircleIcon /> Installed
+                </div>
+                <div
+                  className={clsx(classes.homepage, {
+                    [classes.hidden]: !pluginData.identity.hasHomepage
+                  })}
+                >
+                  {pluginData.identity.hasHomepage && (
+                    <Link href={pluginData.identity.homepage} newTab>
+                      <OpenInNewIcon /> More info
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
