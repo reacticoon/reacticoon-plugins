@@ -1,20 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import { getPlugin } from 'reacticoon/plugin'
-import Page from '../../components/Page'
-import PluginView from './view/PluginView'
+import Page from "../../components/Page";
+import PluginView from "./view/PluginView";
 
 class PluginsPage extends React.Component {
   render() {
-    const props = this.props
-    const plugin = getPlugin(props.params.pluginName)
+    const props = this.props;
 
     return (
       <Page pageTitle={`Plugin - Detail`}>
-        <PluginView plugin={plugin} config={plugin.getConfig()} />
+        <PluginView pluginName={props.params.pluginName} />
       </Page>
-    )
+    );
   }
 }
 
-export default PluginsPage
+export default PluginsPage;

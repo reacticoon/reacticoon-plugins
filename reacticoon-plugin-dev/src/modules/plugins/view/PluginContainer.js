@@ -5,6 +5,7 @@ import { formatPluginIdentity } from "../format";
 
 const PluginContainer = ({ pluginName, children }) => (
   <CommandContainer
+    id={`PLUGINS::VIEW::IDENTITY_${pluginName}`}
     command="PLUGINS::VIEW::IDENTITY"
     payload={{
       pluginName
@@ -14,9 +15,10 @@ const PluginContainer = ({ pluginName, children }) => (
     {({ data }) =>
       data &&
       children({
-        plugins: data
+        pluginData: data
       })
     }
   </CommandContainer>
 );
+
 export default PluginContainer;

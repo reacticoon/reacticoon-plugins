@@ -15,7 +15,7 @@ const RoutesTable = ({ withPlugins = true }) => (
     <LaunchEditorButton src="config/routes.js" label="Open routes" />
     <LaunchEditorButton src="config/RoutingEnum.js" label="Open RoutingEnum" />
 
-    <TableRow>
+    <Table>
       <TableHead>
         <TableRow>
           <TableCell>Name</TableCell>
@@ -72,7 +72,7 @@ const RoutesTable = ({ withPlugins = true }) => (
             );
           })}
       </TableBody>
-    </TableRow>
+    </Table>
   </React.Fragment>
 );
 

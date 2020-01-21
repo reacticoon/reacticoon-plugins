@@ -125,7 +125,8 @@ const styles = theme => ({
  */
 class ReacticoonDevPage extends React.Component {
   state = {
-    open: true
+    open: true,
+    hasError: false
   };
 
   handleDrawerOpen = () => {
@@ -136,8 +137,23 @@ class ReacticoonDevPage extends React.Component {
     this.setState({ open: false });
   };
 
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, errorInfo);
+  }
+
   render() {
     const { classes, pageTitle, children } = this.props;
+
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
 
     return (
       <DevToolsTheme>

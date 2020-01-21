@@ -2,8 +2,8 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 import { Link } from "reacticoon/routing";
-import CommandContainer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/command/view/CommandContainer";
-import SseLogViewer from "reacticoon-plugins/reacticoon-dev-plugin/src/modules/sse/view/SseLogViewer";
+import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import SseLogViewer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/sse/view/SseLogViewer";
 
 const BuildInfo = ({ buildInfo }) => (
   <div>
