@@ -1,3 +1,10 @@
 {
-  "name": "reacticoon-plugin-ci"
+  "name": "reacticoon-plugin-ci",
+  "version": "0.0.1",
+  "description": "Reacticoon continuous integration plugin",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-ci#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-ci.git"
+  }
 }

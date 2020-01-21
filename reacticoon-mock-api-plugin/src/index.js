@@ -1,18 +1,18 @@
-import { createPlugin } from 'reacticoon/plugin'
+import { createPlugin } from "reacticoon/plugin";
 
-import routing from './config/routing'
-import onAppInit from './events/onAppInit'
+import routing from "./config/routing";
+import onAppInit from "./events/onAppInit";
 
-import ReacticoonDevExtension from './config/ReacticoonDevExtension'
-import MockedCallsModule from './modules/mockedCalls'
+import ReacticoonDevExtension from "./config/ReacticoonDevExtension";
+import MockedCallsModule from "./modules/mockedCalls";
 
 //
 // Dev plugin for reacticoon. Provides pages and debug utils
 //
 const ReacticoonMockApiPlugin = createPlugin({
   // The plugin name. Must be unique. All Reacticoon plugins have the 'Reacticoon' prefix.
-  name: 'ReacticoonMockApiPlugin',
-  description: 'Reacticoon plugin used to mock api calls for testing.',
+  name: "reacticoon-mock-api-plugin",
+  description: "Reacticoon plugin used to mock api calls for testing.",
   // list of the modules that the plugin register.
   // optionnal.
   modules: [MockedCallsModule],
@@ -20,7 +20,7 @@ const ReacticoonMockApiPlugin = createPlugin({
   // optionnal.
   eventsHandler: [onAppInit],
   routing,
-  extendPlugins: [ReacticoonDevExtension],
-})
+  extendPlugins: [ReacticoonDevExtension]
+});
 
-export default ReacticoonMockApiPlugin
+export default ReacticoonMockApiPlugin;

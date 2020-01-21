@@ -4,7 +4,7 @@ import routing from "./config/routing";
 import ReacticoonDevExtension from "./config/ReacticoonDevExtension";
 
 const ReacticoonPluginGit = createPlugin({
-  name: "ReacticoonPluginGit",
+  name: "reacticoon-plugin-git",
   modules: [],
   eventsHandler: [],
   routing,

@@ -4,7 +4,7 @@ import routing from "./config/routing";
 import ReacticoonDevExtension from "./config/ReacticoonDevExtension";
 
 const ReacticoonPluginCi = createPlugin({
-  name: "ReacticoonPluginCi",
+  name: "reacticoon-plugin-ci",
   modules: [],
   eventsHandler: [],
   routing,

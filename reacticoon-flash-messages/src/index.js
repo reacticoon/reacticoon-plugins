@@ -1,12 +1,12 @@
-import { createPlugin } from 'reacticoon/plugin'
+import { createPlugin } from "reacticoon/plugin";
 
-import FlashMessagesModule from './modules/flashMessages'
+import FlashMessagesModule from "./modules/flashMessages";
 
 const ReacticoonFlashMessagesPlugin = createPlugin({
-  name: 'ReacticoonFlashMessages',
+  name: "reacticoon-flash-messages",
   modules: [FlashMessagesModule],
   eventsHandler: [],
-  extendPlugins: [],
-})
+  extendPlugins: []
+});
 
-export default ReacticoonFlashMessagesPlugin
+export default ReacticoonFlashMessagesPlugin;

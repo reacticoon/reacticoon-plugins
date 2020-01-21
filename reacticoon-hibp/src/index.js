@@ -1,14 +1,13 @@
-import { createPlugin } from 'reacticoon/plugin'
+import { createPlugin } from "reacticoon/plugin";
 
-export { default as HibpPasswordRangeContainer } from './views/HibpPasswordRangeContainer'  
+export { default as HibpPasswordRangeContainer } from "./views/HibpPasswordRangeContainer";
 
 //
-// 
+//
 //
 const ReacticoonPluginExample = createPlugin({
-  name: 'ReacticoonHibp',
-  modules: [
-  ],
-})
+  name: "reacticoon-hibp",
+  modules: []
+});
 
-export default ReacticoonPluginExample
+export default ReacticoonPluginExample;

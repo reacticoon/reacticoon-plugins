@@ -1,13 +1,13 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from "@material-ui/core/styles";
 
-import { getPluginConfig } from 'reacticoon/plugin'
+import { getPluginConfig } from "reacticoon/plugin";
 /**
  * Inspired by getMuiTheme
  * https://github.com/callemall/material-ui/blob/master/src/styles/getMuiTheme.js
  */
 
 const getTheme = () => {
-  const appTheme = getPluginConfig('ReacticoonMaterialUI').theme
+  const appTheme = getPluginConfig("reacticoon-material-ui").theme;
   let theme = createMuiTheme(
     // getMuiTheme(
     //   {
@@ -15,9 +15,9 @@ const getTheme = () => {
     //   },
     // ),  // the default Mui theme
     appTheme // our override of the mui theme + custom data
-  )
+  );
 
-  return theme
-}
+  return theme;
+};
 
-export default getTheme
+export default getTheme;

@@ -1,24 +1,30 @@
-import { ReacticoonEvents, createEventHandler } from 'reacticoon/event'
-import { createPlugin } from 'reacticoon/plugin'
+import { ReacticoonEvents, createEventHandler } from "reacticoon/event";
+import { createPlugin } from "reacticoon/plugin";
 
-import Logger from './logger'
-import onAppInit from './events/onAppInit'
+import Logger from "./logger";
+import onAppInit from "./events/onAppInit";
 
 const createLogEventHandler = (actionType, loggerAction) => {
-  return createEventHandler(actionType, event => loggerAction(event.data))
-}
+  return createEventHandler(actionType, event => loggerAction(event.data));
+};
 
 const ReacticoonPluginSentry = createPlugin({
-  name: 'ReacticoonSentry',
+  name: "reacticoon-plugin-sentry",
   modules: [],
   eventsHandler: [
     onAppInit,
     createLogEventHandler(ReacticoonEvents.LOG_WARN, Logger.warning),
-    createLogEventHandler(ReacticoonEvents.LOG_NOT_IMPLEMENTED, Logger.notImplemented),
+    createLogEventHandler(
+      ReacticoonEvents.LOG_NOT_IMPLEMENTED,
+      Logger.notImplemented
+    ),
     createLogEventHandler(ReacticoonEvents.LOG_ERROR, Logger.error),
     createLogEventHandler(ReacticoonEvents.LOG_EXCEPTION, Logger.logException),
-    createLogEventHandler(ReacticoonEvents.LOG_COMPONENT_DID_CATCH, Logger.componentDidCatch),
-  ],
-})
+    createLogEventHandler(
+      ReacticoonEvents.LOG_COMPONENT_DID_CATCH,
+      Logger.componentDidCatch
+    )
+  ]
+});
 
-export default ReacticoonPluginSentry
+export default ReacticoonPluginSentry;

@@ -1,15 +1,15 @@
-import { createPlugin } from 'reacticoon/plugin'
+import { createPlugin } from "reacticoon/plugin";
 
-import routing from './config/routing'
-import ReacticoonDevExtension from './config/ReacticoonDevExtension'
-import onAppInit from './events/onAppInit'
+import routing from "./config/routing";
+import ReacticoonDevExtension from "./config/ReacticoonDevExtension";
+import onAppInit from "./events/onAppInit";
 
 const ReacticoonMaterialUIPlugin = createPlugin({
-  name: 'ReacticoonMaterialUI',
+  name: "reacticoon-material-ui",
   modules: [],
   eventsHandler: [onAppInit],
   routing,
-  extendPlugins: [ReacticoonDevExtension],
-})
+  extendPlugins: [ReacticoonDevExtension]
+});
 
-export default ReacticoonMaterialUIPlugin
+export default ReacticoonMaterialUIPlugin;

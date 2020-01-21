@@ -1,14 +1,8 @@
-import React from 'react'
+import React from "react";
 
-import { getPlugins } from 'reacticoon/plugin'
-import { Link } from 'reacticoon/routing'
-
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableRow from '@material-ui/core/TableRow'
-import Page from '../../components/Page'
-import Section from '../../components/Section'
+import Page from "../../components/Page";
+import Section from "../../components/Section";
+import ActivePlugins from "./view/ActivePlugins";
 
 class PluginsPage extends React.Component {
   render() {
@@ -16,30 +10,12 @@ class PluginsPage extends React.Component {
       <Page pageTitle="Plugins">
         <Section.Container>
           <Section title="Active plugins">
-            <Table>
-              <TableBody>
-                {getPlugins().map((pluginData, index) => (
-                  <TableRow key={index}>
-                    <TableCell>
-                      <Link
-                        to={Link.getRoute('REACTICOON_PLUGIN')}
-                        params={{
-                          pluginName: pluginData.plugin.name,
-                        }}
-                      >
-                        {pluginData.plugin.name}
-                      </Link>
-                    </TableCell>
-                    <TableCell>{pluginData.plugin.description}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <ActivePlugins />
           </Section>
         </Section.Container>
       </Page>
-    )
+    );
   }
 }
 
-export default PluginsPage
+export default PluginsPage;
