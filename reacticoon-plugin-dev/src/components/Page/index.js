@@ -15,14 +15,14 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import grey from "@material-ui/core/colors/grey";
-import { mainListItems, secondaryListItems } from "./listItems";
+import { MainListItems, SecondaryListItems } from "./listItems";
 import ReacticoonLogo from "../svg/ReacticoonLogo";
 import DevToolsTheme from "./DevToolsTheme";
-import DarkTheme from "./DarkTheme";
+// import DarkTheme from "./DarkTheme";
 import FlashMessagesSnackbarView from "./FlashMessagesSnackbarView";
+import RouteContext from "reacticoon/archi/components/RouteContext";
 
-const drawerWidth = 240;
+const drawerWidth = 220; // sidebar width
 
 const styles = theme => ({
   root: {
@@ -35,7 +35,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingLeft: theme.spacing.unit * 2
+    paddingLeft: theme.spacing(0.5)
   },
   toolbarBrand: {
     display: "flex",
@@ -45,7 +45,8 @@ const styles = theme => ({
     padding: "0 8px"
   },
   tootlbarBrandText: {
-    paddingLeft: theme.spacing.unit * 2
+    fontSize: 20,
+    paddingLeft: theme.spacing(2)
   },
   toolbarIcon: {
     display: "flex",
@@ -56,7 +57,9 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    background: grey[800],
+    background: theme.app.colors.content,
+    background: "#344a5f",
+    boxShadow: "none",
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -79,12 +82,16 @@ const styles = theme => ({
   },
   title: {
     flexGrow: 1,
-    fontSize: 22
+    fontSize: 28
+  },
+  pageAction: {
+    marginRight: theme.spacing(2)
   },
   drawerPaper: {
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
+    background: theme.app.colors.sidebar,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
@@ -106,8 +113,13 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
     paddingBottom: theme.spacing.unit * 10,
-    height: "100vh",
-    overflow: "auto"
+    minHeight: "100vh",
+    overflow: "auto",
+    background: theme.app.colors.content
+  },
+  pageContent: {
+    maxWidth: 1200,
+    margin: "auto"
   },
   chartContainer: {
     marginLeft: -22
@@ -148,7 +160,7 @@ class ReacticoonDevPage extends React.Component {
   }
 
   render() {
-    const { classes, pageTitle, children } = this.props;
+    const { classes, pageTitle, pageAction, children } = this.props;
 
     if (this.state.hasError) {
       // You can render any custom fallback UI
@@ -156,11 +168,11 @@ class ReacticoonDevPage extends React.Component {
     }
 
     return (
-      <DevToolsTheme>
-        <div className={classes.root}>
-          <CssBaseline />
+      <RouteContext.Consumer>
+        {({ route, routeParams, location, params }) => (
+          <div className={classes.root}>
+            <CssBaseline />
 
-          <DarkTheme>
             <AppBar
               position="absolute"
               className={clsx(
@@ -193,8 +205,11 @@ class ReacticoonDevPage extends React.Component {
                   {pageTitle}
                 </Typography>
 
+                {pageAction && (
+                  <div className={classes.pageAction}>{pageAction}</div>
+                )}
+
                 <a
-                  class="_2iuTV _7Kf4I"
                   href={getReacticoonRepositoryUrl()}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
@@ -247,20 +262,25 @@ class ReacticoonDevPage extends React.Component {
               </div>
 
               <Divider />
-              <List>{mainListItems}</List>
+              <List>
+                <MainListItems route={route} />
+              </List>
               <Divider />
-              <List>{secondaryListItems}</List>
+              <List>
+                <SecondaryListItems route={route} />
+              </List>
             </Drawer>
-          </DarkTheme>
-          <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
 
-            {children}
+            <main className={classes.content}>
+              <div className={classes.appBarSpacer} />
 
-            <FlashMessagesSnackbarView />
-          </main>
-        </div>
-      </DevToolsTheme>
+              <div className={classes.pageContent}>{children}</div>
+
+              <FlashMessagesSnackbarView />
+            </main>
+          </div>
+        )}
+      </RouteContext.Consumer>
     );
   }
 }
@@ -269,4 +289,10 @@ ReacticoonDevPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ReacticoonDevPage);
+const Page = withStyles(styles)(ReacticoonDevPage);
+
+export default ({ children, ...otherProps }) => (
+  <DevToolsTheme>
+    <Page {...otherProps}>{children}</Page>
+  </DevToolsTheme>
+);

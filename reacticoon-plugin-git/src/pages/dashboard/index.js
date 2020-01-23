@@ -10,7 +10,7 @@ import GitWebUI from "./views/GitWebUI";
 class ReacticoonPluginGit__DashboardPage extends React.Component {
   render() {
     return (
-      <Page pageTitle="Continuous integration">
+      <Page pageTitle="Git">
         <CommandContainer command="GIT::GIT_INFO">
           {({ data }) =>
             !data.isGitInit ? (

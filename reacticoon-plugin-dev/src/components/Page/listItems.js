@@ -1,4 +1,6 @@
 import React from "react";
+
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Link } from "reacticoon/routing";
 import { getExtendedDashboardSections } from "../../utils";
 import ListItem from "@material-ui/core/ListItem";
@@ -12,94 +14,123 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 import BuildIcon from "@material-ui/icons/Build";
 import CheckCircleOutline from "@material-ui/icons/CheckCircle";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
-export const mainListItems = (
-  <div>
-    <Link to={Link.getRoute("REACTICOON_DASHBOARD")}>
-      <ListItem button>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItem>
-    </Link>
+const ItemTooltip = withStyles(theme => ({
+  tooltip: {
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.87)",
+    fontSize: theme.typography.pxToRem(14),
+    fontWeight: 400,
+    padding: theme.spacing(1),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
+  }
+  // TODO: arrow color
+}))(Tooltip);
 
-    <Link to={Link.getRoute("REACTICOON_BUILD")}>
-      <ListItem button>
-        <ListItemIcon>
-          <BuildIcon />
-        </ListItemIcon>
-        <ListItemText primary="Build" />
-      </ListItem>
-    </Link>
+const useStyles = makeStyles(theme => ({
+  selected: {
+    // background: `${theme.palette.secondary.light}!important`,
+    background: `rgba(66, 185, 131, 0.05) !important`,
 
-    <Link to={Link.getRoute("REACTICOON_TESTING")}>
-      <ListItem button>
-        <ListItemIcon>
-          <CheckCircleOutline />
-        </ListItemIcon>
-        <ListItemText primary="Testing" />
-      </ListItem>
-    </Link>
+    color: `${theme.palette.secondary.main}!important`,
 
-    <Link to={Link.getRoute("REACTICOON_ROUTING")}>
-      <ListItem button>
-        <ListItemIcon>
-          <ExploreIcon />
-        </ListItemIcon>
-        <ListItemText primary="Routing" />
-      </ListItem>
-    </Link>
+    "& svg": {
+      color: `${theme.palette.secondary.main}!important`
+    }
+  }
+}));
 
-    <Link to={Link.getRoute("REACTICOON_MY_APP")}>
-      <ListItem button>
-        <ListItemIcon>
-          <WhatshotIcon />
-        </ListItemIcon>
-        <ListItemText primary="App" />
-      </ListItem>
-    </Link>
+const Item = ({ routeDef, route }) => {
+  const classes = useStyles();
+  const definition = Link.getRoute(routeDef.to);
+  const isSelected = route ? route.name === definition.name : false;
 
-    <Link to={Link.getRoute("REACTICOON_DEPENDENCIES_INSTALLED")}>
-      <ListItem button>
-        <ListItemIcon>
-          <LibraryAddIcon />
-        </ListItemIcon>
-        <ListItemText primary="Dependencies" />
-      </ListItem>
-    </Link>
-
-    <Link to={Link.getRoute("REACTICOON_PLUGINS")}>
-      <ListItem button>
-        <ListItemIcon>
-          <AppsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Plugins" />
-      </ListItem>
-    </Link>
-
-    <Link to={Link.getRoute("REACTICOON_REPORTS")}>
-      <ListItem button>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Reports" />
-      </ListItem>
-    </Link>
-  </div>
-);
-
-export const secondaryListItems = (
-  <div>
-    {getExtendedDashboardSections().map((section, index) => (
-      <Link key={index} to={Link.getRoute(section.route)}>
-        <ListItem button>
-          {section.icon && (
-            <ListItemIcon>{React.createElement(section.icon)}</ListItemIcon>
-          )}
-          <ListItemText primary={section.label} />
+  return (
+    <Link to={definition}>
+      <ItemTooltip
+        TransitionComponent={Zoom}
+        title={routeDef.label}
+        placement="right"
+        arrow
+      >
+        <ListItem
+          button
+          selected={isSelected}
+          classes={{ selected: classes.selected }}
+        >
+          <ListItemIcon>{routeDef.icon}</ListItemIcon>
+          <ListItemText primary={routeDef.label} />
         </ListItem>
-      </Link>
-    ))}
-  </div>
-);
+      </ItemTooltip>
+    </Link>
+  );
+};
+
+export const MainListItems = ({ route }) => {
+  const routes = [
+    {
+      to: "REACTICOON_DASHBOARD",
+      icon: <DashboardIcon />,
+      label: "Dashboard"
+    },
+
+    {
+      to: "REACTICOON_BUILD",
+      icon: <BuildIcon />,
+      label: "Build"
+    },
+
+    {
+      to: "REACTICOON_TESTING",
+      icon: <CheckCircleOutline />,
+      label: "Testing"
+    },
+
+    {
+      to: "REACTICOON_ROUTING",
+      icon: <ExploreIcon />,
+      label: "Routing"
+    },
+
+    {
+      to: "REACTICOON_MY_APP",
+      icon: <WhatshotIcon />,
+      label: "App"
+    },
+
+    {
+      to: "REACTICOON_DEPENDENCIES_INSTALLED",
+      icon: <LibraryAddIcon />,
+      label: "Dependencies"
+    },
+
+    {
+      to: "REACTICOON_PLUGINS",
+      icon: <AppsIcon />,
+      label: "Plugins"
+    },
+
+    {
+      to: "REACTICOON_REPORTS",
+      icon: <LayersIcon />,
+      label: "Reports"
+    }
+  ];
+
+  return routes.map(routeDef => (
+    <Item key={routeDef.to} routeDef={routeDef} route={route} />
+  ));
+};
+
+export const SecondaryListItems = ({ route }) =>
+  getExtendedDashboardSections().map((section, index) => {
+    const routeDef = {
+      to: section.route,
+      icon: React.createElement(section.icon),
+      label: section.label
+    };
+    return <Item key={routeDef.to} routeDef={routeDef} route={route} />;
+  });

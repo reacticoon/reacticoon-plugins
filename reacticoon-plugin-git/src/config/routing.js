@@ -4,7 +4,7 @@ export default api => [
   {
     name: "REACTICOON_PLUGIN_GIT__DASHBOARD",
     path: ROUTE_PREFIX,
-    handler: api.createAsyncPage(() =>
+    handler: api.createDevToolAsyncPage(() =>
       import(
         /*  webpackChunkName: "REACTICOON_PLUGIN_GIT__DASHBOARD" */ "../pages/dashboard"
       )

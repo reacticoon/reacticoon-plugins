@@ -1,22 +1,22 @@
-import React from 'react'
+import React from "react";
 
-import { StateContainer } from 'reacticoon/view'
+import { StateContainer } from "reacticoon/view";
 // import EventsDebugger from '../../../EventsDebugger'
 
-import EventsContainer from '../../../modules/events/container'
-import Grid from '@material-ui/core/Grid'
-import ReacticoonEventRunner from './ReacticoonEventRunner'
-import Event from './Event'
-import EventDetail from './EventDetail'
+import Section from "reacticoon-plugin-dev/components/Section";
+import EventsContainer from "../../../modules/events/container";
+import ReacticoonEventRunner from "./ReacticoonEventRunner";
+import Event from "./Event";
+import EventDetail from "./EventDetail";
 
 const ReacticoonEventsView = () => (
   <StateContainer defaultState={{ selectedEvent: null }}>
     {({ state, setState }) => (
-      <Grid container>
-        <Grid item xs={12}>
+      <Section.Container>
+        <Section item xs={12}>
           <ReacticoonEventRunner />
-        </Grid>
-        <Grid item xs={6}>
+        </Section>
+        <Section item xs={6}>
           <EventsContainer>
             {({ events }) =>
               events.map((event, index) => (
@@ -25,7 +25,7 @@ const ReacticoonEventsView = () => (
                   event={event}
                   onClick={() =>
                     setState({
-                      selectedEvent: event,
+                      selectedEvent: event
                     })
                   }
                 />
@@ -33,13 +33,13 @@ const ReacticoonEventsView = () => (
             }
           </EventsContainer>
           {/* {EventsDebugger.getEvents()} */}
-        </Grid>
-        <Grid item xs={6}>
+        </Section>
+        <Section item xs={6}>
           {state.selectedEvent && <EventDetail event={state.selectedEvent} />}
-        </Grid>
-      </Grid>
+        </Section>
+      </Section.Container>
     )}
   </StateContainer>
-)
+);
 
-export default ReacticoonEventsView
+export default ReacticoonEventsView;

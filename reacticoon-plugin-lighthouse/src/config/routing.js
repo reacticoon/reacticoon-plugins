@@ -6,7 +6,7 @@ export default api => [
     path: ROUTE_PREFIX + "/",
     disabled: false,
     authRequired: false,
-    handler: api.createAsyncPage(() =>
+    handler: api.createDevToolAsyncPage(() =>
       import(
         /*  webpackChunkName: "REACTICOON_PLUGIN_LIGHTHOUSE__DASHBOARD" */ "../pages/dashboard"
       )

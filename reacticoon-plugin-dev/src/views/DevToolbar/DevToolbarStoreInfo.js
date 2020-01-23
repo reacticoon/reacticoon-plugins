@@ -5,20 +5,20 @@ import get from "lodash/get";
 import { getStore } from "reacticoon/store";
 import { StateContainer } from "reacticoon/view";
 
+import Section from "reacticoon-plugin-dev/components/Section";
 import JsonView from "reacticoon-plugin-dev/components/JsonView";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
 
 const DevToolbarStoreInfo = () => (
-  <Grid container>
-    <Grid item xs={6}>
+  <Section.Container>
+    <Section xs={6}>
       <pre style={{ overflow: "scroll", height: "80vh", width: "40vw" }}>
         <JsonView json={getStore().getState()} />
       </pre>
-    </Grid>
+    </Section>
 
-    <Grid item xs={6}>
+    <Section item xs={6}>
       <StateContainer
         defaultState={{ input: `App::CircleModule`, followed: [] }}
       >
@@ -56,8 +56,8 @@ const DevToolbarStoreInfo = () => (
           </div>
         )}
       </StateContainer>
-    </Grid>
-  </Grid>
+    </Section>
+  </Section.Container>
 );
 
 export default DevToolbarStoreInfo;

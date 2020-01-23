@@ -1,14 +1,15 @@
-import React from 'react'
-import map from 'lodash/map'
-import forEach from 'lodash/forEach'
+import React from "react";
+import map from "lodash/map";
+import forEach from "lodash/forEach";
 
-import { getModules } from 'reacticoon/module'
-import ReactFinder from '../../Finderjs'
-import ActionInfoRunner from './ActionInfoRunner'
+import { getModules } from "reacticoon/module";
+import Section from "reacticoon-plugin-dev/components/Section";
+import ReactFinder from "../../Finderjs";
+import ActionInfoRunner from "./ActionInfoRunner";
 
 class ActionsList extends React.PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
 
     const reactFinderData = map(getModules(), module => ({
       id: module.name,
@@ -19,53 +20,62 @@ class ActionsList extends React.PureComponent {
           ? null
           : {
               id: `${module.name}_${actionName}`,
-              label: actionName,
+              label: actionName
             }
-      ).filter(Boolean),
-    }))
+      ).filter(Boolean)
+    }));
 
-    const actionsMap = {}
+    const actionsMap = {};
     forEach(getModules(), module => {
       forEach(module.content.actions, (action, actionName) => {
         // only display actions created with Reacticoon
         if (action.isActionType) {
           actionsMap[`${module.name}_${actionName}`] = {
             actionName,
-            action,
-          }
+            action
+          };
         }
-      })
-    })
+      });
+    });
 
     this.state = {
       reactFinderData,
       actionsMap,
       // selectedActionData: null,
       // TODO: change after tests
-      selectedActionData: actionsMap['App::CircleModule_fetchCircle'],
-    }
+      selectedActionData: actionsMap["App::CircleModule_fetchCircle"]
+    };
   }
 
   handleItemSelected = item => {
-    const actionData = this.state.actionsMap[item.id]
+    const actionData = this.state.actionsMap[item.id];
 
     if (actionData) {
       this.setState({
-        selectedActionData: actionData,
-      })
+        selectedActionData: actionData
+      });
     }
-  }
+  };
 
   render() {
-    const { reactFinderData, selectedActionData } = this.state
+    const { reactFinderData, selectedActionData } = this.state;
     return (
-      <div>
-        <ReactFinder data={reactFinderData} onItemSelected={this.handleItemSelected} />
+      <Section.Container>
+        <Section>
+          <ReactFinder
+            data={reactFinderData}
+            onItemSelected={this.handleItemSelected}
+          />
+        </Section>
 
-        {selectedActionData && <ActionInfoRunner actionData={selectedActionData} />}
-      </div>
-    )
+        <Section>
+          {selectedActionData && (
+            <ActionInfoRunner actionData={selectedActionData} />
+          )}
+        </Section>
+      </Section.Container>
+    );
   }
 }
 
-export default ActionsList
+export default ActionsList;

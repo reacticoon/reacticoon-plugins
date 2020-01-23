@@ -8,7 +8,7 @@ import RegisteredCliPlugins from "./views/RegisteredCliPlugins";
 class ReacticoonPluginsMarketplacePlugin__DashboardPage extends React.Component {
   render() {
     return (
-      <Page pageTitle="Material UI">
+      <Page pageTitle="Marketplace">
         <Section.Container>
           <Section title="Info">
             <div>

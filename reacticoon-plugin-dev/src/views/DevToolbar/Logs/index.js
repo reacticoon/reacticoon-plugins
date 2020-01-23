@@ -1,37 +1,43 @@
-import React from 'react'
+import React from "react";
 
-import { StateContainer } from 'reacticoon/view'
-import { ReacticoonEvents, isSameEvent } from 'reacticoon/event'
+import { StateContainer } from "reacticoon/view";
+import { ReacticoonEvents, isSameEvent } from "reacticoon/event";
 
-import EventsContainer from '../../../modules/events/container'
-import Grid from '@material-ui/core/Grid'
+import EventsContainer from "../../../modules/events/container";
+import Section from "reacticoon-plugin-dev/components/Section";
+import Grid from "@material-ui/core/Grid";
 
-import Deprecation from './Deprecation'
-import Warning from './Warning'
-import ErrorView from './Error'
+import Deprecation from "./Deprecation";
+import Warning from "./Warning";
+import ErrorView from "./Error";
 
 const LogsView = () => (
   <StateContainer defaultState={{ selectedEvent: null }}>
     {({ state, setState }) => (
-      <Grid container>
-        <Grid item xs={6}>
+      <Section.Container>
+        <Section xs={6}>
           <EventsContainer>
             {({ events }) => {
               // TODO: filter duplicates
-              const warnings = events.filter(event => isSameEvent(event, ReacticoonEvents.LOG_WARN))
+              const warnings = events.filter(event =>
+                isSameEvent(event, ReacticoonEvents.LOG_WARN)
+              );
 
               const deprecations = events.filter(event =>
                 isSameEvent(event, ReacticoonEvents.LOG_DEPRECATION)
-              )
+              );
 
               const errors = events.filter(
                 event =>
                   isSameEvent(event, ReacticoonEvents.LOG_ERROR) ||
                   isSameEvent(event, ReacticoonEvents.LOG_EXCEPTION) ||
                   isSameEvent(event, ReacticoonEvents.LOG_REDUX_EXCEPTION) ||
-                  isSameEvent(event, ReacticoonEvents.LOG_COMPONENT_DID_CATCH) ||
+                  isSameEvent(
+                    event,
+                    ReacticoonEvents.LOG_COMPONENT_DID_CATCH
+                  ) ||
                   isSameEvent(event, ReacticoonEvents.LOG_NOT_IMPLEMENTED)
-              )
+              );
 
               //const nbErrors = errors.length
               //const nbWarnings = warnings.length
@@ -60,16 +66,16 @@ const LogsView = () => (
                     ))}
                   </Grid>
                 </Grid>
-              )
+              );
             }}
           </EventsContainer>
-        </Grid>
-        <Grid item xs={6}>
-          {/* {state.selectedEvent && <EventDetail event={state.selectedEvent} />} */}
-        </Grid>
-      </Grid>
+        </Section>
+        <Section xs={6}>
+          {state.selectedEvent && <EventDetail event={state.selectedEvent} />}
+        </Section>
+      </Section.Container>
     )}
   </StateContainer>
-)
+);
 
-export default LogsView
+export default LogsView;

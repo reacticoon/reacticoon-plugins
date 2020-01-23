@@ -1,6 +1,6 @@
 import React from "react";
 
-import Page from "../../components/Page";
+import Page from "reacticoon-plugin-dev/components/Page";
 import PluginView from "./view/PluginView";
 
 class PluginsPage extends React.Component {

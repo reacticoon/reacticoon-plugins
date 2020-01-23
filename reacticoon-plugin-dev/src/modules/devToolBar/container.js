@@ -1,23 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { DevToolbarRoute } from './constants'
-import ReacticoonDevToolbarModule from './index'
+import { DevToolbarRoute } from "./constants";
+import ReacticoonDevToolbarModule from "./index";
 
 class DevToolbarContainer extends Component {
   render() {
-    const { children, ...otherProps } = this.props
+    const { children, ...otherProps } = this.props;
 
     return children({
       ...otherProps,
-      DevToolbarRoute,
-    })
+      DevToolbarRoute
+      // TODO: remove after tests
+      // route: DevToolbarRoute.infos
+    });
   }
 }
 
 export default ReacticoonDevToolbarModule.connect(
   DevToolbarContainer,
   {
-    route: 'getRoute',
+    route: "getRoute"
   },
-  'displayDevToolbarRoute'
-)
+  "displayDevToolbarRoute"
+);

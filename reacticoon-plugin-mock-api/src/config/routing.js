@@ -4,7 +4,7 @@ export default api => [
   {
     name: "API_MOCK_DASHBOARD",
     path: ROUTE_PREFIX,
-    handler: api.createAsyncPage(() =>
+    handler: api.createDevToolAsyncPage(() =>
       import(
         /*  webpackChunkName: "API_MOCK_DASHBOARD" */ "../pages/DevPluginApiMockDashboard"
       )

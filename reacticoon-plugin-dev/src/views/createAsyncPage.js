@@ -1,6 +1,7 @@
-import React from 'react'
-import { createLoadable } from 'reacticoon/view'
+import React from "react";
+import { createLoadable } from "reacticoon/view";
 
-const createAsyncPage = loader => createLoadable(loader, () => <div>LOADING</div>)
+const createAsyncPage = (loader, loadingView) =>
+  createLoadable(loader, () => (loadingView ? loadingView : <div />));
 
-export default createAsyncPage
+export default createAsyncPage;

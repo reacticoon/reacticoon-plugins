@@ -2,12 +2,13 @@ import React from "react";
 
 import clsx from "clsx";
 import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import { Link } from "reacticoon/routing";
 import StarIcon from "@material-ui/icons/Star";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import ActivePluginsContainer from "../../../modules/plugins/view/ActivePluginsContainer";
-import SvgLogo from "../../../components/SvgLogo";
+import ActivePluginsContainer from "reacticoon-plugin-dev/modules/plugins/view/ActivePluginsContainer";
+import SvgLogo from "reacticoon-plugin-dev/components/SvgLogo";
 
 const styles = theme => ({
   row: {
@@ -15,7 +16,7 @@ const styles = theme => ({
     padding: theme.spacing(2),
 
     "&:hover": {
-      background: theme.app.colors.lightgrey
+      background: theme.palette.action.hover
     }
   },
   icon: {

@@ -1,75 +1,80 @@
-import React from 'react'
+import React from "react";
 
-import { findIndexOnArray } from 'reacticoon/utils/array'
+import { findIndexOnArray } from "reacticoon/utils/array";
 
-import { DevToolbarRoute } from '../../modules/devToolBar'
-import { getReactVersion, getReactVersionDocLink } from 'reacticoon/environment'
-import clsx from 'clsx'
-import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import ReacticoonLogo from '../../components/svg/ReacticoonLogo'
-import Tabs from '../../views/Tabs'
-import DevToolbarDetailRequestInfo from './DevToolbarDetailRequestInfo'
-import DevToolbarStoreInfo from './DevToolbarStoreInfo'
-import DevToolbarActions from './DevToolbarActions'
-import SelectorsList from './SelectorsList'
-import ReacticoonEventsView from './ReacticoonEventsView'
-import ModulesList from './ModulesList'
-import LogsView from './Logs'
-import Performance from './Performance'
-import Toolbar from './Toolbar'
+import { DevToolbarRoute } from "../../modules/devToolBar";
+import {
+  getReactVersion,
+  getReactVersionDocLink
+} from "reacticoon/environment";
+import clsx from "clsx";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import ReacticoonLogo from "../../components/svg/ReacticoonLogo";
+import Tabs from "../../views/Tabs";
+import DevToolbarDetailRequestInfo from "./DevToolbarDetailRequestInfo";
+import DevToolbarStoreInfo from "./DevToolbarStoreInfo";
+import DevToolbarActions from "./DevToolbarActions";
+import SelectorsList from "./SelectorsList";
+import ReacticoonEventsView from "./ReacticoonEventsView";
+import ModulesList from "./ModulesList";
+import LogsView from "./Logs";
+import Performance from "./Performance";
+import Toolbar from "./Toolbar";
 
 const styles = theme => ({
   root: {
-    position: 'fixed',
+    position: "fixed",
+    background: theme.app.colors.content,
     bottom: theme.app.toolbar.height,
     left: 0,
     right: 0,
     top: 0,
     paddingRight: theme.spacing.unit,
-    display: 'flex',
-    background: 'white',
+    display: "flex",
     zIndex: 1300,
-    overflowY: 'auto',
+    overflowY: "auto"
   },
   rootHide: {
-    display: 'none',
+    display: "none"
   },
   header: {
-    background: theme.app.colors.dark,
+    background: theme.app.toolbar.colors.background,
     height: 50,
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingRight: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit
   },
   headerBrand: {
-    display: 'flex',
-    alignitems: 'center',
+    display: "flex",
+    alignitems: "center"
   },
   content: {
-    width: '100%',
-    display: 'flex',
+    width: "100%",
+    display: "flex",
     paddingTop: theme.app.toolbar.header.height + 10,
     paddingLeft: 240 + theme.spacing.unit * 2,
     paddingBottom: 54,
+    background: theme.app.colors.content
   },
   tabsView_root: {
     width: 240,
-    position: 'fixed',
+    position: "fixed",
     top: theme.app.toolbar.header.height,
     bottom: 0,
     left: 0,
     paddingTop: theme.spacing.unit * 2,
+    background: theme.app.toolbar.colors.background
   },
-  tabsView_content: {},
-})
+  tabsView_content: {}
+});
 
 const DevToolbarDetail = ({
   show,
@@ -79,49 +84,49 @@ const DevToolbarDetail = ({
   devToolbarRoute,
   classes,
   extendedTabs,
-  onToggle,
+  onToggle
 }) => {
   const tabs = [
     {
       id: DevToolbarRoute.infos,
-      label: 'Infos',
+      label: "Infos"
     },
     {
       id: DevToolbarRoute.modules,
-      label: 'Modules',
+      label: "Modules"
     },
     {
       id: DevToolbarRoute.performances,
-      label: 'Performances',
+      label: "Performances"
     },
     {
       id: DevToolbarRoute.actions,
-      label: 'Actions & selectors',
+      label: "Actions & selectors"
     },
     {
       id: DevToolbarRoute.store,
-      label: 'Store',
+      label: "Store"
     },
     {
       id: DevToolbarRoute.events,
-      label: 'Reacticoon events',
+      label: "Reacticoon events"
     },
     {
       id: DevToolbarRoute.logs,
-      label: 'Logs',
-    },
-  ].concat(extendedTabs.map(tab => ({ label: tab.label })))
+      label: "Logs"
+    }
+  ].concat(extendedTabs.map(tab => ({ label: tab.label })));
 
-  let defaultTab = findIndexOnArray(tabs, tab => tab.id === devToolbarRoute)
+  let defaultTab = findIndexOnArray(tabs, tab => tab.id === devToolbarRoute);
 
   if (defaultTab === -1) {
-    defaultTab = 0
+    defaultTab = 0;
   }
 
   return (
     <div
       className={clsx(classes.root, {
-        [classes.rootHide]: !show,
+        [classes.rootHide]: !show
       })}
     >
       <div className={classes.header}>
@@ -143,9 +148,12 @@ const DevToolbarDetail = ({
         <Tabs
           vertical
           defaultTab={defaultTab}
-          tabsViewClasses={{ root: classes.tabsView_root, content: classes.tabsView_content }}
+          tabsViewClasses={{
+            root: classes.tabsView_root,
+            content: classes.tabsView_content
+          }}
           tabs={tabs.map(tab => ({
-            label: tab.label,
+            label: tab.label
           }))}
           content={[
             // 0
@@ -165,7 +173,7 @@ const DevToolbarDetail = ({
             //
             <DevToolbarStoreInfo />,
             <ReacticoonEventsView />,
-            <LogsView />,
+            <LogsView />
           ].concat(extendedTabs.map(tab => React.createElement(tab.view)))}
         />
       </div>
@@ -179,7 +187,7 @@ const DevToolbarDetail = ({
         onToggleDetail={onToggle}
       />
     </div>
-  )
-}
+  );
+};
 
-export default withStyles(styles)(DevToolbarDetail)
+export default withStyles(styles)(DevToolbarDetail);

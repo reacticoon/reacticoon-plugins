@@ -1,47 +1,50 @@
-import React from 'react'
+import React from "react";
 
-import { StateContainer } from 'reacticoon/view'
-import { withStyles } from '@material-ui/core/styles'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Typography from '@material-ui/core/Typography'
+import { StateContainer } from "reacticoon/view";
+import { withStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
 
 // https://codesandbox.io/s/n9ww0pq7p4
 const VerticalTabs = withStyles(theme => ({
   root: {
-    background: theme.app.colors.dark,
+    background: theme.app.colors.dark
   },
   flexContainer: {
-    flexDirection: 'column',
+    flexDirection: "column"
   },
   indicator: {
-    display: 'none',
-  },
-}))(Tabs)
+    display: "none"
+  }
+}))(Tabs);
 
 const VerticalTab = withStyles(theme => ({
   root: {
-    color: 'white',
-    textAlign: 'left',
+    color: "white",
+    textAlign: "left"
   },
   selected: {
-    color: 'tomato',
-    borderRight: '2px solid tomato',
-  },
-}))(Tab)
+    background: `rgba(66, 185, 131, 0.05) !important`,
+
+    color: `${theme.palette.secondary.main}!important`,
+
+    borderRight: `2px solid ${theme.palette.secondary.main}`
+  }
+}))(Tab);
 
 class ReacticoonTabs extends React.Component {
   render() {
-    const { vertical } = this.props
+    const { vertical } = this.props;
 
-    const TabsView = vertical ? VerticalTabs : Tabs
-    const TabView = vertical ? VerticalTab : Tab
+    const TabsView = vertical ? VerticalTabs : Tabs;
+    const TabView = vertical ? VerticalTab : Tab;
 
     return (
       <StateContainer
         defaultState={{
           tab: this.props.defaultTab || 0,
-          renderedTabs: { [this.props.defaultTab]: true },
+          renderedTabs: { [this.props.defaultTab]: true }
         }}
       >
         {({ state, setState }) => (
@@ -49,7 +52,10 @@ class ReacticoonTabs extends React.Component {
             <TabsView
               value={state.tab}
               onChange={(e, value) => {
-                setState({ tab: value, renderedTabs: { ...state.renderedTabs, [value]: true } })
+                setState({
+                  tab: value,
+                  renderedTabs: { ...state.renderedTabs, [value]: true }
+                });
               }}
               classes={this.props.tabsViewClasses}
             >
@@ -64,7 +70,10 @@ class ReacticoonTabs extends React.Component {
                 // tab content if visited, but increase perfs to not render all the tabs contents
                 !state.renderedTabs[state.tab] ? null : (
                   // only hide not current tab, since we do not want to reset the tab state when switching tabs
-                  <div key={index} style={{ display: index !== state.tab ? 'none' : 'block' }}>
+                  <div
+                    key={index}
+                    style={{ display: index !== state.tab ? "none" : "block" }}
+                  >
                     {tabContent}
                   </div>
                 )
@@ -73,8 +82,8 @@ class ReacticoonTabs extends React.Component {
           </React.Fragment>
         )}
       </StateContainer>
-    )
+    );
   }
 }
 
-export default ReacticoonTabs
+export default ReacticoonTabs;
