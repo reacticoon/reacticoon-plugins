@@ -132,21 +132,26 @@ const DependencyList = ({ list, classes }) =>
   ));
 
 const ListDependencies = ({ classes }) => (
-  <CommandContainer command="DEPENDENCIES::INSTALLED::LIST">
-    {({ data }) =>
-      data && (
-        <Section.Container>
-          <Section title="Main dependencies">
-            <DependencyList list={data.main} classes={classes} />
-          </Section>
+  <div>
+    <div>
+      <Link to="REACTICOON_DEPENDENCY_SEARCH">Install dependency</Link>
+    </div>
+    <CommandContainer command="DEPENDENCIES::INSTALLED::LIST">
+      {({ data }) =>
+        data && (
+          <Section.Container>
+            <Section title="Main dependencies">
+              <DependencyList list={data.main} classes={classes} />
+            </Section>
 
-          <Section title="Dev dependencies">
-            <DependencyList list={data.dev} classes={classes} />
-          </Section>
-        </Section.Container>
-      )
-    }
-  </CommandContainer>
+            <Section title="Dev dependencies">
+              <DependencyList list={data.dev} classes={classes} />
+            </Section>
+          </Section.Container>
+        )
+      }
+    </CommandContainer>
+  </div>
 );
 
 export default withStyles(styles)(ListDependencies);

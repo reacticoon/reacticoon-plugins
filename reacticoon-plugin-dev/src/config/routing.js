@@ -114,8 +114,18 @@ export default api => [
   },
 
   {
+    name: "REACTICOON_DEPENDENCY_SEARCH",
+    path: `${ROUTE_PREFIX}/dependencies/search`,
+    handler: api.createAsyncPage(() =>
+      import(
+        /*  webpackChunkName: "REACTICOON_DEPENDENCY_SEARCH" */ "../pages/dependencies/search"
+      )
+    )
+  },
+
+  {
     name: "REACTICOON_DEPENDENCY_DETAIL",
-    path: `${ROUTE_PREFIX}/dependency/:dependencyName`,
+    path: `${ROUTE_PREFIX}/dependencies/:dependencyName`,
     handler: api.createAsyncPage(() =>
       import(
         /*  webpackChunkName: "REACTICOON_DEPENDENCY_DETAIL" */ "../pages/dependencies/detail"
