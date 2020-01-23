@@ -1,7 +1,7 @@
 import React from "react";
 
 import { getPlugins } from "reacticoon/plugin";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import { formatPluginIdentiesList } from "../format";
 
 const ActivePluginsContainer = ({ children }) => (

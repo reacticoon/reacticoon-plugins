@@ -1,6 +1,6 @@
 import React from "react";
 
-import InfoTable from "reacticoon-plugins/reacticoon-plugin-dev/src/components/TableInfo";
+import InfoTable from "reacticoon-plugin-dev/components/TableInfo";
 
 // TODO: data is the travis data for now, we should abstract the props.
 const CiRepositoryView = ({ data }) => (

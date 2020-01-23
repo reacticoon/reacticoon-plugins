@@ -1,9 +1,9 @@
 import React from "react";
 
-import Page from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Page";
-import Section from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Section";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
-import BuildContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/components/BuildContainer";
+import Page from "reacticoon-plugin-dev/components/Page";
+import Section from "reacticoon-plugin-dev/components/Section";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
+import BuildContainer from "reacticoon-plugin-dev/components/BuildContainer";
 import Button from "@material-ui/core/Button";
 
 class ReacticoonPluginLighthouse__DashboardPage extends React.Component {

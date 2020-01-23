@@ -1,10 +1,10 @@
 import React from "react";
 
-import JsonView from "reacticoon-plugins/reacticoon-plugin-dev/src/components/JsonView";
+import JsonView from "reacticoon-plugin-dev/components/JsonView";
 import { getPluginConfig } from "reacticoon/plugin";
 import getTheme from "../../utils/getTheme";
-import Page from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Page";
-import Section from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Section";
+import Page from "reacticoon-plugin-dev/components/Page";
+import Section from "reacticoon-plugin-dev/components/Section";
 
 class DevPluginMaterialUIDashboard extends React.Component {
   render() {

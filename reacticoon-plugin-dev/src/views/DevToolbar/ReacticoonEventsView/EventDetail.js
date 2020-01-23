@@ -2,7 +2,7 @@ import React from "react";
 
 import isString from "lodash/isString";
 
-import JsonView from "reacticoon-plugins/reacticoon-plugin-dev/src/components/JsonView";
+import JsonView from "reacticoon-plugin-dev/components/JsonView";
 import { withStyles } from "@material-ui/core/styles";
 import { EventManager, isSameEvent } from "reacticoon/event";
 

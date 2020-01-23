@@ -1,8 +1,8 @@
 import React from "react";
 
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import BuildReport from "./BuildReport";
-import BuildContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/components/BuildContainer";
+import BuildContainer from "reacticoon-plugin-dev/components/BuildContainer";
 
 const ReportView = () => (
   <BuildContainer>

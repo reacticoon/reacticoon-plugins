@@ -19,7 +19,10 @@ const styles = theme => ({
     }
   },
   icon: {
-    width: 50
+    width: 50,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   content: {
     display: "flex",
@@ -38,7 +41,7 @@ const styles = theme => ({
   },
   description: {},
   hidden: {
-    display: "none"
+    display: "none!important"
   },
   official: {
     paddingLeft: theme.spacing(1),
@@ -79,11 +82,13 @@ const ActivePlugins = ({ classes }) => (
       {({ plugins }) =>
         plugins.map((pluginData, index) => (
           <div key={index} className={classes.row}>
-            <div className={classes.icon}>
-              {pluginData.identity.hasLogo && (
+            {pluginData.identity.hasLogo ? (
+              <div className={classes.icon}>
                 <SvgLogo svg={pluginData.identity.logo} size={35} />
-              )}
-            </div>
+              </div>
+            ) : (
+              <img className={classes.icon} src={pluginData.identity.logoUrl} />
+            )}
             <div className={classes.content}>
               <div className={classes.header}>
                 <div className={classes.name}>
@@ -103,9 +108,9 @@ const ActivePlugins = ({ classes }) => (
 
               <div className={classes.metadata}>
                 <div className={classes.versions}>
-                  <span>version {pluginData.identity.version}</span>
+                  <span>version {pluginData.identity.version.current}</span>
                   &nbsp;&nbsp;
-                  <span>latest {pluginData.identity.latestVersion}</span>
+                  <span>latest {pluginData.identity.version.latest}</span>
                 </div>
                 <div
                   className={clsx(classes.official, {

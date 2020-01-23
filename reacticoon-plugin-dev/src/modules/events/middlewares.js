@@ -1,5 +1,5 @@
 import { createMiddleware } from "reacticoon/middleware";
-import { addErrorFlashMessage } from "reacticoon-plugins/reacticoon-plugin-flash-messages/src/service";
+import { addErrorFlashMessage } from "reacticoon-plugin-flash-messages/service";
 import { saveEvent } from "./actions";
 
 /**

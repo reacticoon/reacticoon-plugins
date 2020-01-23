@@ -1,7 +1,7 @@
 import React from "react";
 
-import InfoTable from "reacticoon-plugins/reacticoon-plugin-dev/src/components/TableInfo";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import InfoTable from "reacticoon-plugin-dev/components/TableInfo";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 
 const BuildView = ({ ownerName, repoName, buildId }) =>
   !buildId ? (

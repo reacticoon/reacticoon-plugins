@@ -2,23 +2,21 @@ import React from "react";
 
 import clsx from "clsx";
 import isEmpty from "lodash/isEmpty";
-import { generatePluginRoutes } from "reacticoon/plugin/config";
 import { Link } from "reacticoon/routing";
 import { withStyles } from "@material-ui/core/styles";
-import PluginContainer from "../../../modules/plugins/view/PluginContainer";
+import DependencyContainer from "reacticoon-plugin-dev/modules/dependency/view/DependencyContainer";
 import Typography from "@material-ui/core/Typography";
-import Section from "../../../components/Section";
-import SvgLogo from "../../../components/SvgLogo";
-import Pre from "../../../components/Pre";
-import MarkdownView from "../../../components/MarkdownView";
-import LaunchEditorButton from "../../../components/LaunchEditorButton";
-import ModulesView from "./ModulesView";
-import RoutingView from "./RoutingView";
-import EventsView from "./EventsView";
-import EventsHandlerView from "./EventsHandlerView";
+import Button from "@material-ui/core/Button";
+import Section from "reacticoon-plugin-dev/components/Section";
+import SvgLogo from "reacticoon-plugin-dev/components/SvgLogo";
+import Pre from "reacticoon-plugin-dev/components/Pre";
+import MarkdownView from "reacticoon-plugin-dev/components/MarkdownView";
+import LaunchEditorButton from "reacticoon-plugin-dev/components/LaunchEditorButton";
 import StarIcon from "@material-ui/icons/Star";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import GetAppIcon from "@material-ui/icons/GetApp";
+import NotInterestedIcon from "@material-ui/icons/NotInterested";
 
 const styles = theme => ({
   content: {
@@ -30,7 +28,9 @@ const styles = theme => ({
   name: {
     fontSize: "2rem"
   },
-  description: {},
+  description: {
+    marginTop: theme.spacing(1)
+  },
   metadata: {
     display: "flex",
     alignItems: "center",
@@ -64,6 +64,11 @@ const styles = theme => ({
       color: theme.app.colors.lightblue
     }
   },
+  install: {
+    "& svg": {
+      marginRight: theme.spacing(1)
+    }
+  },
   homepage: {
     paddingLeft: theme.spacing(1),
     display: "flex",
@@ -83,31 +88,35 @@ const styles = theme => ({
   }
 });
 
-const PluginView = ({ pluginName, config, classes }) => (
-  <PluginContainer pluginName={pluginName}>
-    {({ pluginData }) =>
-      pluginData && (
+const DependencyView = ({ dependencyName, config, classes }) => (
+  <DependencyContainer dependencyName={dependencyName}>
+    {({ dependencyData }) =>
+      dependencyData && (
         <Section.Container>
           <Section>
             <div className={classes.content}>
               <div className={classes.left}>
                 <Typography variant="h3" className={classes.name}>
-                  {pluginData.identity.name}
+                  {dependencyData.name}
                 </Typography>
 
                 <Typography className={classes.description}>
-                  {pluginData.identity.description}
+                  {dependencyData.description}
                 </Typography>
 
                 <div className={classes.metadata}>
                   <div className={classes.versions}>
-                    <span>version {pluginData.identity.version.current}</span>
-                    &nbsp;&nbsp;
-                    <span>latest {pluginData.identity.version.latest}</span>
+                    {dependencyData.isInstalled && (
+                      <React.Fragment>
+                        <span>version {dependencyData.version.current}</span>
+                        &nbsp;&nbsp;
+                      </React.Fragment>
+                    )}
+                    <span>latest {dependencyData.version.latest}</span>
                   </div>
                   <div
                     className={clsx(classes.official, {
-                      [classes.hidden]: !pluginData.identity.isOfficial
+                      [classes.hidden]: !dependencyData.isOfficial
                     })}
                   >
                     <StarIcon /> Official
@@ -115,19 +124,27 @@ const PluginView = ({ pluginName, config, classes }) => (
 
                   <div
                     className={clsx(classes.installed, {
-                      [classes.hidden]: !pluginData.identity.isInstalled
+                      [classes.hidden]: !dependencyData.isInstalled
                     })}
                   >
                     <CheckCircleIcon /> Installed
                   </div>
 
                   <div
-                    className={clsx(classes.homepage, {
-                      [classes.hidden]: !pluginData.identity.hasHomepage
+                    className={clsx(classes.installed, {
+                      [classes.hidden]: dependencyData.isInstalled
                     })}
                   >
-                    {pluginData.identity.hasHomepage && (
-                      <Link href={pluginData.identity.homepage} newTab>
+                    <NotInterestedIcon /> Not installed
+                  </div>
+
+                  <div
+                    className={clsx(classes.homepage, {
+                      [classes.hidden]: !dependencyData.hasHomepage
+                    })}
+                  >
+                    {dependencyData.hasHomepage && (
+                      <Link href={dependencyData.homepage} newTab>
                         <OpenInNewIcon /> More info
                       </Link>
                     )}
@@ -135,22 +152,31 @@ const PluginView = ({ pluginName, config, classes }) => (
                 </div>
 
                 <div className={classes.action}>
-                  <LaunchEditorButton
-                    src={pluginData.identity.pluginPath}
-                    label="Open plugin code on your IDE"
-                    variant="outlined" // TODO: text?
-                  />
+                  {dependencyData.isInstalled ? (
+                    <LaunchEditorButton
+                      src={dependencyData.dependencyPath}
+                      label="Open dependency code on your IDE"
+                      variant="outlined" // TODO: text?
+                    />
+                  ) : (
+                    <div className={classes.install}>
+                      {/* TODO: install server command. Ask to confirm */}
+                      <Button variant="outlined">
+                        <GetAppIcon /> Install
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className={classes.right}>
                 <div>
-                  {pluginData.identity.hasLogo ? (
-                    <SvgLogo svg={pluginData.identity.logo} size={135} />
+                  {dependencyData.hasLogo ? (
+                    <SvgLogo svg={dependencyData.logo} size={135} />
                   ) : (
                     <img
                       className={classes.logo}
-                      src={pluginData.identity.logoUrl}
+                      src={dependencyData.logoUrl}
                     />
                   )}
                 </div>
@@ -159,42 +185,20 @@ const PluginView = ({ pluginName, config, classes }) => (
           </Section>
 
           <Section title="Readme">
-            {!pluginData.identity.hasReadme ? (
-              <p>No readme</p>
+            {!dependencyData.hasReadme ? (
+              <p>
+                <Link href={dependencyData.npmView.homepage} newTab>
+                  Open homepage
+                </Link>
+              </p>
             ) : (
-              <MarkdownView filepath={pluginData.identity.readmePath} />
+              <MarkdownView filepath={dependencyData.readmePath} />
             )}
-          </Section>
-
-          <Section title="Configuration">
-            {isEmpty(pluginData.config) ? (
-              <p>No configuration</p>
-            ) : (
-              <Pre content={pluginData.config} />
-            )}
-          </Section>
-
-          <Section title="Modules">
-            <ModulesView modules={pluginData.plugin.modules} />
-          </Section>
-
-          <Section title="Routing">
-            <RoutingView routing={generatePluginRoutes(pluginData.plugin)} />
-          </Section>
-
-          <Section title="Events">
-            <EventsView events={pluginData.plugin.events} />
-          </Section>
-
-          <Section title="Events handler">
-            <EventsHandlerView
-              eventsHandler={pluginData.plugin.eventsHandler}
-            />
           </Section>
         </Section.Container>
       )
     }
-  </PluginContainer>
+  </DependencyContainer>
 );
 
-export default withStyles(styles)(PluginView);
+export default withStyles(styles)(DependencyView);

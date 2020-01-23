@@ -3,10 +3,10 @@ import startsWith from "lodash/startsWith";
 
 import { StateContainer } from "reacticoon/view";
 import Grid from "@material-ui/core/Grid";
-import Finderjs from "reacticoon-plugins/reacticoon-plugin-dev/src/views/Finderjs";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import Finderjs from "reacticoon-plugin-dev/views/Finderjs";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import JsonView from "../../components/JsonView";
-// import JsonView from 'reacticoon-plugins/reacticoon-plugin-dev/src/components/JsonView'
+// import JsonView from 'reacticoon-plugin-dev/components/JsonView'
 
 const getFinderData = data => {
   const transform = path => {

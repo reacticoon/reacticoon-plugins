@@ -104,6 +104,26 @@ export default api => [
   },
 
   {
+    name: "REACTICOON_DEPENDENCIES_INSTALLED",
+    path: `${ROUTE_PREFIX}/dependencies`,
+    handler: api.createAsyncPage(() =>
+      import(
+        /*  webpackChunkName: "REACTICOON_DEPENDENCIES_INSTALLED" */ "../pages/dependencies/installed"
+      )
+    )
+  },
+
+  {
+    name: "REACTICOON_DEPENDENCY_DETAIL",
+    path: `${ROUTE_PREFIX}/dependency/:dependencyName`,
+    handler: api.createAsyncPage(() =>
+      import(
+        /*  webpackChunkName: "REACTICOON_DEPENDENCY_DETAIL" */ "../pages/dependencies/detail"
+      )
+    )
+  },
+
+  {
     name: "REACTICOON_PAGE_NOT_FOUND",
     path: `${ROUTE_PREFIX}/*`,
     handler: api.createAsyncPage(() =>

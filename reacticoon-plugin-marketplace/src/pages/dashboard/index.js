@@ -1,7 +1,7 @@
 import React from "react";
 
-import Page from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Page";
-import Section from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Section";
+import Page from "reacticoon-plugin-dev/components/Page";
+import Section from "reacticoon-plugin-dev/components/Section";
 import RegisteredFrontPlugins from "./views/RegisteredFrontPlugins";
 import RegisteredCliPlugins from "./views/RegisteredCliPlugins";
 

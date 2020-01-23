@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "reacticoon/routing";
 
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";

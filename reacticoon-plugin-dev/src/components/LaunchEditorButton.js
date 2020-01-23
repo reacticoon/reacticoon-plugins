@@ -1,7 +1,7 @@
 import React from "react";
 
 import { getProjectSrcPath } from "reacticoon/environment";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import Button from "@material-ui/core/Button";
 
 const LaunchEditorButton = ({ src, label, ...otherProps }) => (

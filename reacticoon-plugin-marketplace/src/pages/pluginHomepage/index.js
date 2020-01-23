@@ -1,10 +1,10 @@
 import React from "react";
 
-import Page from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Page";
+import Page from "reacticoon-plugin-dev/components/Page";
 import ReadmeView from "./view/ReadmeView";
-import Section from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Section";
-import LaunchEditorButton from "reacticoon-plugins/reacticoon-plugin-dev/src/components/LaunchEditorButton";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import Section from "reacticoon-plugin-dev/components/Section";
+import LaunchEditorButton from "reacticoon-plugin-dev/components/LaunchEditorButton";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import Typography from "@material-ui/core/Typography";
 
 class PluginsPage extends React.Component {

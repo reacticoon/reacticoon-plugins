@@ -1,7 +1,7 @@
 import React from "react";
 
 import map from "lodash/map";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import { getModule } from "reacticoon/module";
 import Page from "../../components/Page";
 import Section from "../../components/Section";

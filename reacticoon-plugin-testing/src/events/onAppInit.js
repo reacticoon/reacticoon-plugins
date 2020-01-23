@@ -1,7 +1,7 @@
 import { ReacticoonEvents, createEventHandler } from "reacticoon/event";
 import { __DEV__ } from "reacticoon/environment";
 import { getRoute } from "reacticoon/routing";
-import RoutingDebugger from "reacticoon-plugins/reacticoon-plugin-dev/src/RoutingDebugger";
+import RoutingDebugger from "reacticoon-plugin-dev/RoutingDebugger";
 
 const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
   if (__DEV__) {

@@ -1,8 +1,8 @@
 import React from "react";
 
-import Page from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Page";
-import Section from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Section";
-import FileTreeView from "reacticoon-plugins/reacticoon-plugin-dev/src/views/FileTreeView";
+import Page from "reacticoon-plugin-dev/components/Page";
+import Section from "reacticoon-plugin-dev/components/Section";
+import FileTreeView from "reacticoon-plugin-dev/views/FileTreeView";
 
 class DevPluginApiMockDashboard extends React.Component {
   render() {

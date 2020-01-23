@@ -5,7 +5,7 @@ import get from "lodash/get";
 import { getStore } from "reacticoon/store";
 import { StateContainer } from "reacticoon/view";
 
-import JsonView from "reacticoon-plugins/reacticoon-plugin-dev/src/components/JsonView";
+import JsonView from "reacticoon-plugin-dev/components/JsonView";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";

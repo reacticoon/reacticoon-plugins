@@ -1,9 +1,9 @@
 import React from "react";
 
 import { withStyles } from "@material-ui/core/styles";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import GitIcon from "./GitIcon";
-import Piece from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Piece";
+import Piece from "reacticoon-plugin-dev/components/Piece";
 
 const styles = theme => ({
   root: {

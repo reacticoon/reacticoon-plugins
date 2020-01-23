@@ -1,8 +1,8 @@
 import React from "react";
 
-import Page from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Page";
-import Section from "reacticoon-plugins/reacticoon-plugin-dev/src/components/Section";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import Page from "reacticoon-plugin-dev/components/Page";
+import Section from "reacticoon-plugin-dev/components/Section";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import CiRepositoryView from "./views/CiRepositoryView";
 import BuildView from "./views/BuildView";
 import ProjectState from "./views/ProjectState";

@@ -1,6 +1,6 @@
 import React from "react";
 
-import MarkdownView from "reacticoon-plugins/reacticoon-plugin-dev/src/components/MarkdownView";
+import MarkdownView from "reacticoon-plugin-dev/components/MarkdownView";
 
 const ReadmeView = ({ plugin }) => (
   <MarkdownView filepath={plugin.readmePath} />

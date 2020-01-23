@@ -1,6 +1,6 @@
 import React from "react";
 
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import Page from "../../components/Page";
 import Section from "../../components/Section";
 import UnitTestsView from "./views/UnitTestsView";

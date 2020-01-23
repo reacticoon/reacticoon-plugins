@@ -11,6 +11,7 @@ import ExploreIcon from "@material-ui/icons/Explore";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import BuildIcon from "@material-ui/icons/Build";
 import CheckCircleOutline from "@material-ui/icons/CheckCircle";
+import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 
 export const mainListItems = (
   <div>
@@ -56,6 +57,15 @@ export const mainListItems = (
           <WhatshotIcon />
         </ListItemIcon>
         <ListItemText primary="App" />
+      </ListItem>
+    </Link>
+
+    <Link to={Link.getRoute("REACTICOON_DEPENDENCIES_INSTALLED")}>
+      <ListItem button>
+        <ListItemIcon>
+          <LibraryAddIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dependencies" />
       </ListItem>
     </Link>
 

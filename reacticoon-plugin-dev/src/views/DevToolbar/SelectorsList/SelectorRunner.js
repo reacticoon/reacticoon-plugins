@@ -1,6 +1,6 @@
 import React from "react";
 
-import JsonView from "reacticoon-plugins/reacticoon-plugin-dev/src/components/JsonView";
+import JsonView from "reacticoon-plugin-dev/components/JsonView";
 import { getStore } from "reacticoon/store";
 import { isMakeSelector } from "reacticoon/selector/utils";
 import TextField from "@material-ui/core/TextField";

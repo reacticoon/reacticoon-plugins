@@ -1,8 +1,8 @@
 import React from "react";
 
 import { getProcessEnv } from "reacticoon/environment";
-import CommandContainer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/command/view/CommandContainer";
-import SseLogViewer from "reacticoon-plugins/reacticoon-plugin-dev/src/modules/sse/view/SseLogViewer";
+import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
+import SseLogViewer from "reacticoon-plugin-dev/modules/sse/view/SseLogViewer";
 import Button from "@material-ui/core/Button";
 
 const UnitTestsView = () => (
