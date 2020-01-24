@@ -2,7 +2,7 @@ import React from "react";
 
 import { withStyles } from "@material-ui/core/styles";
 import UserContextContainer from "reacticoon-plugin-dev/modules/userContext/container";
-import UserIcon from "@material-ui/icons/AccountCircle";
+import UserIcon from "@material-ui/icons/AccountBox";
 import Piece from "../../../components/Piece";
 
 const styles = theme => ({

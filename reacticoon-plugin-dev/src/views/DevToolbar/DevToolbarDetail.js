@@ -10,6 +10,7 @@ import {
 import clsx from "clsx";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 import ReacticoonLogo from "../../components/svg/ReacticoonLogo";
 import Tabs from "../../views/Tabs";
 import DevToolbarDetailRequestInfo from "./DevToolbarDetailRequestInfo";
@@ -30,7 +31,7 @@ const styles = theme => ({
     left: 0,
     right: 0,
     top: 0,
-    paddingRight: theme.spacing.unit,
+    paddingRight: theme.spacing(1),
     display: "flex",
     zIndex: 1300,
     overflowY: "auto"
@@ -39,41 +40,74 @@ const styles = theme => ({
     display: "none"
   },
   header: {
-    background: theme.app.toolbar.colors.background,
-    height: 50,
-    position: "fixed",
+    // background: theme.app.toolbar.colors.background,
+    height: theme.app.toolbar.header.height,
+    position: "absolute",
     top: 0,
-    left: 0,
+    left: theme.app.toolbar.detail.sidebar.width,
     right: 0,
     color: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingRight: theme.spacing.unit,
+    paddingRight: theme.spacing(2),
     paddingLeft: theme.spacing.unit
   },
-  headerBrand: {
-    display: "flex",
-    alignitems: "center"
+  headerVersion: {
+    marginLeft: "auto" // put on the right
   },
   content: {
     width: "100%",
     display: "flex",
-    paddingTop: theme.app.toolbar.header.height + 10,
-    paddingLeft: 240 + theme.spacing.unit * 2,
+    paddingTop: theme.app.toolbar.header.height + theme.spacing(2),
+    paddingLeft: theme.app.toolbar.detail.sidebar.width,
     paddingBottom: 54,
     background: theme.app.colors.content
   },
+  sidebarHeader: {
+    width: theme.app.toolbar.detail.sidebar.width,
+    position: "fixed",
+    height: theme.app.toolbar.header.height,
+    top: 0,
+    bottom: 0,
+
+    background: theme.app.toolbar.colors.background,
+    left: 0
+  },
+  headerBrand: {
+    display: "flex",
+    alignItems: "center",
+    height: "100%",
+    paddingLeft: theme.spacing(1),
+
+    "& img": {
+      paddingRight: theme.spacing(1)
+    }
+  },
+  sidebarSeparator: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
   tabsView_root: {
-    width: 240,
+    width: theme.app.toolbar.detail.sidebar.width,
     position: "fixed",
     top: theme.app.toolbar.header.height,
     bottom: 0,
+
+    background: theme.app.toolbar.colors.background,
     left: 0,
-    paddingTop: theme.spacing.unit * 2,
-    background: theme.app.toolbar.colors.background
+    paddingTop: theme.spacing.unit * 2
   },
-  tabsView_content: {}
+  tabsView_content: {
+    width: "100%",
+    maxWidth: 1200,
+    margin: "auto",
+    overflowY: "auto",
+    overflowX: "hidden",
+    height: "calc(100vh - 100px)"
+  }
 });
 
 const DevToolbarDetail = ({
@@ -130,14 +164,8 @@ const DevToolbarDetail = ({
       })}
     >
       <div className={classes.header}>
-        <div className={classes.headerBrand}>
-          <ReacticoonLogo height={36} />
-          &nbsp;&nbsp;
-          <h2>Reacticoon Dev Tools Debugger</h2>
-        </div>
-
         {/* TODO: link to reacticoon doc / react  */}
-        <div>
+        <div className={classes.headerVersion}>
           <a href={getReactVersionDocLink()} target="_blank">
             {getReactVersion()}
           </a>
@@ -145,6 +173,13 @@ const DevToolbarDetail = ({
       </div>
 
       <div className={classes.content}>
+        <div className={classes.sidebarHeader}>
+          <div className={classes.headerBrand}>
+            <ReacticoonLogo height={32} />
+            <h2>Dev Tools Debugger</h2>
+          </div>
+          <Divider className={classes.sidebarSeparator} />
+        </div>
         <Tabs
           vertical
           defaultTab={defaultTab}

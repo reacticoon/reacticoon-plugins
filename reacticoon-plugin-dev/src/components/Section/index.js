@@ -3,7 +3,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import { withStyles } from "@material-ui/core/styles";
-import grey from "@material-ui/core/colors/grey";
+import blueGrey from "@material-ui/core/colors/blueGrey";
 
 const styles = theme => ({
   root: {
@@ -14,8 +14,8 @@ const styles = theme => ({
   },
   header: {
     textTransform: "uppercase",
-    color: grey["500"],
-    borderBottom: "1px solid #ccc",
+    color: blueGrey[100],
+    borderBottom: `1px solid ${blueGrey[500]}`,
     paddingBottom: theme.spacing.unit
   },
   content: {
@@ -23,8 +23,8 @@ const styles = theme => ({
   }
 });
 
-const Section = ({ title, grid = { xs: 12 }, classes, children }) => (
-  <Grid item {...grid}>
+const Section = ({ title, grid, xs = 12, sm, md, classes, children }) => (
+  <Grid item xs={xs} sm={sm} md={md} {...grid}>
     <Card className={classes.root}>
       {title && <div className={classes.header}>{title}</div>}
 

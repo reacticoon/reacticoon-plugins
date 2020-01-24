@@ -4,7 +4,6 @@ import { StateContainer } from "reacticoon/view";
 import { withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 
 // https://codesandbox.io/s/n9ww0pq7p4
 const VerticalTabs = withStyles(theme => ({
@@ -24,6 +23,10 @@ const VerticalTab = withStyles(theme => ({
     color: "white",
     textAlign: "left"
   },
+  wrapper: {
+    display: "block",
+    paddingLeft: theme.spacing(2)
+  },
   selected: {
     background: `rgba(66, 185, 131, 0.05) !important`,
 
@@ -35,7 +38,7 @@ const VerticalTab = withStyles(theme => ({
 
 class ReacticoonTabs extends React.Component {
   render() {
-    const { vertical } = this.props;
+    const { vertical, tabsViewClasses } = this.props;
 
     const TabsView = vertical ? VerticalTabs : Tabs;
     const TabView = vertical ? VerticalTab : Tab;
@@ -57,14 +60,18 @@ class ReacticoonTabs extends React.Component {
                   renderedTabs: { ...state.renderedTabs, [value]: true }
                 });
               }}
-              classes={this.props.tabsViewClasses}
+              classes={tabsViewClasses}
             >
               {this.props.tabs.map((tabInfo, index) => (
                 <TabView key={index} label={tabInfo.label} />
               ))}
             </TabsView>
 
-            <Typography component="div" style={{ padding: 8 * 3 }}>
+            <section
+              component="div"
+              style={{ padding: 8 * 3 }}
+              className={tabsViewClasses.content}
+            >
               {this.props.content.map((tabContent, index) =>
                 // optimisation: we render onlythe tab that alreay had been render. allows to keep
                 // tab content if visited, but increase perfs to not render all the tabs contents
@@ -78,7 +85,7 @@ class ReacticoonTabs extends React.Component {
                   </div>
                 )
               )}
-            </Typography>
+            </section>
           </React.Fragment>
         )}
       </StateContainer>

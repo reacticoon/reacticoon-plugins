@@ -2,16 +2,16 @@
 // We define the form module, that handles the form data and form options.
 //
 
-import { createModule } from 'reacticoon/module'
+import { createModule } from "reacticoon/module";
 
-import * as actions from './actions'
-import * as selectors from './selectors'
-import reducer from './reducer'
+import * as actions from "./actions";
+import * as selectors from "./selectors";
+import reducer from "./reducer";
 
-const FormModule = createModule('ReacticoonPluginForm::FormModule', {
+const FormModule = createModule("reacticoon-plugin-form::FormModule", {
   actions,
   reducer,
-  selectors,
-})
+  selectors
+});
 
-export default FormModule
+export default FormModule;

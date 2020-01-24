@@ -1,8 +1,7 @@
 import React from "react";
 
-import { getExtendedPieces } from '../../utils'
+import { getExtendedPieces } from "../../utils";
 import { withStyles } from "@material-ui/core/styles";
-import ReacticoonLogo from "../../components/svg/ReacticoonLogo";
 import EventsBadgesPiece from "./toolbarPieces/EventsBadgesPiece";
 import DashboardPiece from "./toolbarPieces/DashboardPiece";
 import RoutePiece from "./toolbarPieces/RoutePiece";
@@ -28,8 +27,8 @@ const styles = theme => ({
     bottom: 0,
     right: 0,
     height: theme.app.toolbar.height,
-    padding: theme.spacing.unit,
     display: "flex",
+    alignItems: "center",
     backgroundColor: theme.app.toolbar.colors.background,
     color: "white"
   },
@@ -59,9 +58,7 @@ const Toolbar = ({
 }) =>
   !show ? (
     <div className={classes.rootSmall}>
-      <div className={classes.logoArea} onClick={onToggle}>
-        <ReacticoonLogo height={36} />
-      </div>
+      <ReacticoonLogoPiece onClick={onToggle} />
     </div>
   ) : (
     <div className={classes.root}>

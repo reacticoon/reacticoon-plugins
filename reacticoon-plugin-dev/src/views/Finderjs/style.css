@@ -1,5 +1,5 @@
 .fjs-container {
-  background-color: white;
+  /* background-color: white; */
   border: solid 1px lightgray;
   display: flex;
   font-size: .9em;
@@ -21,7 +21,7 @@
 
 .fjs-item a {
   align-items: flex-end;
-  color: black;
+  color: white;
   display: flex;
   /* justify-content: space-between; */
   padding: 5px;

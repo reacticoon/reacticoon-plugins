@@ -37,6 +37,8 @@ const useStyles = makeStyles(theme => ({
 
     color: `${theme.palette.secondary.main}!important`,
 
+    borderRight: `2px solid ${theme.palette.secondary.main}!important`,
+
     "& svg": {
       color: `${theme.palette.secondary.main}!important`
     }

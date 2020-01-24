@@ -35,7 +35,10 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingLeft: theme.spacing(0.5)
+    height: 40,
+    paddingLeft: theme.spacing(0.5),
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1)
   },
   toolbarBrand: {
     display: "flex",
@@ -117,9 +120,51 @@ const styles = theme => ({
     overflow: "auto",
     background: theme.app.colors.content
   },
+  "@global": {
+    body: {
+      overflow: "hidden"
+    },
+
+    // TODO:
+    "*::-webkit-scrollbar-thumb": {
+      backgroundColor: "#3a5169"
+    },
+    "*::-webkit-scrollbar-thumb": {
+      backgroundColor: "#b4c7d0",
+      border: "3px solid transparent",
+      backgroundClip: "padding-box",
+      borderRadius: "5px"
+    },
+    "*::-webkit-scrollbar": {
+      width: "0.4em"
+    },
+    "*::-webkit-scrollbar-track": {
+      "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.00)"
+    },
+    "*::-webkit-scrollbar-thumb": {
+      backgroundColor: "#3a5169",
+      outline: "1px solid slategrey"
+    }
+  },
   pageContent: {
+    width: "100%",
     maxWidth: 1200,
-    margin: "auto"
+    margin: "auto",
+    overflowY: "auto",
+    overflowX: "hidden",
+    height: "calc(100vh - 145px)"
+  },
+  sidebarMenuList: {
+    overflowX: "hidden",
+    overflowY: "auto",
+    height: "90vh",
+    paddingBottom: theme.spacing(6),
+
+    // trick to put scroll bar on the left
+    direction: "rtl",
+    "& *": {
+      direction: "initial"
+    }
   },
   chartContainer: {
     marginLeft: -22
@@ -129,6 +174,11 @@ const styles = theme => ({
   },
   h5: {
     marginBottom: theme.spacing.unit * 2
+  },
+  hoverLink: {
+    "&:hover": {
+      color: theme.palette.secondary.main
+    }
   }
 });
 
@@ -213,6 +263,7 @@ class ReacticoonDevPage extends React.Component {
                   href={getReacticoonRepositoryUrl()}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
+                  className={classes.hoverLink}
                 >
                   <svg
                     style={{
@@ -244,7 +295,7 @@ class ReacticoonDevPage extends React.Component {
             >
               <div className={classes.toolbarBrandArea}>
                 <div className={classes.toolbarBrand}>
-                  <ReacticoonLogo height={30} />
+                  <ReacticoonLogo height={32} />
 
                   <Typography
                     className={classes.tootlbarBrandText}
@@ -261,14 +312,15 @@ class ReacticoonDevPage extends React.Component {
                 </div>
               </div>
 
-              <Divider />
-              <List>
-                <MainListItems route={route} />
-              </List>
-              <Divider />
-              <List>
-                <SecondaryListItems route={route} />
-              </List>
+              <div className={classes.sidebarMenuList}>
+                <List style={{ paddingTop: 0 }}>
+                  <MainListItems route={route} />
+                </List>
+                <Divider />
+                <List>
+                  <SecondaryListItems route={route} />
+                </List>
+              </div>
             </Drawer>
 
             <main className={classes.content}>

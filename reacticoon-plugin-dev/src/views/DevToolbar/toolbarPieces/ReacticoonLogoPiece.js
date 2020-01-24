@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-import ReacticoonLogo from '../../../components/svg/ReacticoonLogo'
-import Piece from '../../../components/Piece'
+import ReacticoonLogo from "../../../components/svg/ReacticoonLogo";
+import Piece from "../../../components/Piece";
 
 const ReacticoonLogoPiece = ({ onClick }) => (
   <Piece
@@ -10,11 +10,9 @@ const ReacticoonLogoPiece = ({ onClick }) => (
     headerStyle={{ paddingLeft: 16, paddingRight: 16 }}
   >
     <Piece.Header>
-      <div>
-        <ReacticoonLogo height={30} />
-      </div>
+      <ReacticoonLogo height={24} />
     </Piece.Header>
   </Piece>
-)
+);
 
-export default ReacticoonLogoPiece
+export default ReacticoonLogoPiece;

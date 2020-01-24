@@ -14,7 +14,7 @@ const theme = createMuiTheme({
     secondary,
 
     background: {
-      paper: "#2c3e50"
+      paper: "#2c3e50" //#20232a
     }
   },
   app: {
@@ -37,7 +37,12 @@ const theme = createMuiTheme({
       grey: "#444444"
     },
     toolbar: {
-      height: 36,
+      detail: {
+        sidebar: {
+          width: 220
+        }
+      },
+      height: 32,
       colors: {
         background: "#1d2935",
         hover: "#1d2935",
@@ -46,7 +51,7 @@ const theme = createMuiTheme({
         good: green[300]
       },
       header: {
-        height: 50
+        height: 48
       }
     }
   }
