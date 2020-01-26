@@ -7,6 +7,7 @@ import UnitTestsView from "./views/UnitTestsView";
 import CoverageTestsView from "./views/CoverageTestsView";
 import IntegrationTestsView from "./views/IntegrationTestsView";
 import AllureReportView from "./views/AllureReportView";
+import Pre from "reacticoon-plugin-dev/components/Pre";
 
 class TestingDashboardPage extends React.Component {
   render() {
@@ -33,8 +34,6 @@ class TestingDashboardPage extends React.Component {
             Vscode extension: https://github.com/jest-community/vscode-jest
             <br />
             <br />
-            <br />
-            <br />
             <CommandContainer
               command="READ_FILE"
               id="vscode/launch.template.json"
@@ -44,7 +43,7 @@ class TestingDashboardPage extends React.Component {
                   "/home/loic/dev/reacticoon/create-reacticoon-app/cli-test-utils/vscode/launch.template.json"
               }}
             >
-              {({ data }) => data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+              {({ data }) => data && <Pre content={data} type="json" />}
             </CommandContainer>
           </Section>
         </Section.Container>

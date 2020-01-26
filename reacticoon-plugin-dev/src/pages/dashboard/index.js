@@ -18,7 +18,7 @@ import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
 import ListItem from "@material-ui/core/ListItem";
 import Page from "../../components/Page";
-import Pre from "../../components/Pre";
+import Pre from "reacticoon-plugin-dev/components/Pre";
 import Section from "../../components/Section";
 import ReacticoonLogo from "../../components/svg/ReacticoonLogo";
 

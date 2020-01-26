@@ -21,7 +21,7 @@ class CommandContainer extends Component {
   };
 
   render() {
-    const { data, formatter, isFetching, error, children } = this.props;
+    const { data, isFetching, error, children } = this.props;
 
     return children({
       data,
@@ -60,7 +60,7 @@ export default ({ children, manualRun, formatter, ...props }) => (
       !manualRun && (isFetching || (!data && !error))
     }
   >
-    {({ data, runCommand, error }) => (
+    {({ data, isFetching, runCommand, error }) => (
       <React.Fragment>
         {error ? (
           error.code === "NO_INTERNET" ? (
@@ -74,6 +74,7 @@ export default ({ children, manualRun, formatter, ...props }) => (
         ) : (
           children({
             data,
+            isFetching,
             runCommand
           })
         )}

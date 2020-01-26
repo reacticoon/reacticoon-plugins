@@ -13,7 +13,12 @@ const LaunchEditorButton = ({ src, label, ...otherProps }) => (
     }}
   >
     {({ runCommand }) => (
-      <Button onClick={runCommand} {...otherProps}>
+      <Button
+        onClick={runCommand}
+        variant="outlined"
+        size="small"
+        {...otherProps}
+      >
         {label || "Open"}
       </Button>
     )}

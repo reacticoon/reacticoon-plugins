@@ -13,7 +13,11 @@ import LaunchEditorButton from "../../../components/LaunchEditorButton";
 const RoutesTable = ({ withPlugins = true }) => (
   <React.Fragment>
     <LaunchEditorButton src="config/routes.js" label="Open routes" />
-    <LaunchEditorButton src="config/RoutingEnum.js" label="Open RoutingEnum" />
+    <LaunchEditorButton
+      src="config/RoutingEnum.js"
+      label="Open Routing Enum"
+      style={{ marginLeft: 16 }}
+    />
 
     <Table>
       <TableHead>

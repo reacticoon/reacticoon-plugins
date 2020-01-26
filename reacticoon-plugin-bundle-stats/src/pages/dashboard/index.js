@@ -4,7 +4,8 @@ import Page from "reacticoon-plugin-dev/components/Page";
 import Section from "reacticoon-plugin-dev/components/Section";
 import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import BuildContainer from "reacticoon-plugin-dev/components/BuildContainer";
-import Button from "@material-ui/core/Button";
+import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
+import Pre from "reacticoon-plugin-dev/components/Pre";
 
 class ReacticoonPluginBundleStats__DashboardPage extends React.Component {
   render() {
@@ -15,23 +16,30 @@ class ReacticoonPluginBundleStats__DashboardPage extends React.Component {
           <Section title="Report">
             <BuildContainer>
               <CommandContainer manualRun command="BUNDLE_STATS::REPORT">
-                {({ data, runCommand }) =>
-                  !data ? (
-                    <Button onClick={runCommand}>
+                {({ data, runCommand, isFetching }) => (
+                  <React.Fragment>
+                    <LoadingButton
+                      isloading={isFetching}
+                      loadingText="Generating bundle stats report"
+                      onClick={runCommand}
+                      variant="outlined"
+                    >
                       Run bundle stats report
-                    </Button>
-                  ) : (
-                    <React.Fragment>
-                      {/* TODO: iframe this */}
-                      {/* <div
+                    </LoadingButton>
+
+                    {data && (
+                      <React.Fragment>
+                        {/* TODO: iframe this */}
+                        {/* <div
                       dangerouslySetInnerHTML={{
                         __html: data.htmlContent
                       }}
                     /> */}
-                      <pre>{JSON.stringify(data.jsonContent, null, 2)}</pre>
-                    </React.Fragment>
-                  )
-                }
+                        <Pre content={data.jsonContent} />
+                      </React.Fragment>
+                    )}
+                  </React.Fragment>
+                )}
               </CommandContainer>
             </BuildContainer>
           </Section>

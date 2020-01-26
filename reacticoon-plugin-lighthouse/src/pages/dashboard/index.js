@@ -4,7 +4,7 @@ import Page from "reacticoon-plugin-dev/components/Page";
 import Section from "reacticoon-plugin-dev/components/Section";
 import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import BuildContainer from "reacticoon-plugin-dev/components/BuildContainer";
-import Button from "@material-ui/core/Button";
+import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
 
 class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
   render() {
@@ -13,11 +13,17 @@ class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
         <Section.Container>
           <Section title="Report">
             <BuildContainer>
-              {/* TODO: allow to run on builded not dev env */}
               <CommandContainer manualRun command="LIGHTHOUSE::REPORT">
-                {({ data, runCommand }) =>
+                {({ data, isFetching, runCommand }) =>
                   !data ? (
-                    <Button onClick={runCommand}>Run lighthouse report</Button>
+                    <LoadingButton
+                      isLoading={isFetching}
+                      onClick={runCommand}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Run lighthouse report
+                    </LoadingButton>
                   ) : (
                     <React.Fragment>
                       {/* TODO: iframe this */}

@@ -3,52 +3,84 @@ import React from "react";
 import { getProcessEnv } from "reacticoon/environment";
 import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import SseLogViewer from "reacticoon-plugin-dev/modules/sse/view/SseLogViewer";
-import Button from "@material-ui/core/Button";
+import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
 
-const CoverageTestsView = () => (
-  <CommandContainer manualRun command="TESTS::COVERAGE::RUN">
-    {({ runCommand: runCoverageTest, data: coverageTestData }) => (
-      <CommandContainer
-        manualRun
-        command="READ_LOCAL_WEBSITE"
-        id={getProcessEnv("junitCoverageTestsReportPath")}
-        payload={{
-          filepath: getProcessEnv("junitCoverageTestsReportPath")
-        }}
-      >
-        {({
-          runCommand: getJunitCoverageTestsReport,
-          data: junitCoverageTestsReport
-        }) => (
-          <React.Fragment>
-            {coverageTestData && coverageTestData.taskId ? (
-              <SseLogViewer
-                eventName={coverageTestData.sseEventName}
-                taskId={coverageTestData.taskId}
-                onEnded={getJunitCoverageTestsReport}
-              />
-            ) : (
-              <Button onClick={runCoverageTest}>Run coverage tests</Button>
-            )}
+const CoverageTestsView = () => {
+  const [isRunning, setRunning] = React.useState(false);
+  return (
+    <CommandContainer manualRun command="TESTS::COVERAGE::RUN">
+      {({
+        runCommand: runCoverageTest,
+        isFetching: coverageTestDataIsFetching,
+        data: coverageTestData
+      }) => (
+        <CommandContainer
+          manualRun
+          command="READ_LOCAL_WEBSITE"
+          id={getProcessEnv("junitCoverageTestsReportPath")}
+          payload={{
+            filepath: getProcessEnv("junitCoverageTestsReportPath")
+          }}
+        >
+          {({
+            runCommand: getJunitCoverageTestsReport,
+            data: junitCoverageTestsReport,
+            isFetching: junitCoverageTestsReportIsFetching
+          }) => (
+            <React.Fragment>
+              {coverageTestData && coverageTestData.taskId && (
+                <div style={{ marginBottom: 16 }}>
+                  <SseLogViewer
+                    eventName={coverageTestData.sseEventName}
+                    taskId={coverageTestData.taskId}
+                    onEnded={() => {
+                      getJunitCoverageTestsReport();
+                      setRunning(false);
+                    }}
+                  />
+                </div>
+              )}
 
-            <Button onClick={getJunitCoverageTestsReport}>
-              Display last coverage tests results
-            </Button>
-
-            {junitCoverageTestsReport && (
-              <iframe
-                src={junitCoverageTestsReport.url}
-                style={{
-                  width: "100%",
-                  height: "500px"
+              <LoadingButton
+                isLoading={coverageTestDataIsFetching || isRunning}
+                loadingText="Running coverage tests"
+                onClick={() => {
+                  runCoverageTest();
+                  setRunning(true);
                 }}
-              />
-            )}
-          </React.Fragment>
-        )}
-      </CommandContainer>
-    )}
-  </CommandContainer>
-);
+                variant="outlined"
+              >
+                Run coverage tests
+              </LoadingButton>
+
+              <LoadingButton
+                isLoading={junitCoverageTestsReportIsFetching}
+                disabled={coverageTestDataIsFetching || isRunning}
+                loadingText="Retrieving last coverage tests results"
+                onClick={getJunitCoverageTestsReport}
+                variant="outlined"
+                style={{
+                  marginLeft: 16
+                }}
+              >
+                Display last coverage tests results
+              </LoadingButton>
+
+              {junitCoverageTestsReport && (
+                <iframe
+                  src={junitCoverageTestsReport.url}
+                  style={{
+                    width: "100%",
+                    height: "500px"
+                  }}
+                />
+              )}
+            </React.Fragment>
+          )}
+        </CommandContainer>
+      )}
+    </CommandContainer>
+  );
+};
 
 export default CoverageTestsView;

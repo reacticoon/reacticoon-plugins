@@ -3,52 +3,83 @@ import React from "react";
 import { getProcessEnv } from "reacticoon/environment";
 import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
 import SseLogViewer from "reacticoon-plugin-dev/modules/sse/view/SseLogViewer";
-import Button from "@material-ui/core/Button";
+import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
 
-const UnitTestsView = () => (
-  <CommandContainer manualRun command="TESTS::UNIT::RUN">
-    {({ runCommand: runUnitTest, data: unitTestData }) => (
-      <CommandContainer
-        manualRun
-        command="READ_FILE"
-        id={
-          (unitTestData && unitTestData.junitUnitTestsReport) ||
-          getProcessEnv("junitUnitTestsReportPath")
-        }
-        payload={{
-          format: "json", // transform xml to json
-          filepath:
+const UnitTestsView = () => {
+  const [isRunning, setRunning] = React.useState(false);
+  return (
+    <CommandContainer manualRun command="TESTS::UNIT::RUN">
+      {({
+        runCommand: runUnitTest,
+        data: unitTestData,
+        isFetching: unitTextDataIsFetching
+      }) => (
+        <CommandContainer
+          manualRun
+          command="READ_FILE"
+          id={
             (unitTestData && unitTestData.junitUnitTestsReport) ||
             getProcessEnv("junitUnitTestsReportPath")
-        }}
-      >
-        {({
-          runCommand: getJunitUnitTestsReport,
-          data: junitUnitTestsReport
-        }) => (
-          <React.Fragment>
-            {unitTestData && unitTestData.taskId ? (
-              <SseLogViewer
-                eventName={unitTestData.sseEventName}
-                taskId={unitTestData.taskId}
-                onEnded={getJunitUnitTestsReport}
-              />
-            ) : (
-              <Button onClick={runUnitTest}>Run unit tests</Button>
-            )}
+          }
+          payload={{
+            format: "json", // transform xml to json
+            filepath:
+              (unitTestData && unitTestData.junitUnitTestsReport) ||
+              getProcessEnv("junitUnitTestsReportPath")
+          }}
+        >
+          {({
+            runCommand: getJunitUnitTestsReport,
+            data: junitUnitTestsReport,
+            isFetching: junitUnitTestsReportIsFetching
+          }) => (
+            <React.Fragment>
+              {unitTestData && unitTestData.taskId && (
+                <div style={{ marginBottom: 16 }}>
+                  <SseLogViewer
+                    eventName={unitTestData.sseEventName}
+                    taskId={unitTestData.taskId}
+                    onEnded={() => {
+                      getJunitUnitTestsReport();
+                      setRunning(true);
+                    }}
+                  />
+                </div>
+              )}
 
-            <Button onClick={getJunitUnitTestsReport}>
-              Display last unit tests results
-            </Button>
+              <LoadingButton
+                onClick={() => {
+                  runUnitTest();
+                  setRunning(true);
+                }}
+                isLoading={unitTextDataIsFetching || isRunning}
+                loadingText="Running unit tests"
+                variant="outlined"
+              >
+                Run unit tests
+              </LoadingButton>
 
-            {junitUnitTestsReport && (
-              <pre>{JSON.stringify(junitUnitTestsReport, null, 2)}</pre>
-            )}
-          </React.Fragment>
-        )}
-      </CommandContainer>
-    )}
-  </CommandContainer>
-);
+              <LoadingButton
+                onClick={getJunitUnitTestsReport}
+                isLoading={junitUnitTestsReportIsFetching}
+                disabled={unitTextDataIsFetching || isRunning}
+                variant="outlined"
+                style={{
+                  marginLeft: 16
+                }}
+              >
+                Display last unit tests results
+              </LoadingButton>
+
+              {junitUnitTestsReport && (
+                <pre>{JSON.stringify(junitUnitTestsReport, null, 2)}</pre>
+              )}
+            </React.Fragment>
+          )}
+        </CommandContainer>
+      )}
+    </CommandContainer>
+  );
+};
 
 export default UnitTestsView;

@@ -3,7 +3,6 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import { withStyles } from "@material-ui/core/styles";
-import blueGrey from "@material-ui/core/colors/blueGrey";
 
 const styles = theme => ({
   root: {
@@ -14,8 +13,8 @@ const styles = theme => ({
   },
   header: {
     textTransform: "uppercase",
-    color: blueGrey[100],
-    borderBottom: `1px solid ${blueGrey[500]}`,
+    color: theme.app.colors.blueGrey[100],
+    borderBottom: `1px solid ${theme.app.colors.blueGrey[500]}`,
     paddingBottom: theme.spacing.unit
   },
   content: {

@@ -11,7 +11,8 @@ const styles = theme => ({
     color: "white",
     padding: theme.spacing(1),
     lineHeight: "21px",
-    font: `1rem Inconsolata, monospace`
+    font: `1rem Inconsolata, monospace`,
+    overflowY: "scroll"
   },
   log: {},
   error: {

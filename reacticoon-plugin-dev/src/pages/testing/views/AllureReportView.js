@@ -1,7 +1,7 @@
 import React from "react";
 
 import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
-import Button from "@material-ui/core/Button";
+import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
 
 const AllureReportView = () => (
   <CommandContainer
@@ -9,9 +9,16 @@ const AllureReportView = () => (
     command="TESTS::ALLURE::SERVER"
     id={"allure-report"}
   >
-    {({ runCommand, data }) => (
+    {({ runCommand, isFetching, data }) => (
       <React.Fragment>
-        <Button onClick={runCommand}>Display ALLURE report view</Button>
+        <LoadingButton
+          isLoading={isFetching}
+          loadingText="Retrieving ALLURE report"
+          variant="outlined"
+          onClick={runCommand}
+        >
+          Display ALLURE report view
+        </LoadingButton>
 
         {data && (
           <iframe

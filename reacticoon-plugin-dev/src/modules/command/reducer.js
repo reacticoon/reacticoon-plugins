@@ -16,7 +16,7 @@ export const handleCommandRequest = (state, action) => {
 
   return state.mergeIn(
     [action.data.command, action.data.id],
-    Immutable.fromJS({ isLoading: true, data: null })
+    Immutable.fromJS({ isFetching: true, data: null })
   );
 };
 
@@ -24,7 +24,7 @@ export const handleCommandSuccess = (state, action) =>
   state.mergeIn(
     [action.data.command, action.data.id],
     Immutable.fromJS({
-      isLoading: false,
+      isFetching: false,
       data: action.response
     })
   );
@@ -33,7 +33,7 @@ export const handleCommandFailure = (state, action) =>
   state.mergeIn(
     [action.data.command, action.data.id],
     Immutable.fromJS({
-      isLoading: false,
+      isFetching: false,
       data: null,
       error: action.apiError
     })
