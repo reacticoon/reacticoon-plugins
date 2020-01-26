@@ -16,6 +16,11 @@ import ModulesView from "./ModulesView";
 import RoutingView from "./RoutingView";
 import EventsView from "./EventsView";
 import EventsHandlerView from "./EventsHandlerView";
+import CliCommands from "./CliCommands";
+import CliServerCommands from "./CliServerCommands";
+import CliCheckup from "./CliCheckup";
+import CliOverrides from "./CliOverrides";
+import CliGenerators from "./CliGenerators";
 import StarIcon from "@material-ui/icons/Star";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
@@ -83,7 +88,7 @@ const styles = theme => ({
   }
 });
 
-const PluginView = ({ pluginName, config, classes }) => (
+const PluginView = ({ pluginName, classes }) => (
   <PluginContainer pluginName={pluginName}>
     {({ pluginData }) =>
       pluginData && (
@@ -174,23 +179,67 @@ const PluginView = ({ pluginName, config, classes }) => (
             )}
           </Section>
 
-          <Section title="Modules">
-            <ModulesView modules={pluginData.plugin.modules} />
-          </Section>
+          {pluginData.identity.isReacticoonPlugin && (
+            <React.Fragment>
+              <Section title="Modules">
+                <ModulesView modules={pluginData.plugin.modules} />
+              </Section>
 
-          <Section title="Routing">
-            <RoutingView routing={generatePluginRoutes(pluginData.plugin)} />
-          </Section>
+              <Section title="Routing">
+                <RoutingView
+                  routing={generatePluginRoutes(pluginData.plugin)}
+                />
+              </Section>
 
-          <Section title="Events">
-            <EventsView events={pluginData.plugin.events} />
-          </Section>
+              <Section title="Events">
+                <EventsView events={pluginData.plugin.events} />
+              </Section>
 
-          <Section title="Events handler">
-            <EventsHandlerView
-              eventsHandler={pluginData.plugin.eventsHandler}
-            />
-          </Section>
+              <Section title="Events handler">
+                <EventsHandlerView
+                  eventsHandler={pluginData.plugin.eventsHandler}
+                />
+              </Section>
+            </React.Fragment>
+          )}
+
+          {pluginData.identity.isReacticoonCliPlugin && (
+            <React.Fragment>
+              <Section title="Commands">
+                <CliCommands
+                  commands={pluginData.identity.cliPluginData.commands}
+                />
+              </Section>
+
+              <Section title="Server commands">
+                <CliServerCommands
+                  serverCommands={
+                    pluginData.identity.cliPluginData.serverCommands
+                  }
+                />
+              </Section>
+
+              <Section title="Overrides">
+                <CliOverrides
+                  overridesData={
+                    pluginData.identity.cliPluginData.overridesData
+                  }
+                />
+              </Section>
+
+              <Section title="Checkup">
+                <CliCheckup
+                  checkup={pluginData.identity.cliPluginData.checkup}
+                />
+              </Section>
+
+              <Section title="Generators">
+                <CliGenerators
+                  generators={pluginData.identity.cliPluginData.generators}
+                />
+              </Section>
+            </React.Fragment>
+          )}
         </Section.Container>
       )
     }

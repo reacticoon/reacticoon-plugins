@@ -5,6 +5,7 @@ import ButtonLink from "reacticoon-plugin-dev/components/ButtonLink";
 import AddIcon from "@material-ui/icons/Add";
 import Section from "reacticoon-plugin-dev/components/Section";
 import ActivePlugins from "./view/ActivePlugins";
+import ActiveCliPlugins from "./view/ActiveCliPlugins";
 
 class PluginsPage extends React.Component {
   render() {
@@ -24,6 +25,10 @@ class PluginsPage extends React.Component {
         <Section.Container>
           <Section title="Active plugins">
             <ActivePlugins />
+          </Section>
+
+          <Section title="CLI plugins">
+            <ActiveCliPlugins />
           </Section>
         </Section.Container>
       </Page>

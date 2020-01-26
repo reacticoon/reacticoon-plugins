@@ -3,12 +3,30 @@ import { getPlugins } from "reacticoon/plugin";
 import { findOnArray } from "reacticoon/utils/array";
 
 export const formatPluginIdentity = createFormatter(identity => {
-  const plugins = getPlugins();
+  let pluginData = {};
+  if (identity.isReacticoonPlugin) {
+    const plugins = getPlugins();
 
-  const pluginData = findOnArray(
-    plugins,
-    pluginData => pluginData.plugin.name === identity.name
-  );
+    pluginData = findOnArray(
+      plugins,
+      pluginData => pluginData.plugin.name === identity.name
+    );
+  } else {
+    pluginData = {
+      config: identity.config
+    };
+    delete identity.config;
+  }
+
+  if (identity.cliPluginData) {
+    identity.cliPluginData.commands = (
+      identity.cliPluginData.commands || []
+    ).filter(Boolean);
+
+    identity.cliPluginData.serverCommands = (
+      identity.cliPluginData.serverCommands || []
+    ).filter(Boolean);
+  }
 
   return {
     ...pluginData,

@@ -9,9 +9,11 @@ const styles = theme => ({
     lineHeight: "18px",
     padding: "0.1em 0.5em 0.3em 0.7em",
     borderLeft: `5px solid ${theme.app.colors.blueGrey[600]}`,
-    margin: "1.7em 0 1.7em 0.3em",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    marginLeft: "auto",
     overflowY: "auto",
-    width: "93%"
+    width: "100%"
   }
 });
 

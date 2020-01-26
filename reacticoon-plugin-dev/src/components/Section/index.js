@@ -3,6 +3,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import { withStyles } from "@material-ui/core/styles";
+import MessageBlock from "reacticoon-plugin-dev/components/MessageBlock";
 
 const styles = theme => ({
   root: {
@@ -22,15 +23,40 @@ const styles = theme => ({
   }
 });
 
-const Section = ({ title, grid, xs = 12, sm, md, classes, children }) => (
-  <Grid item xs={xs} sm={sm} md={md} {...grid}>
-    <Card className={classes.root}>
-      {title && <div className={classes.header}>{title}</div>}
+class Section extends React.Component {
+  state = {
+    hasError: false
+  };
 
-      <div className={classes.content}>{children}</div>
-    </Card>
-  </Grid>
-);
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.log(error, errorInfo);
+  }
+
+  render() {
+    const { title, grid, xs = 12, sm, md, classes, children } = this.props;
+    const { error, hasError } = this.state;
+
+    if (hasError) {
+      return <MessageBlock.Error>An error occured</MessageBlock.Error>;
+    }
+
+    return (
+      <Grid item xs={xs} sm={sm} md={md} {...grid}>
+        <Card className={classes.root}>
+          {title && <div className={classes.header}>{title}</div>}
+
+          <div className={classes.content}>{children}</div>
+        </Card>
+      </Grid>
+    );
+  }
+}
 
 const SectionWithStyles = withStyles(styles)(Section);
 
