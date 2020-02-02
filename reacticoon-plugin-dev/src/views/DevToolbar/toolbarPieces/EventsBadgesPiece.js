@@ -1,147 +1,115 @@
-import React from "react";
+import React from 'react'
 
-import { ReacticoonEvents, isSameEvent } from "reacticoon/event";
-import EventsContainer from "../../../modules/events/container";
-import DevToolbarContainer from "../../../modules/devToolBar/container";
-import clsx from "clsx";
-import { withStyles } from "@material-ui/core/styles";
-import WarningIcon from "@material-ui/icons/Warning";
-import Piece from "../../../components/Piece";
+import EventsContainer from '../../../modules/events/container'
+import DevToolbarContainer from '../../../modules/devToolBar/container'
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
+import WarningIcon from '@material-ui/icons/Warning'
+import Piece from '../../../components/Piece'
 
 const styles = theme => ({
   badge: {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     // marginLeft: theme.spacing(1),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
     // width: 50,
-    height: "100%",
+    height: '100%',
 
-    "& svg": {
-      paddingRight: theme.spacing(0.5)
-    }
+    '& svg': {
+      paddingRight: theme.spacing(0.5),
+    },
   },
   contentValue: {
-    height: "100%",
+    height: '100%',
     width: 20,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
-    color: "white",
-    backgroudColor: "#666"
+    color: 'white',
+    backgroudColor: '#666',
   },
   warning: {
-    backgroundColor: theme.app.colors.warn
+    backgroundColor: theme.app.colors.warn,
   },
   error: {
-    backgroundColor: theme.app.colors.error
-  }
-});
+    backgroundColor: theme.app.colors.error,
+  },
+})
 
 const EventsBadgesPiece = ({ classes }) => (
   <DevToolbarContainer>
     {({ displayDevToolbarRoute, DevToolbarRoute }) => (
       <EventsContainer>
-        {({ events }) => {
-          const warnings = events.filter(event =>
-            isSameEvent(event, ReacticoonEvents.LOG_WARN)
-          );
+        {({ groupedEvents }) => (
+          <Piece
+            name="EventsBadges"
+            headerStyle={{ textAlign: 'center' }}
+            classes={{
+              header: clsx({
+                [classes.warning]: groupedEvents.hasWarning && !groupedEvents.hasError,
+                [classes.error]: groupedEvents.hasError,
+              }),
+            }}
+          >
+            <Piece.Header>
+              <div className={classes.badge}>
+                <WarningIcon />
+                &nbsp;
+                {groupedEvents.nbTotal}
+              </div>
+            </Piece.Header>
 
-          const deprecations = events.filter(event =>
-            isSameEvent(event, ReacticoonEvents.LOG_DEPRECATION)
-          );
-
-          const errors = events.filter(
-            event =>
-              isSameEvent(event, ReacticoonEvents.LOG_ERROR) ||
-              isSameEvent(event, ReacticoonEvents.LOG_EXCEPTION) ||
-              isSameEvent(event, ReacticoonEvents.LOG_REDUX_EXCEPTION) ||
-              isSameEvent(event, ReacticoonEvents.LOG_COMPONENT_DID_CATCH) ||
-              isSameEvent(event, ReacticoonEvents.LOG_NOT_IMPLEMENTED)
-          );
-
-          const nbErrors = errors.length;
-          const nbWarnings = warnings.length;
-          const nbDeprecations = deprecations.length;
-
-          const nbTotal = nbErrors + nbWarnings + nbDeprecations;
-
-          const hasError = nbErrors > 0;
-          const hasWarning = nbWarnings > 0 || nbDeprecations > 0;
-
-          return (
-            <Piece
-              name="EventsBadges"
-              headerStyle={{ textAlign: "center" }}
-              classes={{
-                header: clsx({
-                  [classes.warning]: hasWarning && !hasError,
-                  [classes.error]: hasError
-                })
-              }}
-            >
-              <Piece.Header>
-                <div className={classes.badge}>
-                  <WarningIcon />
-                  &nbsp;
-                  {nbTotal}
-                </div>
-              </Piece.Header>
-
-              <Piece.Content>
-                {() => [
-                  {
-                    label: "Errors",
-                    onClick: () =>
-                      displayDevToolbarRoute(DevToolbarRoute.events),
-                    value: (
-                      <span
-                        className={clsx(classes.contentValue, {
-                          [classes.error]: nbErrors > 1
-                        })}
-                      >
-                        {nbErrors}
-                      </span>
-                    )
-                  },
-                  {
-                    label: "Warnings",
-                    onClick: () =>
-                      displayDevToolbarRoute(DevToolbarRoute.events),
-                    value: (
-                      <span
-                        className={clsx(classes.contentValue, {
-                          [classes.warning]: nbWarnings > 1
-                        })}
-                      >
-                        {nbWarnings}
-                      </span>
-                    )
-                  },
-                  {
-                    label: "Deprecations",
-                    onClick: () =>
-                      displayDevToolbarRoute(DevToolbarRoute.events),
-                    value: (
-                      <span
-                        className={clsx(classes.contentValue, {
-                          [classes.warning]: nbDeprecations > 1
-                        })}
-                      >
-                        {nbDeprecations}
-                      </span>
-                    )
-                  }
-                ]}
-              </Piece.Content>
-            </Piece>
-          );
-        }}
+            <Piece.Content>
+              {() => [
+                {
+                  label: 'Errors',
+                  onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
+                  value: (
+                    <span
+                      className={clsx(classes.contentValue, {
+                        [classes.error]: groupedEvents.nbErrors > 1,
+                      })}
+                    >
+                      {groupedEvents.nbErrors}
+                    </span>
+                  ),
+                },
+                {
+                  label: 'Warnings',
+                  onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
+                  value: (
+                    <span
+                      className={clsx(classes.contentValue, {
+                        [classes.warning]: groupedEvents.nbWarnings > 1,
+                      })}
+                    >
+                      {groupedEvents.nbWarnings}
+                    </span>
+                  ),
+                },
+                {
+                  label: 'Deprecations',
+                  onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
+                  value: (
+                    <span
+                      className={clsx(classes.contentValue, {
+                        [classes.warning]: groupedEvents.nbDeprecations > 1,
+                      })}
+                    >
+                      {groupedEvents.nbDeprecations}
+                    </span>
+                  ),
+                },
+              ]}
+            </Piece.Content>
+          </Piece>
+        )}
       </EventsContainer>
     )}
   </DevToolbarContainer>
-);
+)
 
-export default withStyles(styles)(EventsBadgesPiece);
+export default withStyles(styles)(EventsBadgesPiece)

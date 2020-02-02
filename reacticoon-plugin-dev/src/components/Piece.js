@@ -1,113 +1,112 @@
-import React from "react";
+import React from 'react'
 
-import isArray from "lodash/isArray";
-import clsx from "clsx";
-import { withStyles } from "@material-ui/core/styles";
-import { StateContainer } from "reacticoon/view";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import isArray from 'lodash/isArray'
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
+import { StateContainer } from 'reacticoon/view'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 const styles = theme => ({
   root: {},
   header: {
     height: theme.app.toolbar.height,
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
-    color: "white",
-    cursor: "pointer",
+    color: 'white',
+    cursor: 'pointer',
 
-    "&:hover": {
-      backgroundColor: theme.app.toolbar.colors.hover
-    }
+    '&:hover': {
+      backgroundColor: theme.app.toolbar.colors.hover,
+    },
   },
   headerSelected: {
-    backgroundColor: theme.app.toolbar.colors.hover
+    backgroundColor: theme.app.toolbar.colors.hover,
   },
   headerWarn: {
-    backgroundColor: theme.app.toolbar.colors.warn
+    backgroundColor: theme.app.toolbar.colors.warn,
   },
   headerError: {
-    backgroundColor: theme.app.toolbar.colors.error
+    backgroundColor: theme.app.toolbar.colors.error,
   },
   headerGood: {
-    backgroundColor: theme.app.toolbar.colors.good
+    backgroundColor: theme.app.toolbar.colors.good,
   },
   menu_Paper: {
-    borderRadius: 0
+    borderRadius: 0,
   },
   content: {
     padding: theme.spacing(1),
     backgroundColor: theme.app.toolbar.colors.hover,
     maxWidth: 480,
-    maxHeight: 480
+    maxHeight: 480,
   },
   item: {
-    color: "white",
+    color: 'white',
     padding: 0,
 
-    "& b": {
-      color: "#AAA",
-      display: "table-cell",
-      fontSize: "11px",
-      padding: "4px 8px 4px 0"
-    }
+    '& b': {
+      color: '#AAA',
+      display: 'table-cell',
+      fontSize: '11px',
+      padding: '4px 8px 4px 0',
+    },
   },
   itemValue: {
-    fontSize: 13
-  }
-});
+    fontSize: 13,
+  },
+})
 
-const Piece = ({ onClick, name, classes, children, headerStyle = {} }) => {
-  const anchorEl = React.useRef(null);
+const Piece = ({ onClick, name, classes, children, onHeaderClick, headerStyle = {} }) => {
+  const anchorEl = React.useRef(null)
   return (
     <StateContainer>
       {({ state, setState }) => {
-        const timeoutLength = 300;
+        const timeoutLength = 300
 
-        const header = isArray(children) ? children[0] : children;
-        const content =
-          isArray(children) && children[1] ? children[1].props.children : null;
+        const header = isArray(children) ? children[0] : children
+        const content = isArray(children) && children[1] ? children[1].props.children : null
 
         const handleClick = event => {
-          onClick && onClick(event);
+          onClick && onClick(event)
           setState({
-            open: true
-          });
-        };
+            open: true,
+          })
+        }
 
         const handleClose = () => {
           setState({
             mouseOverButton: false,
-            mouseOverMenu: false
-          });
-        };
+            mouseOverMenu: false,
+          })
+        }
 
         const enterButton = event => {
-          setState({ mouseOverButton: true });
-        };
+          setState({ mouseOverButton: true })
+        }
 
         const leaveButton = () => {
           // Set a timeout so that the menu doesn't close before the user has time to
           // move their mouse over it
           setTimeout(() => {
-            setState({ mouseOverButton: false });
-          }, timeoutLength);
-        };
+            setState({ mouseOverButton: false })
+          }, timeoutLength)
+        }
 
         const enterMenu = () => {
-          setState({ mouseOverMenu: true });
-        };
+          setState({ mouseOverMenu: true })
+        }
 
         const leaveMenu = () => {
           setTimeout(() => {
-            setState({ mouseOverMenu: false });
-          }, timeoutLength);
-        };
+            setState({ mouseOverMenu: false })
+          }, timeoutLength)
+        }
 
         // Calculate open state based on mouse location
-        const open = state.mouseOverButton || state.mouseOverMenu || false;
+        const open = state.mouseOverButton || state.mouseOverMenu || false
 
         return (
           <div className={classes.root}>
@@ -119,9 +118,10 @@ const Piece = ({ onClick, name, classes, children, headerStyle = {} }) => {
               onMouseEnter={enterButton}
               onMouseLeave={leaveButton}
               className={clsx(classes.header, {
-                [classes.headerSelected]: open
+                [classes.headerSelected]: open,
               })}
               style={headerStyle}
+              onHeaderClick={onHeaderClick}
             >
               {header}
             </div>
@@ -133,34 +133,30 @@ const Piece = ({ onClick, name, classes, children, headerStyle = {} }) => {
                 open={open}
                 onClose={handleClose}
                 //anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-                transformOrigin={{ vertical: "bottom", horizontal: "left" }}
+                transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                 classes={{ paper: classes.menu_Paper }}
                 MenuListProps={{
                   onMouseEnter: enterMenu,
                   onMouseLeave: leaveMenu,
-                  classes: { root: classes.content }
+                  classes: { root: classes.content },
                 }}
               >
                 {content().map((content, index) => (
-                  <MenuItem
-                    key={index}
-                    className={classes.item}
-                    onClick={content.onClick}
-                  >
-                    <b>{content.label}</b>{" "}
+                  <MenuItem key={index} className={classes.item} onClick={content.onClick}>
+                    <b>{content.label}</b>{' '}
                     <span className={classes.itemValue}>{content.value}</span>
                   </MenuItem>
                 ))}
               </Menu>
             )}
           </div>
-        );
+        )
       }}
     </StateContainer>
-  );
-};
+  )
+}
 
-Piece.Header = ({ children }) => children;
-Piece.Content = ({ children }) => children;
+Piece.Header = ({ children }) => children
+Piece.Content = ({ children }) => children
 
-export default withStyles(styles)(Piece);
+export default withStyles(styles)(Piece)

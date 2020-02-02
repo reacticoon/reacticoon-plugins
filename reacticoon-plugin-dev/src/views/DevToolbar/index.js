@@ -73,7 +73,7 @@ class DevToolbar extends React.Component {
                   if (devToolbarRoute) {
                     displayDevToolbarRoute(null)
                   } else {
-                    displayDevToolbarRoute(DevToolbarRoute.events)
+                    displayDevToolbarRoute(DevToolbarRoute.logs)
                   }
                 }}
                 route={route}

@@ -8,6 +8,7 @@ import { getRoutes } from 'reacticoon/routing'
 import { initConsoleCatcher } from '../modules/proxyConsole'
 import EventsDebugger from '../EventsDebugger'
 import intiSse from '../modules/sse/initSse'
+import initBrowserDevTools from '../modules/browserDevTools/initBrowserDevTools'
 
 // add our EventsListener, that listen for all the events
 // we must define it here, to handle the ON_APP_INIT event
@@ -16,6 +17,12 @@ EventManager.addListener(EventsDebugger.getListener())
 
 const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
   if (__DEV__) {
+    //
+    //
+    //
+
+    initBrowserDevTools()
+
     //
     //
     //

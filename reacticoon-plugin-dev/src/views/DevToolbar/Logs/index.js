@@ -1,81 +1,26 @@
-import React from "react";
+import React from 'react'
 
-import { StateContainer } from "reacticoon/view";
-import { ReacticoonEvents, isSameEvent } from "reacticoon/event";
+import { StateContainer } from 'reacticoon/view'
 
-import EventsContainer from "../../../modules/events/container";
-import Section from "reacticoon-plugin-dev/components/Section";
-import Grid from "@material-ui/core/Grid";
+import LogsView from 'reacticoon-plugin-dev/components/LogsView'
+import Section from 'reacticoon-plugin-dev/components/Section'
 
-import Deprecation from "./Deprecation";
-import Warning from "./Warning";
-import ErrorView from "./Error";
+const heightInVh = 80
 
-const LogsView = () => (
-  <StateContainer defaultState={{ selectedEvent: null }}>
+const LogsViewPage = () => (
+  <StateContainer defaultState={{ selected: null }}>
     {({ state, setState }) => (
       <Section.Container>
-        <Section xs={6}>
-          <EventsContainer>
-            {({ events }) => {
-              // TODO: filter duplicates
-              const warnings = events.filter(event =>
-                isSameEvent(event, ReacticoonEvents.LOG_WARN)
-              );
-
-              const deprecations = events.filter(event =>
-                isSameEvent(event, ReacticoonEvents.LOG_DEPRECATION)
-              );
-
-              const errors = events.filter(
-                event =>
-                  isSameEvent(event, ReacticoonEvents.LOG_ERROR) ||
-                  isSameEvent(event, ReacticoonEvents.LOG_EXCEPTION) ||
-                  isSameEvent(event, ReacticoonEvents.LOG_REDUX_EXCEPTION) ||
-                  isSameEvent(
-                    event,
-                    ReacticoonEvents.LOG_COMPONENT_DID_CATCH
-                  ) ||
-                  isSameEvent(event, ReacticoonEvents.LOG_NOT_IMPLEMENTED)
-              );
-
-              //const nbErrors = errors.length
-              //const nbWarnings = warnings.length
-              //const nbDeprecations = deprecations.length
-
-              //const nbTotal = nbErrors + nbWarnings + nbDeprecations
-
-              //const hasError = nbErrors > 0
-              //const hasWarning = nbWarnings > 0 || nbDeprecations > 0
-
-              return (
-                <Grid container>
-                  <Grid item xs={12}>
-                    {errors.map((error, index) => (
-                      <ErrorView key={index} error={error} />
-                    ))}
-                  </Grid>
-                  <Grid item xs={12}>
-                    {warnings.map((warning, index) => (
-                      <Warning key={index} warning={warning} />
-                    ))}
-                  </Grid>
-                  <Grid item xs={12}>
-                    {deprecations.map((deprecation, index) => (
-                      <Deprecation key={index} deprecation={deprecation} />
-                    ))}
-                  </Grid>
-                </Grid>
-              );
-            }}
-          </EventsContainer>
-        </Section>
-        <Section xs={6}>
-          {state.selectedEvent && <EventDetail event={state.selectedEvent} />}
+        <Section>
+          <LogsView
+            selected={state.selected}
+            onSelect={event => setState({ selected: event })}
+            heightInVh={heightInVh}
+          />
         </Section>
       </Section.Container>
     )}
   </StateContainer>
-);
+)
 
-export default LogsView;
+export default LogsViewPage

@@ -26,7 +26,8 @@ const drawerWidth = 220; // sidebar width
 
 const styles = theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    height: "100%"
   },
   toolbar: {
     paddingRight: 24 // keep right padding when drawer closed
@@ -115,9 +116,9 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 10,
+    paddingBottom: 0,
     minHeight: "100vh",
-    overflow: "auto",
+    overflow: "hidden",
     background: theme.app.colors.content
   },
   "@global": {

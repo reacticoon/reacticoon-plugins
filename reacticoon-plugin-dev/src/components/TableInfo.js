@@ -1,22 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import clsx from "classnames";
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'classnames'
 
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   root: {},
   row: {},
   cell: {
-    padding: `${theme.spacing(0.5)}px 0`
+    padding: `${theme.spacing(0.5)}px 0`,
   },
   label: {
     paddingRight: theme.spacing(3),
-    fontSize: 11
+    fontSize: 11,
   },
-  value: {}
-});
+  value: {},
+})
 
 /**
  * Display a simple table to display info
@@ -30,18 +30,12 @@ const InfoTable = ({ data, classes, className }) => {
             rowData && (
               <tr className={classes.row} key={index}>
                 <td className={classes.cell}>
-                  <Typography
-                    component="span"
-                    className={clsx(classes.label)}
-                  >
+                  <Typography component="span" className={clsx(classes.label)}>
                     {rowData.label}
                   </Typography>
                 </td>
                 <td>
-                  <Typography
-                    component="span"
-                    className={clsx(classes.value)}
-                  >
+                  <Typography component="span" className={clsx(classes.value)}>
                     {rowData.value}
                   </Typography>
                 </td>
@@ -50,8 +44,8 @@ const InfoTable = ({ data, classes, className }) => {
         )}
       </tbody>
     </table>
-  );
-};
+  )
+}
 
 InfoTable.propTypes = {
   /**
@@ -59,7 +53,7 @@ InfoTable.propTypes = {
    * - label
    * - value
    */
-  datas: PropTypes.array.isRequired
-};
+  data: PropTypes.array.isRequired,
+}
 
-export default withStyles(styles)(InfoTable);
+export default withStyles(styles)(InfoTable)
