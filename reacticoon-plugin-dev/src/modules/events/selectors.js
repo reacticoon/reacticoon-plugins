@@ -11,7 +11,7 @@ export const getEvents = createSelector(getState, state => {
 export const getGroupedEvents = createSelector(getEvents, events => {
   const warnings = events.filter(event => event.isTypeWarning)
   const deprecations = events.filter(event => event.isTypeDeprecation)
-  const errors = events.filter(event => event.isTypeEvent)
+  const errors = events.filter(event => event.isTypeError)
 
   // TODO: filter duplicates
 
@@ -19,7 +19,7 @@ export const getGroupedEvents = createSelector(getEvents, events => {
   const nbWarnings = warnings.length
   const nbDeprecations = deprecations.length
 
-  const nbTotal = nbErrors + nbWarnings + nbDeprecations
+  const nbTotal = events.length
 
   const hasError = nbErrors > 0
   const hasWarning = nbWarnings > 0 || nbDeprecations > 0

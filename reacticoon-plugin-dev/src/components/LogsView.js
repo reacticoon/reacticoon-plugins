@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { EventManager } from 'reacticoon/event'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import isNil from 'lodash/isNil'
@@ -7,6 +8,8 @@ import EventsContainer from 'reacticoon-plugin-dev/modules/events/container'
 import TableInfo from 'reacticoon-plugin-dev/components/TableInfo'
 import ReacticoonLogo from 'reacticoon-plugin-dev/components/svg/ReacticoonLogo'
 import Tooltip from '@material-ui/core/Tooltip'
+import Pre from 'reacticoon-plugin-dev/components/Pre'
+import Button from '@material-ui/core/Button'
 
 //
 //
@@ -166,7 +169,11 @@ const EventDetailContent = ({ event }) => {
       return <div>{event.isWarningFailedPropTypeData.error}</div>
 
     default:
-      return null
+      return (
+        <div>
+          <Pre content={JSON.parse(event.data)} />
+        </div>
+      )
   }
 }
 
@@ -189,6 +196,16 @@ const EventDetail = ({ event }) => {
 
       <div className={classes.content}>
         <EventDetailContent event={event} />
+      </div>
+
+      <div>
+        <Button
+          onClick={() => {
+            EventManager.dispatch(event.definition, JSON.parse(event.data))
+          }}
+        >
+          Run again
+        </Button>
       </div>
 
       {event.reactStacktrace && <ReactStacktrace stacktrace={event.reactStacktrace} />}
@@ -258,7 +275,7 @@ const useLogsViewStyles = makeStyles(theme => ({
       marginRight: theme.spacing(1),
     },
 
-    '& .nbTotal': { background: theme.app.colors.block },
+    '& .nbTotal': { background: theme.palette.secondary.dark },
     '& .nbErrors': { background: theme.app.colors.error },
     '& .nbWarnings': { background: theme.app.colors.warn },
     '& .nbDeprecations': { background: theme.app.colors.warn },

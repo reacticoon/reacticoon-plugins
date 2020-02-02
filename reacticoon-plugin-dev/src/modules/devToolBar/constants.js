@@ -7,6 +7,5 @@ export const DevToolbarRoute = {
   performances: 'rc_performances',
   actions: 'rc_actions',
   store: 'rc_store',
-  events: 'rc_events',
   logs: 'rc_logs',
 }

@@ -1,10 +1,28 @@
 import React from 'react'
 
 import { EventManager } from 'reacticoon/event'
+import { withStyles } from '@material-ui/core/styles'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  header: {
+    display: 'flex',
+    marginBottom: theme.spacing(2),
+  },
+  select: {
+    minWidth: 200,
+  },
+  button: {
+    marginLeft: 'auto',
+  },
+})
 
 class ReacticoonEventRunner extends React.Component {
   constructor(props) {
@@ -59,30 +77,40 @@ class ReacticoonEventRunner extends React.Component {
 
   render() {
     const { selectedEvent, propsJson } = this.state
+    const { classes } = this.props
     const definitions = EventManager.getEventDefinitions()
     return (
-      <div>
-        <Select
-          value={selectedEvent}
-          renderValue={event => event.eventName}
-          onChange={this.onSelectEvent}
-          style={{ zIndex: 9999 }}
-        >
-          {definitions.map(event => (
-            <MenuItem key={event.definition.type} value={event}>
-              {event.eventName}
-            </MenuItem>
-          ))}
-        </Select>
+      <div className={classes.root}>
+        <div className={classes.header}>
+          <Select
+            className={classes.select}
+            value={selectedEvent}
+            renderValue={event => event.eventName}
+            onChange={this.onSelectEvent}
+            style={{ zIndex: 9999 }}
+          >
+            {definitions.map(event => (
+              <MenuItem key={event.definition.type} value={event}>
+                {event.eventName}
+              </MenuItem>
+            ))}
+          </Select>
+
+          <Button
+            onClick={this.handleDispatch}
+            disabled={!propsJson || !selectedEvent}
+            className={classes.button}
+            color="secondary"
+            variant="contained"
+          >
+            Dispatch event
+          </Button>
+        </div>
 
         {this.renderEventContentForm()}
-
-        <Button onClick={this.handleDispatch} disabled={!propsJson || !selectedEvent}>
-          Dispatch event
-        </Button>
       </div>
     )
   }
 }
 
-export default ReacticoonEventRunner
+export default withStyles(styles)(ReacticoonEventRunner)

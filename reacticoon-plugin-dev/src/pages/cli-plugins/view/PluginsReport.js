@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Pre from '../../../components/Pre'
+import Pre from 'reacticoon-plugin-dev/components/Pre'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = () => ({
