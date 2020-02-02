@@ -10,6 +10,7 @@ import ReacticoonLogo from 'reacticoon-plugin-dev/components/svg/ReacticoonLogo'
 import Tooltip from '@material-ui/core/Tooltip'
 import Pre from 'reacticoon-plugin-dev/components/Pre'
 import Button from '@material-ui/core/Button'
+import LaunchEditorButton from 'reacticoon-plugin-dev/components/LaunchEditorButton'
 
 //
 //
@@ -59,6 +60,11 @@ const useEventLineStyles = makeStyles(theme => ({
     alignItems: 'center',
     marginRight: theme.spacing(1),
   },
+  file: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    marginRight: theme.spacing(1),
+  },
   icon: {
     width: 30,
     marginRight: theme.spacing(1),
@@ -89,7 +95,14 @@ const EventLine = ({ event, selected, onSelect }) => {
         </div>
         <div>{event.message}</div>
       </div>
-      <div className={classes.right}>{event.dateFormatted}</div>
+      <div className={classes.right}>
+        {event.hasReactStacktrace && !event.reactStacktrace[0].isCreatorLine && (
+          <span className={classes.file}>
+            {event.reactStacktrace[0].file}:{event.reactStacktrace[0].line}
+          </span>
+        )}
+        <span>{event.dateFormatted}</span>
+      </div>
     </div>
   )
 }
@@ -109,11 +122,24 @@ const useEventDetailStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
 
-    '& div': {
+    '& > div': {
       display: 'flex',
       alignItems: 'center',
       padding: theme.spacing(1),
+      justifyContent: 'center',
     },
+  },
+  headerRight: {
+    '& button': {
+      marginRight: theme.spacing(1),
+    },
+  },
+  file: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    marginTop: 2,
+    textTransform: 'none',
+    color: 'black',
   },
   backgroundEventInfo: {
     background: theme.app.colors.info,
@@ -191,21 +217,37 @@ const EventDetail = ({ event }) => {
         })}
       >
         <div>{event.message}</div>
-        <div>{event.dateFormatted}</div>
+        <div className={classes.headerRight}>
+          <Button
+            onClick={() => {
+              EventManager.dispatch(event.definition, JSON.parse(event.data))
+            }}
+            variant="outlined"
+            size="small"
+            color="inherit"
+          >
+            Run
+          </Button>
+
+          {event.hasReactStacktrace && !event.reactStacktrace[0].isCreatorLine && (
+            <LaunchEditorButton
+              // TODO: fix opening this type of file
+              src={`${event.reactStacktrace[0].file}:${event.reactStacktrace[0].line}`}
+              label={
+                <span className={classes.file}>
+                  {event.reactStacktrace[0].file}:{event.reactStacktrace[0].line}
+                </span>
+              }
+              variant="text"
+            />
+          )}
+
+          <div>{event.dateFormatted}</div>
+        </div>
       </div>
 
       <div className={classes.content}>
         <EventDetailContent event={event} />
-      </div>
-
-      <div>
-        <Button
-          onClick={() => {
-            EventManager.dispatch(event.definition, JSON.parse(event.data))
-          }}
-        >
-          Run again
-        </Button>
       </div>
 
       {event.reactStacktrace && <ReactStacktrace stacktrace={event.reactStacktrace} />}

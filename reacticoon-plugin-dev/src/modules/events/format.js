@@ -3,6 +3,7 @@ import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import { createFormatter, createListFormatter } from 'reacticoon/format'
 import { ReacticoonEvents, isSameEvent } from 'reacticoon/event'
+import { formatQueryParams } from 'reacticoon/routing/utils'
 import uuidv4 from 'uuid/v4'
 
 const formatEvent = createFormatter(event => {
@@ -49,7 +50,7 @@ const formatEvent = createFormatter(event => {
       case event.isTypeInfo:
         switch (true) {
           case isSameEvent(event, ReacticoonEvents.ON_HISTORY_CHANGE):
-            message = `${eventData.location.pathname}`
+            message = formatQueryParams(eventData.location.pathname, eventData.location.query)
             event.isEventHisoryChange = true
             break
 
@@ -75,6 +76,8 @@ const formatEvent = createFormatter(event => {
         event.isWarningFailedPropTypeType =
           !event.isWarningInvalidPropTypeType && message.startsWith('Warning: Failed prop type: ')
 
+        event.isWarningInvalidDomProperty = message.startsWith('Warning: Invalid DOM property')
+
         if (message.startsWith('Warning: ')) {
           message = message.substr('Warning: '.length)
         }
@@ -96,6 +99,7 @@ const formatEvent = createFormatter(event => {
         }
 
         event.reactStacktrace = extractReactStacktrace(message)
+        event.hasReactStacktrace = !isEmpty(event.reactStacktrace)
 
         switch (true) {
           case event.isWarningInvalidPropTypeType:
@@ -142,6 +146,23 @@ const formatEvent = createFormatter(event => {
             event.isFromReact = true
 
             message = `Error when passing prop: ${event.isWarningFailedPropTypeData.error}`
+            break
+
+          //
+          // e.g:
+          // Invalid DOM property `stop-color`. Did you mean `stopColor`?
+          //
+          case event.isWarningInvalidDomProperty:
+            const invalidDomPropertyMatch = /Invalid DOM property `(?<domProperty>.*)`.*. Did you mean `(?<suggestion>.*)`.*/gm.exec(
+              message
+            )
+
+            event.isWarningInvalidDomPropertyData = {
+              domProperty: invalidDomPropertyMatch.groups.domProperty,
+              suggestion: invalidDomPropertyMatch.groups.suggestion,
+            }
+
+            event.isFromReact = true
             break
         }
         break

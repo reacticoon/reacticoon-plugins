@@ -1,18 +1,22 @@
+// avoid infinite loop
+const getConsole = () => window.originalConsole || window.console
+// const getConsole = () => console
+
 export default class Logger {
   static notImplemented({ type, detail }) {
-    console.error(type, detail)
+    getConsole().error(type, detail)
   }
 
   static warn({ type, detail }) {
-    console.warn(type, detail)
+    getConsole().warn(type, detail)
   }
 
   static error({ type, detail }) {
-    console.error(type, detail)
+    getConsole().error(type, detail)
   }
 
   static deprecated({ type, detail }) {
-    console.warn('[DEPRECATED]', type, detail)
+    getConsole().warn('[DEPRECATED]', type, detail)
   }
 
   /**
@@ -25,7 +29,7 @@ export default class Logger {
    * @param  {[type]} state  current store state
    */
   static reduxException({ err, action, state }) {
-    console.error('action exception', err)
+    getConsole().error('action exception', err)
   }
 
   static componentDidCatch({ error, info }) {}
@@ -39,8 +43,8 @@ export default class Logger {
    */
   static logException({ ex, context }) {
     /* eslint no-console:0 */
-    if (window.console && console.error) {
-      console.error(ex)
+    if (getConsole() && getConsole().error) {
+      getConsole().error(ex)
     }
   }
 }
