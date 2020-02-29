@@ -14,6 +14,7 @@ export const displayDevToolbarRoute = createAction(
 
     return {
       route,
+      debug: true,
     }
   }
 )

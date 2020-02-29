@@ -23,19 +23,30 @@ const styles = theme => ({
       paddingRight: theme.spacing(0.5),
     },
   },
+  piece_itemValue: {
+    width: '100%',
+    textAlign: 'right',
+  },
   contentValue: {
     height: '100%',
     width: 20,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     color: 'white',
-    backgroudColor: '#666',
+    backgroundColor: '#666',
+    textAlign: 'right',
   },
   warning: {
     backgroundColor: theme.app.colors.warn,
   },
   error: {
     backgroundColor: theme.app.colors.error,
+  },
+  debug: {
+    backgroundColor: theme.app.colors.debug,
+  },
+  info: {
+    backgroundColor: theme.app.colors.info,
   },
 })
 
@@ -48,6 +59,7 @@ const EventsBadgesPiece = ({ classes }) => (
             name="EventsBadges"
             headerStyle={{ textAlign: 'center' }}
             classes={{
+              itemValue: classes.piece_itemValue,
               header: clsx({
                 [classes.warning]: groupedEvents.hasWarning && !groupedEvents.hasError,
                 [classes.error]: groupedEvents.hasError,
@@ -70,7 +82,7 @@ const EventsBadgesPiece = ({ classes }) => (
                   value: (
                     <span
                       className={clsx(classes.contentValue, {
-                        [classes.error]: groupedEvents.nbErrors > 1,
+                        [classes.error]: groupedEvents.hasError,
                       })}
                     >
                       {groupedEvents.nbErrors}
@@ -83,7 +95,7 @@ const EventsBadgesPiece = ({ classes }) => (
                   value: (
                     <span
                       className={clsx(classes.contentValue, {
-                        [classes.warning]: groupedEvents.nbWarnings > 1,
+                        [classes.warning]: groupedEvents.hasWarning,
                       })}
                     >
                       {groupedEvents.nbWarnings}
@@ -96,10 +108,36 @@ const EventsBadgesPiece = ({ classes }) => (
                   value: (
                     <span
                       className={clsx(classes.contentValue, {
-                        [classes.warning]: groupedEvents.nbDeprecations > 1,
+                        [classes.warning]: groupedEvents.hasDeprecation,
                       })}
                     >
                       {groupedEvents.nbDeprecations}
+                    </span>
+                  ),
+                },
+                {
+                  label: 'Infos',
+                  onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
+                  value: (
+                    <span
+                      className={clsx(classes.contentValue, {
+                        [classes.info]: groupedEvents.hasInfo,
+                      })}
+                    >
+                      {groupedEvents.nbInfos}
+                    </span>
+                  ),
+                },
+                {
+                  label: 'Debugs',
+                  onClick: () => displayDevToolbarRoute(DevToolbarRoute.events),
+                  value: (
+                    <span
+                      className={clsx(classes.contentValue, {
+                        [classes.debug]: groupedEvents.hasDebug,
+                      })}
+                    >
+                      {groupedEvents.nbDebugs}
                     </span>
                   ),
                 },

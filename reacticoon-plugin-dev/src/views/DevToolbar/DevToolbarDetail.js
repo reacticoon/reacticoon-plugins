@@ -122,6 +122,10 @@ const DevToolbarDetail = ({
       label: 'Infos',
     },
     {
+      id: DevToolbarRoute.logs,
+      label: 'Logs',
+    },
+    {
       id: DevToolbarRoute.modules,
       label: 'Modules',
     },
@@ -136,10 +140,6 @@ const DevToolbarDetail = ({
     {
       id: DevToolbarRoute.store,
       label: 'Store',
-    },
-    {
-      id: DevToolbarRoute.logs,
-      label: 'Logs',
     },
   ].concat(extendedTabs.map(tab => ({ label: tab.label })))
 
@@ -185,6 +185,7 @@ const DevToolbarDetail = ({
           content={[
             // 0
             <DevToolbarDetailRequestInfo route={route} params={params} />,
+            <LogsView />,
             <ModulesList />,
             <Performance />,
             //
@@ -199,7 +200,6 @@ const DevToolbarDetail = ({
             </Grid>,
             //
             <DevToolbarStoreInfo />,
-            <LogsView />,
           ].concat(extendedTabs.map(tab => React.createElement(tab.view)))}
         />
       </div>

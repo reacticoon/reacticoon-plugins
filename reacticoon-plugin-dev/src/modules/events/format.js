@@ -30,7 +30,10 @@ const formatEvent = createFormatter(event => {
 
   event.isTypeWarning = isSameEvent(event, ReacticoonEvents.LOG_WARN)
 
-  event.isTypeInfo = !event.isTypeDeprecation && !event.isTypeError && !event.isTypeWarning
+  event.isTypeDebug = isSameEvent(event, ReacticoonEvents.LOG_DEBUG)
+
+  event.isTypeInfo =
+    !event.isTypeDeprecation && !event.isTypeError && !event.isTypeWarning && !event.isTypeDebug
 
   event.isFromReact = false
 

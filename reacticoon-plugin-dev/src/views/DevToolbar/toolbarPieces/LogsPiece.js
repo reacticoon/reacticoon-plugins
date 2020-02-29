@@ -90,6 +90,7 @@ const ConsoleView = ({ onClose }) => {
         <LogsView
           selected={selected}
           onSelect={event => setSelected(event)}
+          onUnselect={event => setSelected(null)}
           heightInVh={heightInVh}
         />
       </section>

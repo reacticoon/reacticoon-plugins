@@ -31,6 +31,7 @@ const theme = createMuiTheme({
       error: red[300],
       warn: orange[300],
       info: blue[300],
+      debug: '#6A8AAC',
       good: green[300],
       dark: '#2F2F2F',
 

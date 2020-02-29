@@ -19,6 +19,7 @@ const LogsViewPage = () => (
           <LogsView
             selected={state.selected}
             onSelect={event => setState({ selected: event })}
+            onUnselect={event => setState({ selected: null })}
             heightInVh={heightInVh}
           />
         </Section>

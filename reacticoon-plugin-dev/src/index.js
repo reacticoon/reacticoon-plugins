@@ -1,11 +1,11 @@
-import { createPlugin } from "reacticoon/plugin";
-import { __DEV__ } from "reacticoon/environment";
+import { createPlugin } from 'reacticoon/plugin'
+import { __DEV__ } from 'reacticoon/environment'
 
-import onAppInit from "./events/onAppInit";
-import routing from "./config/routing";
-import commandModule from "./modules/command";
-import userContextModule from "./modules/userContext";
-import DevToolbar from "./views/DevToolbar";
+import onAppInit from './events/onAppInit'
+import routing from './config/routing'
+import commandModule from './modules/command'
+import userContextModule from './modules/userContext'
+import DevToolbar from './views/DevToolbar'
 
 //
 // Dev plugin for reacticoon. Provides pages and debug utils.
@@ -27,22 +27,23 @@ import DevToolbar from "./views/DevToolbar";
 //
 const ReacticoonDevPlugin = createPlugin({
   // The plugin name. Must be unique. All Reacticoon plugins have the 'Reacticoon' prefix.
-  name: "reacticoon-plugin-dev",
-  description: "Reacticoon plugin displayed on development.",
+  name: 'reacticoon-plugin-dev',
+  description: 'Reacticoon plugin displayed on development.',
   // list of the modules that the plugin register.
   // optionnal.
   modules: [
     commandModule,
-    __DEV__ && require("./modules/events").default,
-    __DEV__ && require("./modules/devToolBar").default, // ReacticoonDevToolbarModule
-    __DEV__ && require("./modules/sse").default,
-    userContextModule
+    __DEV__ && require('./modules/debug').default,
+    __DEV__ && require('./modules/events').default,
+    __DEV__ && require('./modules/devToolBar').default, // ReacticoonDevToolbarModule
+    __DEV__ && require('./modules/sse').default,
+    userContextModule,
   ],
   // Describe listeners for a particular event.
   // optionnal.
   eventsHandler: [onAppInit],
   routing,
-  layoutViews: [DevToolbar]
-});
+  layoutViews: [DevToolbar],
+})
 
-export default ReacticoonDevPlugin;
+export default ReacticoonDevPlugin

@@ -11,6 +11,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Pre from 'reacticoon-plugin-dev/components/Pre'
 import Button from '@material-ui/core/Button'
 import LaunchEditorButton from 'reacticoon-plugin-dev/components/LaunchEditorButton'
+import CloseIcon from '@material-ui/icons/Close'
 
 //
 //
@@ -51,6 +52,10 @@ const useEventLineStyles = makeStyles(theme => ({
     background: theme.app.colors.error,
     color: 'black',
   },
+  eventDebug: {
+    background: theme.app.colors.debug,
+    color: 'black',
+  },
   left: {
     display: 'flex',
     alignItems: 'center',
@@ -81,6 +86,7 @@ const EventLine = ({ event, selected, onSelect }) => {
         [classes.eventWarning]: event.isTypeWarning,
         [classes.eventDeprecation]: event.isTypeDeprecation,
         [classes.eventError]: event.isTypeError,
+        [classes.eventDebug]: event.isTypeDebug,
         selected: selected,
       })}
       onClick={onSelect}
@@ -134,6 +140,9 @@ const useEventDetailStyles = makeStyles(theme => ({
       marginRight: theme.spacing(1),
     },
   },
+  closeBtn: {
+    marginRight: '0!important',
+  },
   file: {
     fontSize: 12,
     fontFamily: 'monospace',
@@ -155,6 +164,10 @@ const useEventDetailStyles = makeStyles(theme => ({
   },
   backgroundEventError: {
     background: theme.app.colors.error,
+    color: 'black',
+  },
+  backgroundEventDebug: {
+    background: theme.app.colors.debug,
     color: 'black',
   },
   content: {
@@ -203,7 +216,7 @@ const EventDetailContent = ({ event }) => {
   }
 }
 
-const EventDetail = ({ event }) => {
+const EventDetail = ({ event, onUnselect }) => {
   const classes = useEventDetailStyles()
 
   return (
@@ -214,6 +227,7 @@ const EventDetail = ({ event }) => {
           [classes.backgroundEventWarning]: event.isTypeWarning,
           [classes.backgroundEventDeprecation]: event.isTypeDeprecation,
           [classes.backgroundEventError]: event.isTypeError,
+          [classes.backgroundEventDebug]: event.isTypeDebug,
         })}
       >
         <div>{event.message}</div>
@@ -243,6 +257,16 @@ const EventDetail = ({ event }) => {
           )}
 
           <div>{event.dateFormatted}</div>
+
+          <Button
+            onClick={onUnselect}
+            className={classes.closeBtn}
+            variant="text"
+            size="small"
+            color="inherit"
+          >
+            <CloseIcon />
+          </Button>
         </div>
       </div>
 
@@ -321,6 +345,8 @@ const useLogsViewStyles = makeStyles(theme => ({
     '& .nbErrors': { background: theme.app.colors.error },
     '& .nbWarnings': { background: theme.app.colors.warn },
     '& .nbDeprecations': { background: theme.app.colors.warn },
+    '& .nbDebugs': { background: theme.app.colors.debug },
+    '& .nbInfos': { background: theme.app.colors.info },
   },
   eventsList: {
     marginTop: theme.spacing(1),
@@ -337,7 +363,7 @@ const useLogsViewStyles = makeStyles(theme => ({
   },
 }))
 
-const LogsView = ({ selected, onSelect, heightInVh }) => {
+const LogsView = ({ selected, onSelect, onUnselect, heightInVh }) => {
   const classes = useLogsViewStyles({ heightInVh })
 
   return (
@@ -354,6 +380,14 @@ const LogsView = ({ selected, onSelect, heightInVh }) => {
 
               <Tooltip title="Errors">
                 <div className="nbErrors">{groupedEvents.nbErrors}</div>
+              </Tooltip>
+
+              <Tooltip title="Debugs">
+                <div className="nbDebugs">{groupedEvents.nbDebugs}</div>
+              </Tooltip>
+
+              <Tooltip title="Infos">
+                <div className="nbInfos">{groupedEvents.nbInfos}</div>
               </Tooltip>
 
               <Tooltip title="Warnings">
@@ -386,7 +420,7 @@ const LogsView = ({ selected, onSelect, heightInVh }) => {
                 selected: !isNil(selected),
               })}
             >
-              {selected && <EventDetail event={selected} />}
+              {selected && <EventDetail event={selected} onUnselect={onUnselect} />}
             </div>
           </React.Fragment>
         )
