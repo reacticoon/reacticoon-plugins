@@ -1,39 +1,21 @@
-import React from "react";
+import React from 'react'
 
-import Page from "reacticoon-plugin-dev/components/Page";
-import ButtonLink from "reacticoon-plugin-dev/components/ButtonLink";
-import AddIcon from "@material-ui/icons/Add";
-import Section from "reacticoon-plugin-dev/components/Section";
-import ActivePlugins from "./view/ActivePlugins";
-import ActiveCliPlugins from "./view/ActiveCliPlugins";
+//
+// The following allow us to test the feature flag loading.
+//
+import DevFeatureLoadingContainer from 'reacticoon-plugin-dev/modules/feature/DevFeatureLoadingContainer'
 
-class PluginsPage extends React.Component {
+const ExperimentalFeature = React.lazy(() => import('./PluginsPage'))
+
+class PluginsPageLazyLoaded extends React.Component {
   render() {
-    return (
-      <Page
-        pageTitle="Plugins"
-        pageAction={
-          <ButtonLink
-            to="REACTICOON_PLUGIN_SEARCH"
-            size="small"
-            color="secondary"
-          >
-            <AddIcon /> Install plugin
-          </ButtonLink>
-        }
-      >
-        <Section.Container>
-          <Section title="Active plugins">
-            <ActivePlugins />
-          </Section>
-
-          <Section title="CLI plugins">
-            <ActiveCliPlugins />
-          </Section>
-        </Section.Container>
-      </Page>
-    );
+    return FEATURE_PLUGIN_MARKETPLACE ? (
+      <DevFeatureLoadingContainer
+        view={ExperimentalFeature}
+        featureName="FEATURE_PLUGIN_MARKETPLACE"
+      />
+    ) : null
   }
 }
 
-export default PluginsPage;
+export default PluginsPageLazyLoaded

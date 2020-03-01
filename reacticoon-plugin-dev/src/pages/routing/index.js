@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-import Page from "../../components/Page";
-import Section from "../../components/Section";
-import RoutesTable from "./views/RoutesTable";
+import Page from '../../components/Page'
+import Section from '../../components/Section'
+import RoutesTable from './views/RoutesTable'
 
-class PluginsPage extends React.Component {
+class RoutingPage extends React.Component {
   render() {
     return (
       <Page pageTitle="Routes">
@@ -14,8 +14,8 @@ class PluginsPage extends React.Component {
           </Section>
         </Section.Container>
       </Page>
-    );
+    )
   }
 }
 
-export default PluginsPage;
+export default RoutingPage
