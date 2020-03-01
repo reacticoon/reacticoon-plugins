@@ -8,7 +8,6 @@ import merge from 'lodash/merge'
 
 import { getValidatorEngine } from './config'
 
-import { __DEV__ } from 'reacticoon/environment'
 import { getQueryParam } from 'reacticoon/routing'
 
 export const DISABLE_FORM_DEV_DATA_QUERY_PARAM = 'disableFormDevData'
@@ -80,7 +79,10 @@ const createForm = (type, validationRules, defaultData, devData = null, options 
   return {
     type,
     validator: (data, options) =>
-    getValidatorEngine()(isFunction(validationRules) ? validationRules(options) : validationRules, data),
+      getValidatorEngine()(
+        isFunction(validationRules) ? validationRules(options) : validationRules,
+        data
+      ),
     getDefault: getDefault,
     options: {
       ...DEFAULT_OPTIONS,

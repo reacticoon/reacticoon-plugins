@@ -1,15 +1,14 @@
-import { createEventHandler, ReacticoonEvents } from "reacticoon/event";
-import { getPluginConfig } from "reacticoon/plugin";
-import { __DEV__ } from "reacticoon/environment";
+import { createEventHandler, ReacticoonEvents } from 'reacticoon/event'
+import { getPluginConfig } from 'reacticoon/plugin'
 
 const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
-  if (__DEV__) {
-    const config = getPluginConfig("reacticoon-plugin-material-ui");
+  if (FEATURE_REACTICOON_HEAVY_DEBUG) {
+    const config = getPluginConfig('reacticoon-plugin-material-ui')
 
     if (!config.theme) {
-      console.warn("[reacticoon-plugin-material-ui] no theme configured.");
+      console.warn('[reacticoon-plugin-material-ui] no theme configured.')
     }
   }
-});
+})
 
-export default onAppInit;
+export default onAppInit

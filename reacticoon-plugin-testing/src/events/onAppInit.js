@@ -1,7 +1,6 @@
-import { ReacticoonEvents, createEventHandler } from "reacticoon/event";
-import { __DEV__ } from "reacticoon/environment";
-import { getRoute } from "reacticoon/routing";
-import RoutingDebugger from "reacticoon-plugin-dev/RoutingDebugger";
+import { ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { getRoute } from 'reacticoon/routing'
+import RoutingDebugger from 'reacticoon-plugin-dev/RoutingDebugger'
 
 const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
   if (__DEV__) {
@@ -10,9 +9,9 @@ const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
     window.ReacticoonTesting = {
       test: () => 42,
       getRoute,
-      getCurrentRoute: RoutingDebugger.getCurrentRoute
-    };
+      getCurrentRoute: RoutingDebugger.getCurrentRoute,
+    }
   }
-});
+})
 
-export default onAppInit;
+export default onAppInit

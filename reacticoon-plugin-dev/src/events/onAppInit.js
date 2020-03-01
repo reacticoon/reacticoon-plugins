@@ -1,7 +1,6 @@
 import map from 'lodash/map'
 import forEach from 'lodash/forEach'
 import { EventManager, ReacticoonEvents, createEventHandler } from 'reacticoon/event'
-import { __DEV__ } from 'reacticoon/environment'
 import { getPlugins, getPluginConfig } from 'reacticoon/plugin'
 import { getModules } from 'reacticoon/module'
 import { getRoutes } from 'reacticoon/routing'
