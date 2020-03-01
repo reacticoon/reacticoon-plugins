@@ -1,57 +1,57 @@
-import React from "react";
+import React from 'react'
 
-import isEmpty from "lodash/isEmpty";
-import { addListener } from "../config";
+import isEmpty from 'lodash/isEmpty'
+import { addListener } from '../config'
 
 const formatPayload = payload => {
-  payload.isTypeError = payload.type === "error";
-  payload.isTypeLog = payload.type === "log";
-  payload.isTypeDone = payload.type === "done";
+  payload.isTypeError = payload.type === 'error'
+  payload.isTypeLog = payload.type === 'log'
+  payload.isTypeDone = payload.type === 'done'
 
-  payload.hasTaskId = !isEmpty(payload.taskId);
+  payload.hasTaskId = !isEmpty(payload.taskId)
 
-  return payload;
-};
+  return payload
+}
 
 class SseMessagesContainer extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      events: []
-    };
+      events: [],
+    }
 
-    addListener(props.eventName, this.handleEvent);
+    addListener(props.eventName, this.handleEvent)
   }
 
   handleEvent = eventData => {
-    const props = this.props;
-    const payload = formatPayload(eventData.payload);
+    const props = this.props
+    const payload = formatPayload(eventData.payload)
 
     if (props.taskId && payload.hasTaskId && payload.taskId !== props.taskId) {
-      return;
+      return
     }
 
     if (payload.isTypeDone) {
       // TODO: removeListener
       if (props.onEnded) {
-        props.onEnded(payload);
+        props.onEnded(payload)
       }
     }
 
     this.setState({
-      events: [...this.state.events, payload]
-    });
-  };
+      events: [...this.state.events, payload],
+    })
+  }
 
   render() {
-    const { children } = this.props;
-    const { events } = this.state;
+    const { children } = this.props
+    const { events } = this.state
 
     return children({
-      events
-    });
+      events,
+    })
   }
 }
 
-export default SseMessagesContainer;
+export default SseMessagesContainer
