@@ -75,7 +75,7 @@ const styles = theme => ({
   },
 })
 
-function Hit({ hit: pkg, classes }) {
+function DependencyRow({ hit: pkg, classes }) {
   const url = pkg.homepage || (pkg.repository && pkg.repository.url) || ''
   const iconUrl = `https://avatars.dicebear.com/v2/identicon/${pkg.name}.svg`
 
@@ -89,7 +89,12 @@ function Hit({ hit: pkg, classes }) {
               {pkg.name}
             </Link>
           </div>
-          <div className={classes.description}>{pkg.description}</div>
+
+          <div className={classes.description}>
+            <Link to="REACTICOON_DEPENDENCY_DETAIL" params={{ dependencyName: pkg.name }} newTab>
+              {pkg.description}
+            </Link>
+          </div>
         </div>
 
         <div className={classes.metadata}>
@@ -147,4 +152,4 @@ function Hit({ hit: pkg, classes }) {
 //   )}
 // </div>
 
-export default withStyles(styles)(Hit)
+export default withStyles(styles)(DependencyRow)

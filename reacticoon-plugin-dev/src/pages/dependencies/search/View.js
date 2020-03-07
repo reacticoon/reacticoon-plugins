@@ -6,7 +6,7 @@ import { InstantSearch, Hits, Pagination, Configure } from 'react-instantsearch-
 import SearchBox from 'reacticoon-plugin-dev/modules/algolia/view/SearchBox'
 import SearchByAlgoiliaImg from 'reacticoon-plugin-dev/media/search_by_algolia.svg'
 
-import Hit from './view/Hit'
+import DependencyRow from './view/DependencyRow'
 
 import { withStyles } from '@material-ui/core/styles'
 
@@ -106,7 +106,7 @@ class View extends React.Component {
             </div>
             <div>
               <SearchBox classes={{ root: classes.SearchBox_root }} />
-              <Hits hitComponent={Hit} />
+              <Hits hitComponent={DependencyRow} />
               <StyledPagination />
             </div>
           </InstantSearch>
