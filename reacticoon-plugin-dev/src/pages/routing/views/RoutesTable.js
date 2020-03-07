@@ -1,23 +1,18 @@
-import React from "react";
+import React from 'react'
 
-import startsWith from "lodash/startsWith";
-import { getRoutes, Link, getRouteNameForRoute } from "reacticoon/routing";
+import startsWith from 'lodash/startsWith'
+import { getRoutes, Link, getRouteNameForRoute } from 'reacticoon/routing'
 
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableHead from "@material-ui/core/TableHead";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
-import LaunchEditorButton from "../../../components/LaunchEditorButton";
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableHead from '@material-ui/core/TableHead'
+import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@material-ui/core/TableRow'
+import LaunchEditorButton from '../../../components/LaunchEditorButton'
 
 const RoutesTable = ({ withPlugins = true }) => (
   <React.Fragment>
-    <LaunchEditorButton src="config/routes.js" label="Open routes" />
-    <LaunchEditorButton
-      src="config/RoutingEnum.js"
-      label="Open Routing Enum"
-      style={{ marginLeft: 16 }}
-    />
+    <LaunchEditorButton src="config/routing.js" label="Open routing" />
 
     <Table>
       <TableHead>
@@ -33,9 +28,7 @@ const RoutesTable = ({ withPlugins = true }) => (
       <TableBody>
         {getRoutes()
           // do not display our plugin pages, prefixed with /_rc/
-          .filter(
-            route => withPlugins || !startsWith(route.definition.path, "/_rc")
-          )
+          .filter(route => withPlugins || !startsWith(route.definition.path, '/_rc'))
           .map((route, index) => {
             {
               /* debugger */
@@ -55,29 +48,25 @@ const RoutesTable = ({ withPlugins = true }) => (
                 <TableCell>
                   {route.definition.__plugin && (
                     <Link
-                      to={Link.getRoute("REACTICOON_PLUGIN")}
+                      to={Link.getRoute('REACTICOON_PLUGIN')}
                       params={{ pluginName: route.definition.__plugin }}
                     >
                       {route.definition.__plugin}
                     </Link>
                   )}
                 </TableCell>
-                <TableCell>
-                  {route.definition.authRequired ? "yes" : "no"}
-                </TableCell>
-                <TableCell>
-                  {route.definition.disabled ? "disabled" : "active"}
-                </TableCell>
+                <TableCell>{route.definition.authRequired ? 'yes' : 'no'}</TableCell>
+                <TableCell>{route.definition.disabled ? 'disabled' : 'active'}</TableCell>
                 <TableCell>
                   {/* TODO: */}
                   {/* <LaunchEditorButton src={route.handler} label="Open route code" /> */}
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
       </TableBody>
     </Table>
   </React.Fragment>
-);
+)
 
-export default RoutesTable;
+export default RoutesTable

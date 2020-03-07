@@ -12,7 +12,7 @@ const styles = () => ({
 })
 
 const SvgLogo = ({ svg, classes, ...props }) => (
-  <div className={classes.root} dangerouslySetInnerHTML={{ __html: svg }} />
+  <div className={classes.root} dangerouslySetInnerHTML={{ __html: svg }} {...props} />
 )
 
 export default withStyles(styles)(SvgLogo)

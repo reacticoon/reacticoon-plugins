@@ -1,86 +1,86 @@
-import React from "react";
+import React from 'react'
 
-import clsx from "clsx";
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { Link } from "reacticoon/routing";
-import StarIcon from "@material-ui/icons/Star";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import SvgLogo from "reacticoon-plugin-dev/components/SvgLogo";
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import { Link } from 'reacticoon/routing'
+import StarIcon from '@material-ui/icons/Star'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import OpenInNewIcon from '@material-ui/icons/OpenInNew'
+import SvgLogo from 'reacticoon-plugin-dev/components/SvgLogo'
 
 const styles = theme => ({
   row: {
-    display: "flex",
+    display: 'flex',
     padding: theme.spacing(2),
 
-    "&:hover": {
-      background: theme.palette.action.hover
-    }
+    '&:hover': {
+      background: theme.palette.action.hover,
+    },
   },
   icon: {
     width: 50,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   content: {
-    display: "flex",
-    flexDirection: "column",
-    paddingLeft: theme.spacing(2)
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: theme.spacing(2),
   },
   header: {},
   name: {},
   metadata: {
-    display: "flex",
-    alignItems: "center"
+    display: 'flex',
+    alignItems: 'center',
   },
   versions: {
     color: theme.app.colors.lightblue,
-    width: 170
+    width: 170,
   },
   description: {},
   hidden: {
-    display: "none!important"
+    display: 'none!important',
   },
   official: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
 
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+      color: theme.app.colors.lightblue,
+    },
   },
   installed: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+      color: theme.app.colors.lightblue,
+    },
   },
   homepage: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
-  }
-});
+      color: theme.app.colors.lightblue,
+    },
+  },
+})
 
 const PluginRow = ({ pluginData, classes }) => (
   <div className={classes.row}>
     {pluginData.identity.hasLogo ? (
       <div className={classes.icon}>
-        <SvgLogo svg={pluginData.identity.logo} size={35} />
+        <SvgLogo svg={pluginData.identity.logo} size={35} style={{ fill: 'white' }} />
       </div>
     ) : (
       <img className={classes.icon} src={pluginData.identity.logoUrl} />
@@ -91,15 +91,13 @@ const PluginRow = ({ pluginData, classes }) => (
           <Link
             to="REACTICOON_PLUGIN"
             params={{
-              pluginName: pluginData.identity.name
+              pluginName: pluginData.identity.name,
             }}
           >
             {pluginData.identity.name}
           </Link>
         </div>
-        <div className={classes.description}>
-          {pluginData.identity.description}
-        </div>
+        <div className={classes.description}>{pluginData.identity.description}</div>
       </div>
 
       <div className={classes.metadata}>
@@ -110,21 +108,21 @@ const PluginRow = ({ pluginData, classes }) => (
         </div>
         <div
           className={clsx(classes.official, {
-            [classes.hidden]: !pluginData.identity.isOfficial
+            [classes.hidden]: !pluginData.identity.isOfficial,
           })}
         >
           <StarIcon /> Official
         </div>
         <div
           className={clsx(classes.installed, {
-            [classes.hidden]: !pluginData.identity.isInstalled
+            [classes.hidden]: !pluginData.identity.isInstalled,
           })}
         >
           <CheckCircleIcon /> Installed
         </div>
         <div
           className={clsx(classes.homepage, {
-            [classes.hidden]: !pluginData.identity.hasHomepage
+            [classes.hidden]: !pluginData.identity.hasHomepage,
           })}
         >
           {pluginData.identity.hasHomepage && (
@@ -136,6 +134,6 @@ const PluginRow = ({ pluginData, classes }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default withStyles(styles)(PluginRow);
+export default withStyles(styles)(PluginRow)

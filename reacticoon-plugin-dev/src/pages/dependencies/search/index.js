@@ -1,14 +1,18 @@
-import React from "react";
+import React from 'react'
 
-import Page from "reacticoon-plugin-dev/components/Page";
-// import DependencyView from "./view/DependencyView";
+import Page from 'reacticoon-plugin-dev/components/Page'
+import View from './View'
 
 class DependencySearchPage extends React.Component {
   render() {
-    const props = this.props;
+    const props = this.props
 
-    return <Page pageTitle={`Search dependency`}></Page>;
+    return (
+      <Page pageTitle={`Install dependency`}>
+        <View />
+      </Page>
+    )
   }
 }
 
-export default DependencySearchPage;
+export default DependencySearchPage

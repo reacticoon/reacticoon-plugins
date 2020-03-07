@@ -1,92 +1,93 @@
-import React from "react";
+import React from 'react'
 
-import clsx from "clsx";
-import isEmpty from "lodash/isEmpty";
-import { Link } from "reacticoon/routing";
-import { withStyles } from "@material-ui/core/styles";
-import DependencyContainer from "reacticoon-plugin-dev/modules/dependency/view/DependencyContainer";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Section from "reacticoon-plugin-dev/components/Section";
-import SvgLogo from "reacticoon-plugin-dev/components/SvgLogo";
-import Pre from "reacticoon-plugin-dev/components/Pre";
-import MarkdownView from "reacticoon-plugin-dev/components/MarkdownView";
-import LaunchEditorButton from "reacticoon-plugin-dev/components/LaunchEditorButton";
-import StarIcon from "@material-ui/icons/Star";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import GetAppIcon from "@material-ui/icons/GetApp";
-import NotInterestedIcon from "@material-ui/icons/NotInterested";
+import clsx from 'clsx'
+import isEmpty from 'lodash/isEmpty'
+import { Link } from 'reacticoon/routing'
+import { withStyles } from '@material-ui/core/styles'
+import DependencyContainer from 'reacticoon-plugin-dev/modules/dependency/view/DependencyContainer'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import Section from 'reacticoon-plugin-dev/components/Section'
+import SvgLogo from 'reacticoon-plugin-dev/components/SvgLogo'
+import MarkdownView from 'reacticoon-plugin-dev/components/MarkdownView'
+import LaunchEditorButton from 'reacticoon-plugin-dev/components/LaunchEditorButton'
+import StarIcon from '@material-ui/icons/Star'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import OpenInNewIcon from '@material-ui/icons/OpenInNew'
+import GetAppIcon from '@material-ui/icons/GetApp'
+import NotInterestedIcon from '@material-ui/icons/NotInterested'
 
 const styles = theme => ({
   content: {
-    display: "flex",
-    justifyContent: "space-between"
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   left: {},
   right: {},
   name: {
-    fontSize: "2rem"
+    fontSize: '2rem',
   },
   description: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   metadata: {
-    display: "flex",
-    alignItems: "center",
-    marginTop: theme.spacing(2)
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: theme.spacing(2),
   },
   versions: {
     color: theme.app.colors.lightblue,
-    width: 170
+    width: 170,
   },
   hidden: {
-    display: "none!important"
+    display: 'none!important',
   },
   official: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
 
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+      color: theme.app.colors.lightblue,
+    },
   },
   installed: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+      color: theme.app.colors.lightblue,
+    },
   },
   install: {
-    "& svg": {
-      marginRight: theme.spacing(1)
-    }
+    '& svg': {
+      marginRight: theme.spacing(1),
+    },
   },
   homepage: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
-    color: theme.app.colors.lightblue,
-    "& svg": {
-      paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+    '& a': {
+      display: 'flex',
+      alignItems: 'center',
+      color: theme.app.colors.lightblue,
+      '& svg': {
+        paddingRight: theme.spacing(0.5),
+        color: theme.app.colors.lightblue,
+      },
+    },
   },
   logo: {
     width: 135,
-    height: 135
+    height: 135,
   },
   action: {
-    marginTop: theme.spacing(4)
-  }
-});
+    marginTop: theme.spacing(4),
+  },
+})
 
 const DependencyView = ({ dependencyName, config, classes }) => (
   <DependencyContainer dependencyName={dependencyName}>
@@ -116,7 +117,7 @@ const DependencyView = ({ dependencyName, config, classes }) => (
                   </div>
                   <div
                     className={clsx(classes.official, {
-                      [classes.hidden]: !dependencyData.isOfficial
+                      [classes.hidden]: !dependencyData.isOfficial,
                     })}
                   >
                     <StarIcon /> Official
@@ -124,7 +125,7 @@ const DependencyView = ({ dependencyName, config, classes }) => (
 
                   <div
                     className={clsx(classes.installed, {
-                      [classes.hidden]: !dependencyData.isInstalled
+                      [classes.hidden]: !dependencyData.isInstalled,
                     })}
                   >
                     <CheckCircleIcon /> Installed
@@ -132,7 +133,7 @@ const DependencyView = ({ dependencyName, config, classes }) => (
 
                   <div
                     className={clsx(classes.installed, {
-                      [classes.hidden]: dependencyData.isInstalled
+                      [classes.hidden]: dependencyData.isInstalled,
                     })}
                   >
                     <NotInterestedIcon /> Not installed
@@ -140,7 +141,7 @@ const DependencyView = ({ dependencyName, config, classes }) => (
 
                   <div
                     className={clsx(classes.homepage, {
-                      [classes.hidden]: !dependencyData.hasHomepage
+                      [classes.hidden]: !dependencyData.hasHomepage,
                     })}
                   >
                     {dependencyData.hasHomepage && (
@@ -172,12 +173,9 @@ const DependencyView = ({ dependencyName, config, classes }) => (
               <div className={classes.right}>
                 <div>
                   {dependencyData.hasLogo ? (
-                    <SvgLogo svg={dependencyData.logo} size={135} />
+                    <SvgLogo svg={dependencyData.logo} size={135} style={{ fill: 'white' }} />
                   ) : (
-                    <img
-                      className={classes.logo}
-                      src={dependencyData.logoUrl}
-                    />
+                    <img className={classes.logo} src={dependencyData.logoUrl} />
                   )}
                 </div>
               </div>
@@ -199,6 +197,6 @@ const DependencyView = ({ dependencyName, config, classes }) => (
       )
     }
   </DependencyContainer>
-);
+)
 
-export default withStyles(styles)(DependencyView);
+export default withStyles(styles)(DependencyView)
