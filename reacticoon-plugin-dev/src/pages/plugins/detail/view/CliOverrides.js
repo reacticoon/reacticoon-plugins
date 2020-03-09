@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-import Typography from "@material-ui/core/Typography";
-import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
-import LaunchEditorButton from "reacticoon-plugin-dev/components/LaunchEditorButton";
-import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
-import Pre from "reacticoon-plugin-dev/components/Pre";
+import Typography from '@material-ui/core/Typography'
+import CommandContainer from 'reacticoon-plugin-dev/modules/command/view/CommandContainer'
+import LaunchEditorButton from 'reacticoon-plugin-dev/components/LaunchEditorButton'
+import LoadingButton from 'reacticoon-plugin-dev/components/LoadingButton'
+import Pre from 'reacticoon-plugin-dev/components/Pre'
 
 const CliOverride = ({ overridesData }) =>
   !overridesData.hasOverrides ? (
@@ -20,16 +20,16 @@ const CliOverride = ({ overridesData }) =>
       <CommandContainer
         manualRun
         command="READ_FILE"
-        id={"cli_plugin_overrides"}
+        id={'cli_plugin_overrides'}
         payload={{
-          filepath: overridesData.filepath
+          filepath: overridesData.filepath,
         }}
       >
-        {({ runCommand, data, isFetching }) => (
+        {({ runCommand, data, isPending }) => (
           <div style={{ marginTop: 16 }}>
             <LoadingButton
               onClick={runCommand}
-              isLoading={isFetching}
+              isLoading={isPending}
               loadingText="Fetching override code"
               variant="outlined"
               size="small"
@@ -42,6 +42,6 @@ const CliOverride = ({ overridesData }) =>
         )}
       </CommandContainer>
     </div>
-  );
+  )
 
-export default CliOverride;
+export default CliOverride

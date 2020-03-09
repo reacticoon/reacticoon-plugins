@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-import Page from "reacticoon-plugin-dev/components/Page";
-import Section from "reacticoon-plugin-dev/components/Section";
-import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
-import BuildContainer from "reacticoon-plugin-dev/components/BuildContainer";
-import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
+import Page from 'reacticoon-plugin-dev/components/Page'
+import Section from 'reacticoon-plugin-dev/components/Section'
+import CommandContainer from 'reacticoon-plugin-dev/modules/command/view/CommandContainer'
+import BuildContainer from 'reacticoon-plugin-dev/components/BuildContainer'
+import LoadingButton from 'reacticoon-plugin-dev/components/LoadingButton'
 
 class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
   render() {
@@ -14,10 +14,10 @@ class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
           <Section title="Report">
             <BuildContainer>
               <CommandContainer manualRun command="LIGHTHOUSE::REPORT">
-                {({ data, isFetching, runCommand }) =>
+                {({ data, isPending, runCommand }) =>
                   !data ? (
                     <LoadingButton
-                      isLoading={isFetching}
+                      isLoading={isPending}
                       onClick={runCommand}
                       variant="contained"
                       color="primary"
@@ -41,8 +41,8 @@ class ReacticoonPluginLighthouse__DashboardPage extends React.Component {
           </Section>
         </Section.Container>
       </Page>
-    );
+    )
   }
 }
 
-export default ReacticoonPluginLighthouse__DashboardPage;
+export default ReacticoonPluginLighthouse__DashboardPage

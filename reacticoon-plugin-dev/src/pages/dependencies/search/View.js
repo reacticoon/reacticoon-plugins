@@ -1,62 +1,31 @@
 import React from 'react'
 
 import algoliasearch from 'algoliasearch/lite'
-import { InstantSearch, Hits, Pagination, Configure } from 'react-instantsearch-dom'
+import { InstantSearch, Hits, Configure } from 'react-instantsearch-dom'
 
+import { withStyles } from '@material-ui/core/styles'
+import Section from 'reacticoon-plugin-dev/components/Section'
 import SearchBox from 'reacticoon-plugin-dev/modules/algolia/view/SearchBox'
+import Pagination from 'reacticoon-plugin-dev/modules/algolia/view/Pagination'
 import SearchByAlgoiliaImg from 'reacticoon-plugin-dev/media/search_by_algolia.svg'
 
 import DependencyRow from './view/DependencyRow'
 
-import { withStyles } from '@material-ui/core/styles'
-
-// https://www.algolia.com/doc/api-reference/widgets/pagination/react/#html-output
-const StyledPagination = withStyles(theme => ({
-  root: {
-    marginTop: theme.spacing(4),
-
-    '& .ais-Pagination-list': {
-      display: 'flex',
-      justifyContent: 'center',
-
-      '& li': {
-        marginRight: theme.spacing(0.5),
-        color: 'white',
-
-        '& .ais-Pagination-link': {
-          background: theme.app.colors.block,
-          padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-        },
-      },
-
-      '& .ais-Pagination-item--selected': {
-        '& .ais-Pagination-link': {
-          background: `${theme.app.colors.lightblue}!important`,
-        },
-      },
-      '& .ais-Pagination-item--disabled': {
-        '& .ais-Pagination-link': {
-          background: `${theme.app.colors.grey}!important`,
-        },
-      },
-    },
-  },
-}))(({ classes }) => (
-  <div className={classes.root}>
-    <Pagination />
-  </div>
-))
-
 const styles = theme => ({
   searchByAlgolia: {
-    width: 200,
+    width: 160,
     marginTop: theme.spacing(4),
     float: 'right',
     marginRight: theme.spacing(2),
+    background: '#fefefe',
+    padding: theme.spacing(1),
   },
   SearchBox_root: {
     paddingRight: theme.spacing(4),
     marginLeft: theme.spacing(2),
+  },
+  hits: {
+    marginTop: theme.spacing(4),
   },
 })
 
@@ -95,31 +64,33 @@ class View extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <React.Fragment>
-        {/* TODO: make reacticoon propose some dependencies */}
-        {/* <RecommandedView /> */}
+      <Section.Container>
+        <Section>
+          {/* TODO: make reacticoon propose some dependencies */}
+          {/* <RecommandedView /> */}
 
-        <div>
-          <InstantSearch searchClient={this.searchClient} indexName="npm-search">
-            <div>
-              <Configure hitsPerPage={8} />
-            </div>
-            <div>
-              <SearchBox classes={{ root: classes.SearchBox_root }} />
-              <Hits hitComponent={DependencyRow} />
-              <StyledPagination />
-            </div>
-          </InstantSearch>
-        </div>
+          <div>
+            <InstantSearch searchClient={this.searchClient} indexName="npm-search">
+              <div>
+                <Configure hitsPerPage={8} />
+              </div>
+              <div>
+                <SearchBox classes={{ root: classes.SearchBox_root }} />
+                <Hits hitComponent={DependencyRow} className={classes.hits} />
+                <Pagination />
+              </div>
+            </InstantSearch>
+          </div>
 
-        <div>
-          <img
-            src={SearchByAlgoiliaImg}
-            alt="Search by algolia"
-            className={classes.searchByAlgolia}
-          />
-        </div>
-      </React.Fragment>
+          <div>
+            <img
+              src={SearchByAlgoiliaImg}
+              alt="Search by algolia"
+              className={classes.searchByAlgolia}
+            />
+          </div>
+        </Section>
+      </Section.Container>
     )
   }
 }

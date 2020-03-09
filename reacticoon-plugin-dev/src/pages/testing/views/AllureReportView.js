@@ -1,18 +1,14 @@
-import React from "react";
+import React from 'react'
 
-import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
-import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
+import CommandContainer from 'reacticoon-plugin-dev/modules/command/view/CommandContainer'
+import LoadingButton from 'reacticoon-plugin-dev/components/LoadingButton'
 
 const AllureReportView = () => (
-  <CommandContainer
-    manualRun
-    command="TESTS::ALLURE::SERVER"
-    id={"allure-report"}
-  >
-    {({ runCommand, isFetching, data }) => (
+  <CommandContainer manualRun command="TESTS::ALLURE::SERVER" id={'allure-report'}>
+    {({ runCommand, isPending, data }) => (
       <React.Fragment>
         <LoadingButton
-          isLoading={isFetching}
+          isLoading={isPending}
           loadingText="Retrieving ALLURE report"
           variant="outlined"
           onClick={runCommand}
@@ -24,14 +20,14 @@ const AllureReportView = () => (
           <iframe
             src={data.networkAddress}
             style={{
-              width: "100%",
-              height: "500px"
+              width: '100%',
+              height: '500px',
             }}
           />
         )}
       </React.Fragment>
     )}
   </CommandContainer>
-);
+)
 
-export default AllureReportView;
+export default AllureReportView

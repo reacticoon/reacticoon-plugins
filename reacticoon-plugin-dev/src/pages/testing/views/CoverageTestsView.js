@@ -1,31 +1,31 @@
-import React from "react";
+import React from 'react'
 
-import { getProcessEnv } from "reacticoon/environment";
-import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
-import SseLogViewer from "reacticoon-plugin-dev/modules/sse/view/SseLogViewer";
-import LoadingButton from "reacticoon-plugin-dev/components/LoadingButton";
+import { getProcessEnv } from 'reacticoon/environment'
+import CommandContainer from 'reacticoon-plugin-dev/modules/command/view/CommandContainer'
+import SseLogViewer from 'reacticoon-plugin-dev/modules/sse/view/SseLogViewer'
+import LoadingButton from 'reacticoon-plugin-dev/components/LoadingButton'
 
 const CoverageTestsView = () => {
-  const [isRunning, setRunning] = React.useState(false);
+  const [isRunning, setRunning] = React.useState(false)
   return (
     <CommandContainer manualRun command="TESTS::COVERAGE::RUN">
       {({
         runCommand: runCoverageTest,
-        isFetching: coverageTestDataIsFetching,
-        data: coverageTestData
+        isPending: coverageTestDataisPending,
+        data: coverageTestData,
       }) => (
         <CommandContainer
           manualRun
           command="READ_LOCAL_WEBSITE"
-          id={getProcessEnv("junitCoverageTestsReportPath")}
+          id={getProcessEnv('junitCoverageTestsReportPath')}
           payload={{
-            filepath: getProcessEnv("junitCoverageTestsReportPath")
+            filepath: getProcessEnv('junitCoverageTestsReportPath'),
           }}
         >
           {({
             runCommand: getJunitCoverageTestsReport,
             data: junitCoverageTestsReport,
-            isFetching: junitCoverageTestsReportIsFetching
+            isPending: junitCoverageTestsReportisPending,
           }) => (
             <React.Fragment>
               {coverageTestData && coverageTestData.taskId && (
@@ -34,19 +34,19 @@ const CoverageTestsView = () => {
                     eventName={coverageTestData.sseEventName}
                     taskId={coverageTestData.taskId}
                     onEnded={() => {
-                      getJunitCoverageTestsReport();
-                      setRunning(false);
+                      getJunitCoverageTestsReport()
+                      setRunning(false)
                     }}
                   />
                 </div>
               )}
 
               <LoadingButton
-                isLoading={coverageTestDataIsFetching || isRunning}
+                isLoading={coverageTestDataisPending || isRunning}
                 loadingText="Running coverage tests"
                 onClick={() => {
-                  runCoverageTest();
-                  setRunning(true);
+                  runCoverageTest()
+                  setRunning(true)
                 }}
                 variant="outlined"
               >
@@ -54,13 +54,13 @@ const CoverageTestsView = () => {
               </LoadingButton>
 
               <LoadingButton
-                isLoading={junitCoverageTestsReportIsFetching}
-                disabled={coverageTestDataIsFetching || isRunning}
+                isLoading={junitCoverageTestsReportisPending}
+                disabled={coverageTestDataisPending || isRunning}
                 loadingText="Retrieving last coverage tests results"
                 onClick={getJunitCoverageTestsReport}
                 variant="outlined"
                 style={{
-                  marginLeft: 16
+                  marginLeft: 16,
                 }}
               >
                 Display last coverage tests results
@@ -70,8 +70,8 @@ const CoverageTestsView = () => {
                 <iframe
                   src={junitCoverageTestsReport.url}
                   style={{
-                    width: "100%",
-                    height: "500px"
+                    width: '100%',
+                    height: '500px',
                   }}
                 />
               )}
@@ -80,7 +80,7 @@ const CoverageTestsView = () => {
         </CommandContainer>
       )}
     </CommandContainer>
-  );
-};
+  )
+}
 
-export default CoverageTestsView;
+export default CoverageTestsView

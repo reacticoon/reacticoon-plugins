@@ -21,12 +21,13 @@ class CommandContainer extends Component {
   }
 
   render() {
-    const { data, isFetching, error, children } = this.props
+    const { data, isPending, error, request, children } = this.props
 
     return children({
       data,
-      isFetching,
+      isPending,
       error,
+      request,
       runCommand: this.runCommand,
     })
   }
@@ -36,9 +37,10 @@ const Container = withModule(
   'CommandModule',
   [
     {
-      isFetching: 'makeIsFetchingCommandData',
+      isPending: 'makeIsPendingCommandData',
       data: 'makeGetCommandData',
       error: 'makeGetCommandError',
+      request: 'makeGetRequest',
     },
     'runCommand',
     {
@@ -58,9 +60,9 @@ const Container = withModule(
 export default ({ children, manualRun, formatter, ...props }) => (
   <LoadingContainer
     container={<Container manualRun={manualRun} {...props} formatter={formatter} />}
-    show={({ data, isFetching, error }) => !manualRun && (isFetching || (!data && !error))}
+    show={({ data, isPending, error }) => !manualRun && (isPending || (!data && !error))}
   >
-    {({ data, isFetching, runCommand, error }) => (
+    {({ data, isPending, runCommand, error }) => (
       <React.Fragment>
         {error ? (
           error.code === 'NO_INTERNET' ? (
@@ -71,7 +73,7 @@ export default ({ children, manualRun, formatter, ...props }) => (
         ) : (
           children({
             data,
-            isFetching,
+            isPending,
             runCommand,
           })
         )}

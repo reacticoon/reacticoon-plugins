@@ -1,80 +1,82 @@
-import React from "react";
+import React from 'react'
 
-import clsx from "clsx";
-import { withStyles } from "@material-ui/core/styles";
-import { Link } from "reacticoon/routing";
-import CommandContainer from "reacticoon-plugin-dev/modules/command/view/CommandContainer";
-import StarIcon from "@material-ui/icons/Star";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import Section from "../../../../components/Section";
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
+import { Link } from 'reacticoon/routing'
+import CommandContainer from 'reacticoon-plugin-dev/modules/command/view/CommandContainer'
+import StarIcon from '@material-ui/icons/Star'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import OpenInNewIcon from '@material-ui/icons/OpenInNew'
+import Section from '../../../../components/Section'
 
 const styles = theme => ({
   row: {
-    display: "flex",
+    display: 'flex',
     padding: theme.spacing(2),
 
-    "&:hover": {
-      background: theme.palette.action.hover
-    }
+    '&:hover': {
+      background: theme.palette.action.hover,
+    },
   },
   icon: {
     width: 50,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   content: {
-    display: "flex",
-    flexDirection: "column",
-    paddingLeft: theme.spacing(2)
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: theme.spacing(2),
   },
   header: {},
   name: {},
   metadata: {
-    display: "flex",
-    alignItems: "center"
+    display: 'flex',
+    alignItems: 'center',
   },
   versions: {
     color: theme.app.colors.lightblue,
-    width: 170
+    width: 170,
   },
   description: {},
   hidden: {
-    display: "none!important"
+    display: 'none!important',
   },
   official: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
 
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+      color: theme.app.colors.lightblue,
+    },
   },
   installed: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     color: theme.app.colors.lightblue,
-    "& svg": {
+    '& svg': {
       paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
+      color: theme.app.colors.lightblue,
+    },
   },
   homepage: {
     paddingLeft: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
-    color: theme.app.colors.lightblue,
-    "& svg": {
-      paddingRight: theme.spacing(0.5),
-      color: theme.app.colors.lightblue
-    }
-  }
-});
+    '& a': {
+      display: 'flex',
+      alignItems: 'center',
+      color: theme.app.colors.lightblue,
+      '& svg': {
+        paddingRight: theme.spacing(0.5),
+        color: theme.app.colors.lightblue,
+      },
+    },
+  },
+})
 
 const DependencyList = ({ list, classes }) =>
   list.map((dependency, index) => (
@@ -84,15 +86,25 @@ const DependencyList = ({ list, classes }) =>
         <div className={classes.header}>
           <div className={classes.name}>
             <Link
-              to={Link.getRoute("REACTICOON_DEPENDENCY_DETAIL")}
+              to={Link.getRoute('REACTICOON_DEPENDENCY_DETAIL')}
               params={{
-                dependencyName: dependency.name
+                dependencyName: dependency.name,
               }}
             >
               {dependency.name}
             </Link>
           </div>
-          <div className={classes.description}>{dependency.description}</div>
+
+          <div className={classes.description}>
+            <Link
+              to={Link.getRoute('REACTICOON_DEPENDENCY_DETAIL')}
+              params={{
+                dependencyName: dependency.name,
+              }}
+            >
+              {dependency.description}
+            </Link>
+          </div>
         </div>
 
         <div className={classes.metadata}>
@@ -103,21 +115,21 @@ const DependencyList = ({ list, classes }) =>
           </div>
           <div
             className={clsx(classes.official, {
-              [classes.hidden]: !dependency.isOfficial
+              [classes.hidden]: !dependency.isOfficial,
             })}
           >
             <StarIcon /> Official
           </div>
           <div
             className={clsx(classes.installed, {
-              [classes.hidden]: !dependency.isInstalled
+              [classes.hidden]: !dependency.isInstalled,
             })}
           >
             <CheckCircleIcon /> Installed
           </div>
           <div
             className={clsx(classes.homepage, {
-              [classes.hidden]: !dependency.hasHomepage
+              [classes.hidden]: !dependency.hasHomepage,
             })}
           >
             {dependency.hasHomepage && (
@@ -129,7 +141,7 @@ const DependencyList = ({ list, classes }) =>
         </div>
       </div>
     </div>
-  ));
+  ))
 
 const ListDependencies = ({ classes }) => (
   <CommandContainer command="DEPENDENCIES::INSTALLED::LIST">
@@ -147,6 +159,6 @@ const ListDependencies = ({ classes }) => (
       )
     }
   </CommandContainer>
-);
+)
 
-export default withStyles(styles)(ListDependencies);
+export default withStyles(styles)(ListDependencies)

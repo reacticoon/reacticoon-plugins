@@ -17,7 +17,7 @@ class HibpPasswordRangeContainer extends React.Component {
     this.state = {
       isPwned: false,
       count: 0,
-      isFetching: false,
+      isPending: false,
     }
   }
 
@@ -32,7 +32,7 @@ class HibpPasswordRangeContainer extends React.Component {
       this.setState({
         isPwned: false,
         count: 0,
-        isFetching: false,
+        isPending: false,
       })
       return
     }
@@ -42,7 +42,7 @@ class HibpPasswordRangeContainer extends React.Component {
     const suffix = shaValue.substring(5).toUpperCase()
 
     this.setState({
-      isFetching: true,
+      isPending: true,
     })
 
     pwnedPasswordRange(prefix).then(results => {
@@ -53,19 +53,19 @@ class HibpPasswordRangeContainer extends React.Component {
       this.setState({
         isPwned,
         count: isPwned ? pwdData.count : 0,
-        isFetching: false,
+        isPending: false,
       })
     })
   }, 300)
 
   render() {
     const { children } = this.props
-    const { isPwned, count, isFetching } = this.state
+    const { isPwned, count, isPending } = this.state
 
     return children({
       isPwned,
       count,
-      isFetching,
+      isPending,
     })
   }
 }
