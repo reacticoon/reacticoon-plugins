@@ -8,6 +8,11 @@ export default class Logger {
   }
 
   static warn({ type, detail }) {
+    // TODO: fix when using server side rendering to render jsx to string using mui Button
+    if (detail.indexOf("useLayoutEffect does nothing on the server") !== -1) {
+      debugger
+      return;
+    }
     getConsole().warn(type, detail)
   }
 

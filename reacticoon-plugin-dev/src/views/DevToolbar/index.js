@@ -12,10 +12,6 @@ class DevToolbar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      showBar: true,
-    }
-
     this.updateRoutingDebugger(props)
 
     this.extendedTabs = getExtendedTabs()
@@ -29,12 +25,6 @@ class DevToolbar extends React.Component {
     const { route, location, params } = props
 
     RoutingDebugger.setCurrentRoute(route)
-  }
-
-  toggleBar = route => {
-    this.setState({
-      showBar: !this.state.showBar,
-    })
   }
 
   render() {
@@ -67,8 +57,6 @@ class DevToolbar extends React.Component {
               )}
 
               <Toolbar
-                show={this.state.showBar}
-                onToggle={this.toggleBar}
                 onToggleDetail={() => {
                   if (devToolbarRoute) {
                     displayDevToolbarRoute(null)

@@ -2,10 +2,10 @@
   "name": "reacticoon-plugin-hibp",
   "version": "0.0.1",
   "description": "Reacticoon plugin for hibp API",
-  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-form#readme",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-hibp#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-form.git"
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-hibp.git"
   },
   "dependencies": {
     "hibp": "8.0.0"

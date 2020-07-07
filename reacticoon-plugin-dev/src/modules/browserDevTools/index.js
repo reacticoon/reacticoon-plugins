@@ -1,6 +1,6 @@
-/*global chrome */
+/* global window */
 
-const browser = chrome
+// const browser = window.chrome
 
 // chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
 //   // verify `sender.url`, read `request` object, reply with `sendResponse(...)`...

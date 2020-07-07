@@ -1,0 +1,13 @@
+{
+  "name": "reacticoon-plugin-helmet",
+  "version": "0.0.1",
+  "description": "Reacticoon plugin for hibp API",
+  "homepage": "https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-helmet#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-helmet.git"
+  },
+  "dependencies": {
+    "react-helmet": "^6.1.0"
+  }
+}

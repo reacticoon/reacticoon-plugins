@@ -2,6 +2,7 @@ import React from 'react'
 
 import { getExtendedPieces } from '../../utils'
 import { withStyles } from '@material-ui/core/styles'
+import useStorageState from 'reacticoon/view/hook/useStorageState'
 import EventsBadgesPiece from './toolbarPieces/EventsBadgesPiece'
 import DashboardPiece from './toolbarPieces/DashboardPiece'
 import RoutePiece from './toolbarPieces/RoutePiece'
@@ -49,10 +50,12 @@ const styles = theme => ({
   },
 })
 
-const Toolbar = ({ route, routeName, show, classes, onToggle, onToggleDetail }) =>
-  !show ? (
+const Toolbar = ({ route, routeName, classes, onToggleDetail }) => {
+  const [ show, onToggle ] = useStorageState('_reacticoon_toolbar', true)
+
+  return !show ? (
     <div className={classes.rootSmall}>
-      <ReacticoonLogoPiece onClick={onToggle} />
+      <ReacticoonLogoPiece onClick={() => onToggle(!show)} />
     </div>
   ) : (
     <div className={classes.root}>
@@ -73,9 +76,11 @@ const Toolbar = ({ route, routeName, show, classes, onToggle, onToggleDetail }) 
           React.createElement(piece.component, { key: index })
         )}
 
-        <ReacticoonLogoPiece onClick={onToggle} />
+        <ReacticoonLogoPiece onClick={() => onToggle(!show)} />
       </div>
     </div>
   )
+
+}
 
 export default withStyles(styles)(Toolbar)

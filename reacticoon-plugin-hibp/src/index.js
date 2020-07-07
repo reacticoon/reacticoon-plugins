@@ -5,9 +5,9 @@ export { default as HibpPasswordRangeContainer } from "./views/HibpPasswordRange
 //
 //
 //
-const ReacticoonPluginExample = createPlugin({
+const ReacticoonPluginHibp = createPlugin({
   name: "reacticoon-plugin-hibp",
   modules: []
 });
 
-export default ReacticoonPluginExample;
+export default ReacticoonPluginHibp;
