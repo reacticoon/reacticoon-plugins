@@ -8,7 +8,7 @@
     "url": "git+https://github.com/reacticoon/reacticoon-plugins/reacticoon-plugin-dev.git"
   },
   "dependencies": {
-    "algoliasearch": "^4.0.3",
+    "algoliasearch": "^4.3.0",
     "react-instantsearch-dom": "^6.3.0"
   }
 }
