@@ -107,15 +107,15 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing.unit * 7,
+    width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9,
+      width: theme.spacing(9),
     },
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     paddingBottom: 0,
     minHeight: '100vh',
     overflow: 'hidden',
@@ -174,7 +174,7 @@ const styles = theme => ({
     height: 320,
   },
   h5: {
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
   hoverLink: {
     '&:hover': {

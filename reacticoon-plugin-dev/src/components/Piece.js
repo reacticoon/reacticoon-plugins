@@ -121,7 +121,6 @@ const Piece = ({ onClick, name, classes, children, onHeaderClick, headerStyle = 
                 [classes.headerSelected]: open,
               })}
               style={headerStyle}
-              onHeaderClick={onHeaderClick}
             >
               {header}
             </div>

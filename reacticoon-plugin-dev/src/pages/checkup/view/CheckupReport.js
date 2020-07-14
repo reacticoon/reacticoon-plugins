@@ -10,8 +10,8 @@ import Typography from "@material-ui/core/Typography";
 const styles = theme => ({
   root: {},
   check: {
-    padding: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   },
   checkHeader: {},
   name: {},
@@ -19,7 +19,7 @@ const styles = theme => ({
     paddingTop: theme.spacing(1)
   },
   checkContent: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2)
   },
   checkError: {},
   checkResults: {

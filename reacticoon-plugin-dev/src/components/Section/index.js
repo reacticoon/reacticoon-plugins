@@ -7,7 +7,7 @@ import MessageBlock from "reacticoon-plugin-dev/components/MessageBlock";
 
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   },
   fullHeight: {
     height: "100%"
@@ -16,10 +16,10 @@ const styles = theme => ({
     textTransform: "uppercase",
     color: theme.app.colors.blueGrey[100],
     borderBottom: `1px solid ${theme.app.colors.blueGrey[500]}`,
-    paddingBottom: theme.spacing.unit
+    paddingBottom: theme.spacing(1)
   },
   content: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2)
   }
 });
 

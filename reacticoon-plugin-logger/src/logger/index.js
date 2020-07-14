@@ -1,3 +1,5 @@
+import startsWith from 'lodash/startsWith'
+
 // avoid infinite loop
 const getConsole = () => window.originalConsole || window.console
 // const getConsole = () => console
@@ -12,6 +14,10 @@ export default class Logger {
     if (detail.indexOf("useLayoutEffect does nothing on the server") !== -1) {
       debugger
       return;
+    }
+    // avoid react warning, displayed by react-error-overlay on console
+    if (startsWith(type, 'Warning: ')) {
+      return
     }
     getConsole().warn(type, detail)
   }

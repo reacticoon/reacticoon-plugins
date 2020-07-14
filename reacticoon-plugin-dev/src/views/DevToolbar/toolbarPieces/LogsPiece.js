@@ -28,10 +28,10 @@ const useConsoleViewStyles = makeStyles(theme => ({
     '& div': {
       display: 'flex',
       alignItems: 'center',
-      padding: theme.spacing.unit,
+      padding: theme.spacing(1),
 
       '& svg': {
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing(1),
         cursor: 'pointer',
       },
     },

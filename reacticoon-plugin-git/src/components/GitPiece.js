@@ -7,7 +7,7 @@ import Piece from "reacticoon-plugin-dev/components/Piece";
 
 const styles = theme => ({
   root: {
-    paddingLeft: theme.spacing.unit * 6,
+    paddingLeft: theme.spacing(6),
     display: "flex",
     alignItems: "center"
   }

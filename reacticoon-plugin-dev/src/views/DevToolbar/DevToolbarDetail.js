@@ -47,7 +47,7 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingRight: theme.spacing(2),
-    paddingLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing(1),
   },
   headerVersion: {
     marginLeft: 'auto', // put on the right
@@ -94,7 +94,7 @@ const styles = theme => ({
 
     background: theme.app.toolbar.colors.background,
     left: 0,
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
   },
   tabsView_content: {
     width: '100%',
