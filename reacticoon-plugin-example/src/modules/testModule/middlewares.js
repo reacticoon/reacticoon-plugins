@@ -19,6 +19,6 @@ export const testActionMiddleware = createMiddleware(
   // - next
   // - getState
   ({ action }) => {
-    console.log('testActionMiddleware SUCCESS: ' + JSON.stringify(action.data))
+    console.log('testActionMiddleware SUCCESS: ' + JSON.stringify(action.payload))
   }
 )

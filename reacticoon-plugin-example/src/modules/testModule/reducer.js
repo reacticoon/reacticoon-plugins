@@ -4,7 +4,7 @@ import { testAction } from './actions'
 
 // reducer for the `testAction`.
 const handleTestAction = (state, action) => {
-  return state.merge(action.data)
+  return state.merge(action.payload)
 }
 
 // reducer default data
