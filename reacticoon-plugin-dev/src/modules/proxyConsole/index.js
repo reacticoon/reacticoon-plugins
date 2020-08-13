@@ -71,11 +71,12 @@ export const initConsoleCatcher = () => {
         label: 'warn invalid DOM property',
       })
     } else if (message && message.startsWith('Warning')) {
-      EventManager.dispatch(EventManager.Event.LOG_WARN, {
-        type: message,
-        detail: '',
-        label: 'generic warn',
-      })
+      // TODO: fix infinite loop of warnings
+      // EventManager.dispatch(EventManager.Event.LOG_WARN, {
+      //   type: message,
+      //   detail: '',
+      //   label: 'generic warn',
+      // })
     }
 
     // handle:
@@ -85,18 +86,19 @@ export const initConsoleCatcher = () => {
 
   proxyConsole('warn', (message, ...otherProps) => {
     if (message && message.startsWith('Warning:')) {
-      EventManager.dispatch(EventManager.Event.LOG_WARN, {
-        type: message,
-        detail: '',
-        label: 'generic warn',
-      })
+      // TODO: fix infinite loop of warnings
+      // EventManager.dispatch(EventManager.Event.LOG_WARN, {
+      //   type: message,
+      //   detail: '',
+      //   label: 'generic warn',
+      // })
     } else if (message && message.startsWith('Material-UI:')) {
       // TODO: make the material-ui plugin handle this
-      EventManager.dispatch(EventManager.Event.LOG_WARN, {
-        type: message,
-        detail: '',
-        label: 'Material-UI',
-      })
+      // EventManager.dispatch(EventManager.Event.LOG_WARN, {
+      //   type: message,
+      //   detail: '',
+      //   label: 'Material-UI',
+      // })
     }
     // TODO: allow plugins to add their own custom catcher
     // For example a plugin that abstract a library could use this feature.

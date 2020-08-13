@@ -1,4 +1,4 @@
-import { ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { ReacticoonEvents, createEventListener } from 'reacticoon/event'
 import { getPluginConfig } from 'reacticoon/plugin'
 import invariant from 'invariant'
 import isNil from 'lodash/isNil'
@@ -9,7 +9,7 @@ import { registerForm } from '../modules/form/actions'
 
 // Handle the register form event.
 // This event allows to register forms dinamically from plugins
-const onRegisterForm = createEventHandler(ReacticoonEvents.REGISTER_FORM, event => {
+const onRegisterForm = createEventListener(ReacticoonEvents.REGISTER_FORM, event => {
   // TODO:
   const formConfig = event.formConfig
 

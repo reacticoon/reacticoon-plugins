@@ -6,8 +6,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import Page from "../../components/Page";
-import Section from "../../components/Section";
+import Page from "components/Page";
+import Section from "components/Section";
 
 import modules from "app/config/modules";
 

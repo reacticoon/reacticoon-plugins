@@ -1,6 +1,6 @@
 import map from 'lodash/map'
 import forEach from 'lodash/forEach'
-import { EventManager, ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { EventManager, ReacticoonEvents, createEventListener } from 'reacticoon/event'
 import { getPlugins, getPluginConfig } from 'reacticoon/plugin'
 import { getModules } from 'reacticoon/module'
 import { getRoutes } from 'reacticoon/routing'
@@ -14,7 +14,7 @@ import initBrowserDevTools from '../modules/browserDevTools/initBrowserDevTools'
 // For other plugins, the recommanded way is to addListener on the ON_APP_INIT event handler
 EventManager.addListener(EventsDebugger.getListener())
 
-const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
+const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   if (__DEV__) {
     //
     //

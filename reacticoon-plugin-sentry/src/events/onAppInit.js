@@ -1,10 +1,10 @@
 import isEmpty from 'lodash/isEmpty'
 import { getPluginConfig } from 'reacticoon/plugin'
-import { createEventHandler, ReacticoonEvents } from 'reacticoon/event'
+import { createEventListener, ReacticoonEvents } from 'reacticoon/event'
 
 import Logger from '../logger'
 
-const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
+const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   const config = getPluginConfig('ReacticoonPluginExample')
 
   if (config) {

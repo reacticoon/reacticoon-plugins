@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty'
-import { EventManager, ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { EventManager, ReacticoonEvents, createEventListener } from 'reacticoon/event'
 import { getStore } from 'reacticoon/store'
 import { saveEvent } from './modules/events/actions'
 import { getEvents } from './modules/events/selectors'
@@ -10,7 +10,7 @@ import { setUserContext, clearUserContext } from './modules/userContext/actions'
  * Listen for all the Reacticoon events.
  */
 const createEventsListener = callback =>
-  createEventHandler(ReacticoonEvents.ALL_EVENTS, event => {
+  createEventListener(ReacticoonEvents.ALL_EVENTS, event => {
     console.groupCollapsed(`[Reacticoon][event] [${event.__readableDate}] ${event.type}`)
     console.log(event.data)
     console.groupEnd()

@@ -1,5 +1,5 @@
 import { getPluginConfig } from 'reacticoon/plugin'
-import { ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { ReacticoonEvents, createEventListener } from 'reacticoon/event'
 import invariant from 'invariant'
 import isNil from 'lodash/isNil'
 import isFunction from 'lodash/isFunction'
@@ -7,7 +7,7 @@ import isFunction from 'lodash/isFunction'
 import { getStore } from 'reacticoon/store'
 import { registerForm } from '../modules/form/actions'
 
-const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
+const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   const config = getPluginConfig('reacticoon-plugin-form')
 
   if (FEATURE_REACTICOON_HEAVY_DEBUG) {

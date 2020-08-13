@@ -11,6 +11,9 @@ class Content extends Component {
 
     const theme = getTheme();
 
+    // allow to access theme from console
+    window.theme = theme
+
     return (
       <React.Fragment>
         <CssBaseline />

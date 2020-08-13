@@ -1,7 +1,7 @@
-import { createEventHandler, ReacticoonEvents } from 'reacticoon/event'
+import { createEventListener, ReacticoonEvents } from 'reacticoon/event'
 import { getPluginConfig } from 'reacticoon/plugin'
 
-const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
+const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   if (FEATURE_REACTICOON_HEAVY_DEBUG) {
     const config = getPluginConfig('reacticoon-plugin-material-ui')
 

@@ -1,8 +1,8 @@
-import { ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { ReacticoonEvents, createEventListener } from 'reacticoon/event'
 import { getRoute } from 'reacticoon/routing'
 import RoutingDebugger from 'reacticoon-plugin-dev/RoutingDebugger'
 
-const onAppInit = createEventHandler(ReacticoonEvents.ON_APP_INIT, () => {
+const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   if (__DEV__) {
     // TODO: move on end-to-end plugin
     // test adding Reacticoon

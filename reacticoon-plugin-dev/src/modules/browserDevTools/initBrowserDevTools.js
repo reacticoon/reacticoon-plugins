@@ -1,5 +1,5 @@
 import RoutingDebugger from '../../RoutingDebugger'
-import { EventManager, ReacticoonEvents, createEventHandler } from 'reacticoon/event'
+import { EventManager, ReacticoonEvents, createEventListener } from 'reacticoon/event'
 
 import EventsContainer from 'reacticoon-plugin-dev/modules/events/container'
 

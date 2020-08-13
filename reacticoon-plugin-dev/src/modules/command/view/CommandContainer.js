@@ -4,7 +4,7 @@ import withModule from 'reacticoon/module/withModule'
 import LoadingContainer from 'reacticoon/view/LoadingContainer'
 import ErrorBlock from 'reacticoon/view/ErrorBlock'
 
-class CommandContainer extends Component {
+class ReacticoonCommandContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -21,15 +21,26 @@ class CommandContainer extends Component {
   }
 
   render() {
-    const { data, isPending, error, request, children } = this.props
+    const { data, isPending, error, request, children, paging, paginateCommand } = this.props
 
-    return children({
+    const props = {
       data,
+      paging,
       isPending,
       error,
       request,
       runCommand: this.runCommand,
-    })
+    }
+
+    if (paginateCommand) {
+      return children({
+        ...props,
+        paging: data?.paging || {},
+        data: data?.data
+      })
+    }
+
+    return children(props)
   }
 }
 
@@ -50,12 +61,13 @@ const Container = withModule(
         id: '_',
         payload: null,
         queryPrams: {},
+        paginateCommand: false,
       },
     },
   ],
   () => import(/*  webpackChunkName: "reacticoon-plugin-dev__CommandModule" */ '../index'),
   <div />
-)(CommandContainer)
+)(ReacticoonCommandContainer)
 
 export default ({ children, manualRun, formatter, ...props }) => (
   <LoadingContainer

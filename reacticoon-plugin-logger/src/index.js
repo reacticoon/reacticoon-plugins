@@ -1,10 +1,10 @@
-import { ReacticoonEvents, createEventHandler } from "reacticoon/event";
+import { ReacticoonEvents, createEventListener } from "reacticoon/event";
 import { createPlugin } from "reacticoon/plugin";
 
 import Logger from "./logger";
 
 const createLogEventHandler = (actionType, loggerAction) => {
-  return createEventHandler(actionType, event => loggerAction(event.data));
+  return createEventListener(actionType, event => loggerAction(event.data));
 };
 
 const ReacticoonPluginExample = createPlugin({

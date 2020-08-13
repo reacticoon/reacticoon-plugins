@@ -1,6 +1,6 @@
-import { createEventHandler, createEvent } from 'reacticoon/event'
+import { createEventListener, createEvent } from 'reacticoon/event'
 
-const onCustomEvent = createEventHandler(
+const onCustomEvent = createEventListener(
   createEvent(
     'ReacticoonPluginExample::Event::onCustomEvent', 
     'Example of a custom event'
