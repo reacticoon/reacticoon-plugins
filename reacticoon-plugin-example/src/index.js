@@ -12,7 +12,7 @@ import onCustomEvent from "./events/onCustomEvent";
 //
 const ReacticoonPluginExample = createPlugin({
   // The plugin name. Must be unique. All Reacticoon plugins have the 'Reacticoon' prefix.
-  name: "reacticoon-plugin-example",
+  name: "ReacticoonPluginExample",
   // list of the modules that the plugin register.
   // optionnal.
   modules: [testModule],

@@ -1,4 +1,5 @@
 import undoable from 'redux-undo'
+import { isDebugLogLevel } from 'reacticoon/environment'
 import {
   getUndoType,
   getRedoType,
@@ -28,7 +29,7 @@ const getInitialState = () => ({
 const createUndoableReducer = (historyType, config, reducer) => undoable(
   reducer, { 
     
-    debug: FEATURE_REACTICOON_HEAVY_DEBUG, // turn on debugging
+    debug: isDebugLogLevel(), // turn on debugging
 
     ...config,
 

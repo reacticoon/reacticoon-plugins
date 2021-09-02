@@ -4,13 +4,14 @@ import invariant from 'invariant'
 import isNil from 'lodash/isNil'
 import isFunction from 'lodash/isFunction'
 
+import { isDebugLogLevel } from 'reacticoon/environment'
 import { getStore } from 'reacticoon/store'
 import { registerForm } from '../modules/form/actions'
 
 const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   const config = getPluginConfig('reacticoon-plugin-form')
 
-  if (FEATURE_REACTICOON_HEAVY_DEBUG) {
+  if (isDebugLogLevel()) {
     console.info('[reacticoon-plugin-form] config: ', config)
   }
 

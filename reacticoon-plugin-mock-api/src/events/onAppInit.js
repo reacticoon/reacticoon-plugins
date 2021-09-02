@@ -1,9 +1,10 @@
 import { ReacticoonEvents, createEventListener } from 'reacticoon/event'
 
 import { registerCustomApiCaller } from 'reacticoon/api/config'
+import { isDebugLogLevel } from 'reacticoon/environment'
 
 const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
-  if (FEATURE_REACTICOON_HEAVY_DEBUG) {
+  if (isDebugLogLevel()) {
     const mockApiCallApiCaller = require('../mockApiCallApiCaller').default
     registerCustomApiCaller(mockApiCallApiCaller)
   }

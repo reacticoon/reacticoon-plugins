@@ -28,7 +28,7 @@ function proxyConsole(type, callback) {
             _message = parseLogWithArguments(_message, argv)
             callback(_message, argv)
           } else {
-            debugger
+            // debugger
           }
         } catch (err) {
           // Warnings must never crash. Rethrow with a clean stack.

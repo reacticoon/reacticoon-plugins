@@ -1,6 +1,7 @@
 import isEmpty from 'lodash/isEmpty'
 import { getPluginConfig } from 'reacticoon/plugin'
 import { createEventListener, ReacticoonEvents } from 'reacticoon/event'
+import { isWarnLogLevel } from 'reacticoon/environment'
 
 import Logger from '../logger'
 
@@ -9,7 +10,9 @@ const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
 
   if (config) {
     if (isEmpty(config.sentryUrl)) {
-      console.warn(`Can't configure sentry. Missing 'sentryUrl' config.`)
+      if (isWarnLogLevel) {
+        console.warn(`Can't configure sentry. Missing 'sentryUrl' config.`)
+      }
     } else {
       // configure sentry logger
       Logger.configure({

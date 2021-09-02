@@ -3,6 +3,7 @@ import { getPluginConfig } from 'reacticoon/plugin'
 import invariant from 'invariant'
 import isNil from 'lodash/isNil'
 import isFunction from 'lodash/isFunction'
+import { isDebugLogLevel } from 'reacticoon/environment'
 
 import { getStore } from 'reacticoon/store'
 import { registerForm } from '../modules/form/actions'
@@ -13,7 +14,7 @@ const onRegisterForm = createEventListener(ReacticoonEvents.REGISTER_FORM, event
   // TODO:
   const formConfig = event.formConfig
 
-  if (FEATURE_REACTICOON_HEAVY_DEBUG) {
+  if (isDebugLogLevel()) {
     console.info('[reacticoon-plugin-form] register form: ', formConfig)
   }
 
