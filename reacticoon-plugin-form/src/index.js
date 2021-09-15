@@ -21,7 +21,7 @@ export { default as withForms } from "./modules/form/containers/withForms";
 
 const ReacticoonPluginForm = createPlugin({
   // The plugin name. Must be unique. All Reacticoon plugins have the 'Reacticoon' prefix.
-  name: "reacticoon-plugin-form",
+  name: "ReacticoonPluginForm",
   // list of the modules that the plugin register.
   // optionnal.
   modules: [formModule],

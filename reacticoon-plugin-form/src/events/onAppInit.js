@@ -9,13 +9,13 @@ import { getStore } from 'reacticoon/store'
 import { registerForm } from '../modules/form/actions'
 
 const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
-  const config = getPluginConfig('reacticoon-plugin-form')
+  const config = getPluginConfig('ReacticoonPluginForm')
 
   if (isDebugLogLevel()) {
-    console.info('[reacticoon-plugin-form] config: ', config)
+    console.info('[ReacticoonPluginForm] config: ', config)
   }
 
-  invariant(!isNil(config.forms), `[reacticoon-plugin-form] Missing 'forms' configuration`)
+  invariant(!isNil(config.forms), `[ReacticoonPluginForm] Missing 'forms' configuration`)
 
   // TODO: verify there is no duplicate formType
 
@@ -24,10 +24,10 @@ const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
 
     invariant(
       isNil(form.default) || !isFunction(form.getDefault),
-      `[reacticoon-plugin-form] form ${form.type} default must be a function named getDefault`
+      `[ReacticoonPluginForm] form ${form.type} default must be a function named getDefault`
     )
 
-    invariant(!isNil(form.type), `[reacticoon-plugin-form] 'type' is required`)
+    invariant(!isNil(form.type), `[ReacticoonPluginForm] 'type' is required`)
 
     const formState = {
       formData: form.getDefault(),

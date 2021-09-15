@@ -23,6 +23,6 @@ class Content extends Component {
   }
 }
 
-Content.displayName = "reacticoon-plugin-material-ui_Content";
+Content.displayName = "ReacticoonMaterialUIPlugin_Content";
 
 export default Content;

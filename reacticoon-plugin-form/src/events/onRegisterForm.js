@@ -15,19 +15,19 @@ const onRegisterForm = createEventListener(ReacticoonEvents.REGISTER_FORM, event
   const formConfig = event.formConfig
 
   if (isDebugLogLevel()) {
-    console.info('[reacticoon-plugin-form] register form: ', formConfig)
+    console.info('[ReacticoonPluginForm] register form: ', formConfig)
   }
 
-  invariant(!isNil(formConfig), `[reacticoon-plugin-form] Missing 'formConfig' configuration`)
+  invariant(!isNil(formConfig), `[ReacticoonPluginForm] Missing 'formConfig' configuration`)
 
   const { form, options } = formConfig
 
   invariant(
     isNil(form.default) || !isFunction(form.getDefault),
-    `[reacticoon-plugin-form] form ${form.type} default must be a function named getDefault`
+    `[ReacticoonPluginForm] form ${form.type} default must be a function named getDefault`
   )
 
-  invariant(!isNil(form.type), `[reacticoon-plugin-form] 'type' is required`)
+  invariant(!isNil(form.type), `[ReacticoonPluginForm] 'type' is required`)
 
   const formState = {
     formData: form.getDefault(),
@@ -36,7 +36,7 @@ const onRegisterForm = createEventListener(ReacticoonEvents.REGISTER_FORM, event
 
   getStore().dispatch(registerForm(form.type, formState))
 
-  const config = getPluginConfig('reacticoon-plugin-form')
+  const config = getPluginConfig('ReacticoonPluginForm')
   // TODO: update config with the registered form
 })
 

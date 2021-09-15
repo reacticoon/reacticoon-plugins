@@ -9,7 +9,7 @@ const createLogEventHandler = (actionType, loggerAction) => {
 };
 
 const ReacticoonPluginSentry = createPlugin({
-  name: "reacticoon-plugin-sentry",
+  name: "reacticoonPluginSentry",
   modules: [],
   eventsHandler: [
     onAppInit,

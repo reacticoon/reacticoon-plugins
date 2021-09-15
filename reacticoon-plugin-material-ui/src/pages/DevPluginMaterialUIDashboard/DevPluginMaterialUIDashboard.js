@@ -8,7 +8,7 @@ import Section from "reacticoon-plugin-dev/components/Section";
 
 class DevPluginMaterialUIDashboard extends React.Component {
   render() {
-    const appTheme = getPluginConfig("reacticoon-plugin-material-ui").theme;
+    const appTheme = getPluginConfig("ReacticoonMaterialUIPlugin").theme;
 
     return (
       <Page pageTitle="Material UI">

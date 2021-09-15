@@ -7,7 +7,7 @@ import onAppInit from "./events/onAppInit";
 //
 const ReacticoonTestingPlugin = createPlugin({
   // The plugin name. Must be unique. All Reacticoon plugins have the 'Reacticoon' prefix.
-  name: "reacticoon-plugin-testing",
+  name: "ReacticoonTestingPlugin",
   description:
     "Reacticoon plugin used to facilitate testing (unit, end-to-end).",
   // list of the modules that the plugin register.

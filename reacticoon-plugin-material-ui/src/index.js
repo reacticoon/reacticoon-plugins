@@ -5,7 +5,7 @@ import ReacticoonDevExtension from "./config/ReacticoonDevExtension";
 import onAppInit from "./events/onAppInit";
 
 const ReacticoonMaterialUIPlugin = createPlugin({
-  name: "reacticoon-plugin-material-ui",
+  name: "ReacticoonMaterialUIPlugin",
   modules: [],
   eventsHandler: [onAppInit],
   routing,

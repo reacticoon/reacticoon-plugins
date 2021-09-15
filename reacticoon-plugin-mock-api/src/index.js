@@ -11,7 +11,7 @@ import MockedCallsModule from "./modules/mockedCalls";
 //
 const ReacticoonMockApiPlugin = createPlugin({
   // The plugin name. Must be unique. All Reacticoon plugins have the 'Reacticoon' prefix.
-  name: "reacticoon-plugin-mock-api",
+  name: "ReacticoonMockApiPlugin",
   description: "Reacticoon plugin used to mock api calls for testing.",
   // list of the modules that the plugin register.
   // optionnal.

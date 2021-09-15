@@ -8,7 +8,7 @@ import { getFormType } from "./utils";
 
 // create the `getState` function, that will receive the state for the given module `reducer`.
 // the module name is defined on `index.js` (first argument of `createModule`)
-const getState = getStateForModule("reacticoon-plugin-form::FormModule");
+const getState = getStateForModule("ReacticoonPluginForm::FormModule");
 
 const DEFAULT_VALIDATE = {
   isValid: true

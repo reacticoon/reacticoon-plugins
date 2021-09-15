@@ -7,7 +7,7 @@ import { getPluginConfig } from "reacticoon/plugin";
  */
 
 const getTheme = () => {
-  const appTheme = getPluginConfig("reacticoon-plugin-material-ui").theme;
+  const appTheme = getPluginConfig("ReacticoonMaterialUIPlugin").theme;
   let theme = createMuiTheme(
     // getMuiTheme(
     //   {

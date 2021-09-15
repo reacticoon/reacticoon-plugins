@@ -4,7 +4,7 @@ import routing from "./config/routing";
 import ReacticoonDevExtension from "./config/ReacticoonDevExtension";
 
 const ReacticoonPluginBundleStats = createPlugin({
-  name: "reacticoon-plugin-bundle-stats",
+  name: "ReacticoonPluginBundleStats",
   modules: [],
   eventsHandler: [],
   routing,

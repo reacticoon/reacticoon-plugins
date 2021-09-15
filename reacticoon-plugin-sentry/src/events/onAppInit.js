@@ -6,7 +6,7 @@ import { isWarnLogLevel } from 'reacticoon/environment'
 import Logger from '../logger'
 
 const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
-  const config = getPluginConfig('ReacticoonPluginExample')
+  const config = getPluginConfig('reacticoonPluginSentry')
 
   if (config) {
     if (isEmpty(config.sentryUrl)) {

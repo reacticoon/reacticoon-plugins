@@ -7,8 +7,8 @@ const createLogEventHandler = (actionType, loggerAction) => {
   return createEventListener(actionType, event => loggerAction(event.data));
 };
 
-const ReacticoonPluginExample = createPlugin({
-  name: "reacticoon-plugin-logger",
+const ReacticoonPluginLogger = createPlugin({
+  name: "ReacticoonPluginLogger",
   modules: [],
   eventsHandler: [
     createLogEventHandler(ReacticoonEvents.LOG_WARN, Logger.warn),
@@ -26,4 +26,4 @@ const ReacticoonPluginExample = createPlugin({
   ]
 });
 
-export default ReacticoonPluginExample;
+export default ReacticoonPluginLogger;

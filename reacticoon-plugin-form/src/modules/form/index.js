@@ -8,7 +8,7 @@ import * as actions from "./actions";
 import * as selectors from "./selectors";
 import reducer from "./reducer";
 
-const FormModule = createModule("reacticoon-plugin-form::FormModule", {
+const FormModule = createModule("ReacticoonPluginForm::FormModule", {
   actions,
   reducer,
   selectors

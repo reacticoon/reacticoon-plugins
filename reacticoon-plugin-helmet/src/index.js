@@ -15,7 +15,7 @@ export const Helmet = ({ children }) => (
 //
 //
 const ReacticoonPluginHelmet = createPlugin({
-  name: "reacticoon-plugin-hibp",
+  name: "ReacticoonPluginHelmet",
   modules: []
 });
 

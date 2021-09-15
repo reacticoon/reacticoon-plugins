@@ -9,7 +9,7 @@ import { getPluginConfig } from "reacticoon/plugin";
 
 import { getFormType } from "./utils";
 
-export const getForms = () => getPluginConfig("reacticoon-plugin-form").forms;
+export const getForms = () => getPluginConfig("ReacticoonPluginForm").forms;
 
 export const getFormsDefaultState = () => {
   let defaultState = {};
@@ -49,7 +49,7 @@ export const getFormConfig = formDef => {
 
   invariant(
     !isNil(formConfig),
-    `[reacticoon-plugin-form] no config found the form. '${formType}' not registered`
+    `[ReacticoonPluginForm] no config found the form. '${formType}' not registered`
   );
 
   return formConfig;
@@ -111,4 +111,4 @@ export const getFormModifier = formDef => {
 export const getFormValidator = formType => getForm(formType).validator;
 
 export const getValidatorEngine = () =>
-  getPluginConfig("reacticoon-plugin-form").validator;
+  getPluginConfig("ReacticoonPluginForm").validator;

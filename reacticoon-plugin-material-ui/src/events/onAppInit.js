@@ -4,10 +4,10 @@ import { isDebugLogLevel } from 'reacticoon/environment'
 
 const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
   if (isDebugLogLevel()) {
-    const config = getPluginConfig('reacticoon-plugin-material-ui')
+    const config = getPluginConfig('ReacticoonMaterialUIPlugin')
 
     if (!config.theme) {
-      console.warn('[reacticoon-plugin-material-ui] no theme configured.')
+      console.warn('[ReacticoonMaterialUIPlugin] no theme configured.')
     }
   }
 })

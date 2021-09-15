@@ -9,7 +9,7 @@ import { createPlugin } from "reacticoon/plugin";
 //
 
 const ReacticoonPluginDnd = createPlugin({
-  name: "reacticoon-plugin-dnd",
+  name: "ReacticoonPluginDnd",
   modules: [],
   eventsHandler: [
   ]
