@@ -18,10 +18,9 @@ let nextFlashMessageId = 1
  * @param {function} onClick The callback which will be executed when the flash message is clicked, empty by default.
  * @param data The extra data which can be passed to the renderer of the flash message.
  */
-export function addFlashMessageOfType(type, duration, text, onClick, data) {
+export function addFlashMessageOfType(type, id, duration, text, onClick, data) {
   const dispatch = getStore().dispatch
-  const id = nextFlashMessageId
-  const flashMessage: FlashMessage = { id, type, duration, text, onClick, data }
+  const flashMessage = { id: id || nextFlashMessageId, type, duration, text, onClick, data }
 
   if (!MessageType[type] && !getConfiguredTypes().indexOf(type) === -1) {
     EventManager.dispatch(EventManager.Event.LOG_WARN, {
@@ -47,8 +46,8 @@ export function addFlashMessageOfType(type, duration, text, onClick, data) {
  *
  * @param {FlashMessageConfig} { text, onClick, data }
  */
-export function addErrorFlashMessage({ text, onClick, data, duration = 10000 }) {
-  addFlashMessageOfType(MessageType.ERROR, duration, text, onClick, data)
+export function addErrorFlashMessage({ id, text, onClick, data, duration = 10000 }) {
+  addFlashMessageOfType(MessageType.ERROR, id, duration, text, onClick, data)
 }
 
 /**
@@ -58,8 +57,8 @@ export function addErrorFlashMessage({ text, onClick, data, duration = 10000 }) 
  *
  * @param {FlashMessageConfig} { text, onClick, data }
  */
-export function addWarningFlashMessage({ text, onClick, data, duration = 7000 }) {
-  addFlashMessageOfType(MessageType.WARNING, duration, text, onClick, data)
+export function addWarningFlashMessage({ id, text, onClick, data, duration = 7000 }) {
+  addFlashMessageOfType(MessageType.WARNING, id, duration, text, onClick, data)
 }
 
 /**
@@ -69,8 +68,8 @@ export function addWarningFlashMessage({ text, onClick, data, duration = 7000 })
  *
  * @param {FlashMessageConfig} { text, onClick, data }
  */
-export function addSuccessFlashMessage({ text, onClick, data, duration = 2000 }) {
-  addFlashMessageOfType(MessageType.SUCCESS, duration, text, onClick, data)
+export function addSuccessFlashMessage({ id, text, onClick, data, duration = 2000 }) {
+  addFlashMessageOfType(MessageType.SUCCESS, id, duration, text, onClick, data)
 }
 
 /**
@@ -80,8 +79,8 @@ export function addSuccessFlashMessage({ text, onClick, data, duration = 2000 })
  *
  * @param {FlashMessageConfig} { text, onClick, data }
  */
-export function addInfoFlashMessage({ text, onClick, data, duration = 5000 }) {
-  addFlashMessageOfType(MessageType.INFO, duration, text, onClick, data)
+export function addInfoFlashMessage({ id, text, onClick, data, duration = 5000 }) {
+  addFlashMessageOfType(MessageType.INFO, id, duration, text, onClick, data)
 }
 
 // This export is purely for unit testing

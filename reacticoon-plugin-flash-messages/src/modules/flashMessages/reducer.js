@@ -7,10 +7,19 @@ const DEFAULT = Immutable.fromJS({
   flashMessages: [],
 })
 
-const onAddFlashMessage = (state, action) =>
-  state.updateIn(['flashMessages'], flashMessages =>
+const onAddFlashMessage = (state, action) => {
+  const id = action.payload.flashMessage.id
+
+  const flashMessages = state.get('flashMessages', [])
+  if (flashMessages.some(m => m.id === id)) {
+    // already set with id
+    return state
+  }
+
+  return state.updateIn(['flashMessages'], flashMessages =>
     Immutable.fromJS([...cloneDeep(flashMessages), action.payload.flashMessage])
   )
+}
 
 const onRemoveFlashMessage = (state, action) =>
   state.updateIn(['flashMessages'], flashMessages =>
