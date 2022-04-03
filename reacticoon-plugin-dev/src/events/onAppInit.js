@@ -95,7 +95,8 @@ const onAppInit = createEventListener(ReacticoonEvents.ON_APP_INIT, () => {
     //
     // SSE
     //
-    intiSse()
+    // TODO: uncomment
+    // intiSse()
   }
 })
 

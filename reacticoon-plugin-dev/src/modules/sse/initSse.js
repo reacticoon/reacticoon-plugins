@@ -29,6 +29,10 @@ const intiSse = () => {
 
   eventSource.onerror = function(err) {
     // TODO: dispatch reacticoon error event
+    if (eventSource.readyState === EventSource.CLOSED) {
+      /* Traitement en cas de perte de connexion définitive avec le serveur */
+      eventSource.close();
+    }
   };
 
   addListener(listenForAll, sseAllListener);
