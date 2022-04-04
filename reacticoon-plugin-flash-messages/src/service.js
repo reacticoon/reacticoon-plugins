@@ -6,7 +6,12 @@ import { getConfiguredTypes } from './config'
 
 export { MessageType as FlashMessageType } from './modules/flashMessages/constants'
 
-let nextFlashMessageId = 1
+let nextFlashMessageId = 0
+
+function getNextFlashMessageId() {
+  nextFlashMessageId += 1
+  return nextFlashMessageId
+}
 
 /**
  * Adds a FlashMessage to the Redux Store and removes it after the
@@ -18,9 +23,13 @@ let nextFlashMessageId = 1
  * @param {function} onClick The callback which will be executed when the flash message is clicked, empty by default.
  * @param data The extra data which can be passed to the renderer of the flash message.
  */
-export function addFlashMessageOfType(type, id, duration, text, onClick, data) {
+export function addFlashMessageOfType(type, idParam, duration, text, onClick, data) {
   const dispatch = getStore().dispatch
-  const flashMessage = { id: id || nextFlashMessageId, type, duration, text, onClick, data }
+
+  const id = idParam || getNextFlashMessageId()
+
+  // id always a string
+  const flashMessage = { id, type, duration, text, onClick, data }
 
   if (!MessageType[type] && !getConfiguredTypes().indexOf(type) === -1) {
     EventManager.dispatch(EventManager.Event.LOG_WARN, {
@@ -37,7 +46,6 @@ export function addFlashMessageOfType(type, id, duration, text, onClick, data) {
     }, duration)
   }
 
-  nextFlashMessageId += 1
 }
 
 /**
